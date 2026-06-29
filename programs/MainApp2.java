@@ -1,4 +1,5 @@
-// insertion
+// Insertion Operation
+
 public class MainApp2
 {
     static void main()
@@ -9,9 +10,9 @@ public class MainApp2
         int pos = 3;
         int element = 111;
 
-        int leng = arr.length;
+        int n = arr.length;
 
-        for(int i=leng-1; i>pos; i--)
+        for(int i=n-1; i>pos; i--)
         {
             arr[i] = arr[i-1];
         }

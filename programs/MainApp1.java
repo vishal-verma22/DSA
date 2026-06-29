@@ -1,11 +1,15 @@
+// Traversal Operation
+
 public class MainApp1
 {
     static void main()
     {
         int[] arr = {10, 20, 30, 40, 50};
 
+        int n = arr.length;
+
         // way 1
-        for(int i=0; i<arr.length; i++)
+        for(int i=0; i<n; i++)
         {
             System.out.print(arr[i]+" ");
         }
@@ -23,7 +27,7 @@ public class MainApp1
         System.out.println("-------------------");
 
         // traversing in reverse order
-        for(int i=arr.length-1; i>=0; i--)
+        for(int i=n-1; i>=0; i--)
         {
             System.out.print(arr[i]+" ");
         }
