@@ -8,5 +8,7 @@
 	<classpathentry kind="src" path="programs"/>
 	<classpathentry kind="src" path="Lec1-Array"/>
 	<classpathentry kind="src" path="Lec2ArrayOperations(Traversal,Insertn,Deletn,Updatn,Searching,Sorting)"/>
+	<classpathentry kind="src" path="Lec3 Iterative and Brute Force Approach"/>
+	<classpathentry kind="src" path="Lec4 program on Iterative Approach"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

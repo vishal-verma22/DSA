@@ -1,3 +1,5 @@
+// traversing the array elements  
+
 
 public class P1_differentWayToTraversalArray {
 

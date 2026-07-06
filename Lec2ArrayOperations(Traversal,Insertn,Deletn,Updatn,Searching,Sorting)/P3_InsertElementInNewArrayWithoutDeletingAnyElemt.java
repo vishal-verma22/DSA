@@ -1,3 +1,6 @@
+
+//Inserting new element in array with specific position  without deleting existing one
+
 import java.util.Arrays;
 
 public class P3_InsertElementInNewArrayWithoutDeletingAnyElemt {
