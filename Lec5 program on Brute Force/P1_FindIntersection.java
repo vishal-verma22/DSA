@@ -1,4 +1,4 @@
-// Find the intersection of 2 array
+// wap to Find the intersection of 2 array
 
 public class P1_FindIntersection {
 
