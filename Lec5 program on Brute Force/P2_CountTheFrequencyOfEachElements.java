@@ -1,4 +1,5 @@
 // wap to count the frequency of each elements
+// method-1 
 
 public class P2_CountTheFrequencyOfEachElements {
 
@@ -9,21 +10,21 @@ public class P2_CountTheFrequencyOfEachElements {
 		int n = arr1.length;
 
 		for (int i = 0; i < n; i++) {
-			int count = 0;
-			boolean alreadyCounted=false;
+			int count = 1; // because current element khud ek baar to present hai hi.
+			boolean alreadyCounted = false;
 			for (int k = 0; k < i; k++) {
 				if (arr1[i] == arr1[k]) {
-			        alreadyCounted = true;
-			        break;
+					alreadyCounted = true;
+					break;
 
 				}
 
 			}
-			if(alreadyCounted) {
-			continue;
-			
+			if (alreadyCounted) {
+				continue;
+
 			}
-			for (int j = 0; j < n; j++) {
+			for (int j = i + 1; j < n; j++) { // if we set count =0 --> j=0 and if we set count=1 ->j=i+1
 
 				if (arr1[i] == arr1[j]) {
 					count++;
