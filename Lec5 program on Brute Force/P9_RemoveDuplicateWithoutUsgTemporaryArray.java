@@ -6,7 +6,7 @@
 // Time Complexity: O(n²)
 // Space Complexity: O(1)
 
-public class P8_RemoveDuplicateWithoutUsgTemporaryArray {
+public class P9_RemoveDuplicateWithoutUsgTemporaryArray {
 
 	public static void main(String[] args) {
 

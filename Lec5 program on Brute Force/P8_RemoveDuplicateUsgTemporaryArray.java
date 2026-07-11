@@ -1,6 +1,6 @@
 // wap to remove duplicate from given array using temporary array
 
-public class P7_RemoveDuplicateUsgTemporaryArray {
+public class P8_RemoveDuplicateUsgTemporaryArray {
 
 	public static void main(String[] args) {
 
