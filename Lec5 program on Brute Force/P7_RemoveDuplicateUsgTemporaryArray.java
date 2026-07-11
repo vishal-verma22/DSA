@@ -1,4 +1,5 @@
 // wap to remove duplicate from given array using temporary array
+
 public class P7_RemoveDuplicateUsgTemporaryArray {
 
 	public static void main(String[] args) {
@@ -19,7 +20,15 @@ public class P7_RemoveDuplicateUsgTemporaryArray {
 				}
 
 			}
-
+			/*
+			 * Also do like this if we not want to use if-else both if 
+			 * (!found) {
+			 * temp[index] = arr1[i]; 
+			 * index++;
+			 * 
+			 * }
+			 * 
+			 */
 			if (found) {
 				continue;
 			} else {
@@ -28,11 +37,10 @@ public class P7_RemoveDuplicateUsgTemporaryArray {
 				index++;
 			}
 		}
-		
-		System.out.println(temp);
-		for(int no:temp) {
-			
-			System.out.print(no+" ");
+
+		for (int no : temp) {
+
+			System.out.print(no + " ");
 
 		}
 
