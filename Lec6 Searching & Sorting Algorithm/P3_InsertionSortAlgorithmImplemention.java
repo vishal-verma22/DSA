@@ -24,7 +24,10 @@
 // Stable Sorting  : Yes
 // In-place Sorting: Yes
 
-/*
+/* method-1 using for loop
+ 
+ 
+ 
 public class P3_InsertionSortAlgorithmImplemention {
 
 	public static void main(String[] args) {
