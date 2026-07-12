@@ -9,7 +9,8 @@
 	<classpathentry kind="src" path="Lec2ArrayOperations(Traversal,Insertn,Deletn,Updatn,Searching,Sorting)"/>
 	<classpathentry kind="src" path="Lec3 Iterative and Brute Force Approach"/>
 	<classpathentry kind="src" path="Lec4 program on Iterative Approach"/>
-	<classpathentry excluding="Lec1-Array/|Lec2ArrayOperations(Traversal,Insertn,Deletn,Updatn,Searching,Sorting)/|Lec3 Iterative and Brute Force Approach/|Lec4 program on Iterative Approach/|Lec5 program on Brute Force/|Lec5 program on Brute Force/" kind="src" path=""/>
+	<classpathentry excluding="Lec1-Array/|Lec2ArrayOperations(Traversal,Insertn,Deletn,Updatn,Searching,Sorting)/|Lec3 Iterative and Brute Force Approach/|Lec4 program on Iterative Approach/|Lec5 program on Brute Force/|Lec5 program on Brute Force/|Lec6 Searching &amp; Sorting Algorithm/|Lec6 Searching &amp; Sorting Algorithm/" kind="src" path=""/>
 	<classpathentry kind="src" path="Lec5 program on Brute Force"/>
+	<classpathentry kind="src" path="Lec6 Searching &amp; Sorting Algorithm"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
