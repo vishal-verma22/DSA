@@ -1,5 +1,5 @@
 // Problem Statement:
-// WAP to move all the zero elements to the end of the array
+// WAP to move all the zero elements to the end of the array by maintaing the order of elements
 // using the Two Pointer Approach.
 //
 // Logic:
