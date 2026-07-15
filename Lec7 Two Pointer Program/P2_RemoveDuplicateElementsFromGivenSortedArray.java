@@ -1,4 +1,19 @@
-// wap to remove duplicate elements from the given array
+// Problem Statement:
+// WAP to remove duplicate elements from a given sorted array
+// using the Two Pointer Approach without using any extra array.
+//
+// Logic:
+// 1. Use two pointers:
+//    - L (Left Pointer): Points to the last unique element.
+//    - R (Right Pointer): Traverses the array.
+// 2. Compare arr[L] with arr[R].
+// 3. If both elements are different, increment L and copy arr[R] to arr[L].
+// 4. Continue until the entire array is traversed.
+// 5. After completion, the first (L + 1) elements contain all unique elements.
+//
+// Time Complexity : O(n)
+// Space Complexity: O(1)
+
 
 public class P2_RemoveDuplicateElementsFromGivenSortedArray {
 
