@@ -1,5 +1,21 @@
-// wap to reverse the given array using two pointer
-
+// Problem Statement:
+// WAP to reverse the given array using the Two Pointer Approach.
+//
+// Logic:
+// 1. Initialize two pointers:
+//    - L (Left Pointer) at the beginning of the array.
+//    - R (Right Pointer) at the end of the array.
+// 2. Swap the elements at L and R.
+// 3. Increment L and decrement R.
+// 4. Repeat the process until L becomes greater than or equal to R.
+// 5. After completion, the array is reversed.
+//
+// Example:
+// Input  : {1, 2, 3, 4, 5}
+// Output : {5, 4, 3, 2, 1}
+//
+// Time Complexity : O(n)
+// Space Complexity: O(1)
 
 public class P4_ReverseTheGivenArray {
 
