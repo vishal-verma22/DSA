@@ -2,28 +2,43 @@
 
 public class P6_CheckTwoArrayAreReversedOfEachOtherOrNot {
 
-	public static void checkArrayIsReversed(int arr[]) {
+	public static void checkArrayIsReversed(int arr1[], int arr2[]) {
 
-		int n = arr.length;
+		int n1 = arr1.length;
+		int n2 = arr2.length;
+
 		int L = 0;
-		int R = n - 1;
+		int R = n1 - 1;
+		boolean isReversed = true;
 
-		while (L < R) {
-			int temp = arr[R];
-			arr[R] = arr[L];
-			arr[L] = temp;
-			L++;
+		if (n1 != n2) {
+
+			System.out.println("Array are not reversed of each other");
+			return;
+		}
+
+		for (; L < n1; L++) {
+
+			if (arr1[L] != arr2[R]) {
+				System.out.println("Array are not reversed of each other");
+				return;
+			}
 			R--;
 
 		}
+		
+		System.out.println("Array are  reversed of each other");
+
+
 
 	}
 
 	public static void main(String[] args) {
 
-		int[] arr = { 5, 2, 8, 74, 3, 0 };
+		int[] arr1 = { 5, 2, 8, 74 };
+		int[] arr2 = { 74, 8, 2, 5 };
 
-		checkArrayIsReversed(arr);
+		checkArrayIsReversed(arr1, arr2);
 
 	}
 
