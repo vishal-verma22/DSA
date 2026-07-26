@@ -6,15 +6,17 @@ public class P6_RemoveDuplicateCharacterFromString {
 
 		String orginal = "vishal veirmai";
 		int n = orginal.length();
-		String newString="";
+		String newString = "";
 		System.out.println(n);
 
 		for (int i = 0; i < n; i++) {
-			
-			char ch =orginal.charAt(i);
-			if(newString.indexOf(ch)==-1) {
-				
-				newString=newString+orginal.charAt(i);
+
+			char ch = orginal.charAt(i);
+
+//checking that orginal string character are present in newString before entering character in newString
+			if (newString.indexOf(ch) == -1) {
+
+				newString = newString + ch;
 			}
 		}
 		System.out.println(newString);
