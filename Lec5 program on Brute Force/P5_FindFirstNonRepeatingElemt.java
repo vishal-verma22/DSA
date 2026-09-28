@@ -13,7 +13,7 @@ public class P5_FindFirstNonRepeatingElemt {
 
 		for (int i = 0; i < n; i++) {
 			int count = 1;
-			if (temp[i] == true) {
+			if (temp[i]) {
 
 				continue;
 			}
@@ -27,13 +27,13 @@ public class P5_FindFirstNonRepeatingElemt {
 			}
 
 			if (count == 1) {
-				found = true;  
+				found = true;
 				System.out.println("First Non Repeating Elemnt " + arr1[i] + " frequency ==> " + count);
 				break; // Stop after finding the first non-repeating element. }
 			}
 
 		}
-		if (found == false) {     // if non repeating element not exist
+		if (!found) {     // if non repeating element not exist
 
 			System.out.println(" Non Repeating Elemnt not found");
 

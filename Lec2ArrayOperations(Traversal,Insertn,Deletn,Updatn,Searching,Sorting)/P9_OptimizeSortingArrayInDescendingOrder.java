@@ -23,7 +23,7 @@ public class P9_OptimizeSortingArrayInDescendingOrder {
 
 				}
 			}
-			if (Swapped == false) {
+			if (!Swapped) {
 
 				break;
 

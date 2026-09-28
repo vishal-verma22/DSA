@@ -1,4 +1,4 @@
-// wap to remove the character from first string present in second string
+ // wap to remove the character from first string present in second string
 
 /*Example
  * str1="vishal is good boy"

@@ -25,35 +25,35 @@ public class P3_MoveAllZeroToEndOfArray {
 
 		// Right Pointer
 		int R = 0;
-		
+
 		for(;R<n;R++) {
-			
+
 			if(arr[R]!=0) {
 				int temp=arr[R];
 				arr[R]=arr[L];
 				arr[L]=temp;
 				L++;
 
-				
-			}
-			
-			
 
-			
+			}
+
+
+
+
 		}
 		for(int i=0;i<R;i++) {
-			
+
 			System.out.print(arr[i]+" ");
 		}
 	}
-	
+
 	public static void main(String[] args) {
-		
-		
+
+
 		int arr[] = { 1, 0, 0, 3, 0, 5, 0, 6, 7 };
 
 		 moveZeroToEnd(arr);
-	
+
 
 	}
 

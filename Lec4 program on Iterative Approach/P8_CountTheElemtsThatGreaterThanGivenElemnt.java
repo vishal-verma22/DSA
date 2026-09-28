@@ -1,7 +1,7 @@
 // wap to count the elements in array that is greater than given elements
 
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class P8_CountTheElemtsThatGreaterThanGivenElemnt {
 
@@ -28,8 +28,8 @@ public class P8_CountTheElemtsThatGreaterThanGivenElemnt {
 		}
 
 		if(count!=0) {
-			
-		
+
+
 		System.out.println("numner of element that is greater than " + number + " is--> " + count);
 		System.out.println("Elements that are greater than " + number + " are--> ");
 
@@ -37,11 +37,11 @@ public class P8_CountTheElemtsThatGreaterThanGivenElemnt {
 
 			System.out.print(no + " ");
 		}
-		
+
 		}
-		
+
 		else {
-			
+
 			System.out.println("no element is greater than " + number );
 
 		}

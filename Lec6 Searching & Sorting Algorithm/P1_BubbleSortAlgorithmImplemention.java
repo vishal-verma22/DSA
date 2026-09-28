@@ -33,9 +33,9 @@ public class P1_BubbleSortAlgorithmImplemention {
 
 		for (int i = 1; i < n; i++) { // Start from i= 1 because Bubble Sort requires (n-1) passes where n is number
 										// of elements in array.
-			
+
 			boolean isSwapped=false;
-			
+
 			for (int j = 0; j < n - i; j++) {
 
 				if (arr[j] > arr[j + 1]) {
@@ -47,7 +47,7 @@ public class P1_BubbleSortAlgorithmImplemention {
 				}
 
 			}
-			
+
 			if(!isSwapped) {
 				break;
 			}

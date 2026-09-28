@@ -26,7 +26,7 @@ public class P6_CheckTwoArrayAreReversedOfEachOtherOrNot {
 			R--;
 
 		}
-		
+
 		System.out.println("Array are  reversed of each other");
 
 

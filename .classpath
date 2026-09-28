@@ -6,13 +6,16 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="Lec1-Array"/>
+	<classpathentry kind="src" path="Lec11 String"/>
+	<classpathentry kind="src" path="Lec8 Sliding Window"/>
 	<classpathentry kind="src" path="Lec2ArrayOperations(Traversal,Insertn,Deletn,Updatn,Searching,Sorting)"/>
 	<classpathentry kind="src" path="Lec3 Iterative and Brute Force Approach"/>
 	<classpathentry kind="src" path="Lec4 program on Iterative Approach"/>
-	<classpathentry excluding="Lec1-Array/|Lec2ArrayOperations(Traversal,Insertn,Deletn,Updatn,Searching,Sorting)/|Lec3 Iterative and Brute Force Approach/|Lec4 program on Iterative Approach/|Lec5 program on Brute Force/|Lec5 program on Brute Force/|Lec6 Searching &amp; Sorting Algorithm/|Lec6 Searching &amp; Sorting Algorithm/|Lec7 Two Pointer Program/|Lec7 Two Pointer Program/|Lec String/|Lec String/" kind="src" path=""/>
+	<classpathentry excluding="Lec1-Array/|Lec2ArrayOperations(Traversal,Insertn,Deletn,Updatn,Searching,Sorting)/|Lec3 Iterative and Brute Force Approach/|Lec4 program on Iterative Approach/|Lec5 program on Brute Force/|Lec5 program on Brute Force/|Lec6 Searching &amp; Sorting Algorithm/|Lec6 Searching &amp; Sorting Algorithm/|Lec7 Two Pointer Program/|Lec7 Two Pointer Program/|Lec9 Kadanes Algorithm/|Lec9 Kadanes Algorithm/|Lec10 Prefix and Suffix Technique/|Lec10 Prefix and Suffix Technique/|Lec8 Sliding Window/|Lec11 String/" kind="src" path=""/>
 	<classpathentry kind="src" path="Lec5 program on Brute Force"/>
 	<classpathentry kind="src" path="Lec6 Searching &amp; Sorting Algorithm"/>
 	<classpathentry kind="src" path="Lec7 Two Pointer Program"/>
-	<classpathentry kind="src" path="Lec String"/>
+	<classpathentry kind="src" path="Lec9 Kadanes Algorithm"/>
+	<classpathentry kind="src" path="Lec10 Prefix and Suffix Technique"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -15,7 +15,7 @@ public class P4_CopyContentOfOneArrayIntoAnotherArray {
 		}
 
 		System.out.println("Array-1");
-		;
+
 		for (int no : arr1) {
 			System.out.print(no + " ");
 		}

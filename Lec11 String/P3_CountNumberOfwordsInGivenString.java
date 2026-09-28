@@ -3,7 +3,7 @@
  * Example:
  *    sentence="i love my dadi"
  *    no of word in above sentence is 3
- *    
+ *
  *    sentence="hey how are you my boy"
  *    no of word in above sentence is 6
 

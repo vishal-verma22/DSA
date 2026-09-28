@@ -14,7 +14,7 @@ public class P2_CheckGivenStringIsPalindromeOrNot {
 
 			reverse = reverse + orginal.charAt(i);
 		}
-		
+
 		if (orginal.equals(reverse)) {
 
 			System.out.println("Given String is palindrome");

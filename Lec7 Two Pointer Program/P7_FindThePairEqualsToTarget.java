@@ -52,5 +52,5 @@ public class P7_FindThePairEqualsToTarget {
 
 		findPair(arr, target);
 	}
-	
+
 }

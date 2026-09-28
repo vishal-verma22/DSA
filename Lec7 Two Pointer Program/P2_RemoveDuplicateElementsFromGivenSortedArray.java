@@ -28,18 +28,18 @@ public class P2_RemoveDuplicateElementsFromGivenSortedArray {
 		int R = 1;
 
 		for (; R < n; R++) {
-			
+
 			if(arr[L]!=arr[R]) {
 				L++;
 				arr[L]=arr[R];
-				
-				
-			
+
+
+
 			}
 		}
-		
+
 		for(int i=0;i<=L;i++) {
-			
+
 			System.out.print(arr[i]+" ");
 		}
 

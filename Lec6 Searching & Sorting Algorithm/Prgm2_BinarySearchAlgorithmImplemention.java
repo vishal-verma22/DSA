@@ -63,36 +63,36 @@ public class Prgm2_BinarySearchAlgorithmImplemention {
 		int arr[] = {10, 20, 30, 40, 50, 60, 70};
 		int target = 7;
 		int n=arr.length;
-		
+
 		int low=0;
 		int high=arr.length-1;
-		
+
 		boolean found =false;
-		
+
 		while(low<=high) {
-			
+
 			int middle=(low+high)/2;
 
 		if(arr[middle]==target) {
-			
+
 			System.out.println("Element " + target + " found at index position " + middle);
 			found = true;
 			break;
-			
+
 		}
 		if(target>arr[middle]) {
 			low=middle+1;
-			
+
 		}else {
-			
+
 			high=middle-1;
 
 		}
-		
-		
+
+
 	}
 		if(!found) {
-			
+
 			System.out.println("Element " + target + " not found");
 
 		}

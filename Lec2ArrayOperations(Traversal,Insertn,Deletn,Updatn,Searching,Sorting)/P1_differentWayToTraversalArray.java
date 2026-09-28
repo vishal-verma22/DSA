@@ -1,4 +1,4 @@
-// traversing the array elements  
+// traversing the array elements
 
 
 public class P1_differentWayToTraversalArray {
@@ -20,9 +20,9 @@ public class P1_differentWayToTraversalArray {
 		// Way -2 for Traversing Array using Foreach Loop
 
 		/*
-		 * 
+		 *
 		 * Syntax
-		 * 
+		 *
 		 * for(dataType of array variable : arrayName) { // code }
 		 */
 

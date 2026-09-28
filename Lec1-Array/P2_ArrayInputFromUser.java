@@ -1,7 +1,7 @@
-// Creating Array by taking value from user 
+// Creating Array by taking value from user
 
-import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class P2_ArrayInputFromUser {
 
@@ -21,7 +21,7 @@ public class P2_ArrayInputFromUser {
 			arr[i] = sc.nextInt();
 
 		}
-		
+
 		System.out.println(Arrays.toString(arr));
 	}
 

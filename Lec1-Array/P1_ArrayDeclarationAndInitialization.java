@@ -1,5 +1,5 @@
 
-//  Array Declaration & Initialization 
+//  Array Declaration & Initialization
 
 import java.util.Arrays;
 public class P1_ArrayDeclarationAndInitialization {

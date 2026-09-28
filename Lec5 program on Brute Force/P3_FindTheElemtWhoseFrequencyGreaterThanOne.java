@@ -3,24 +3,24 @@
 public class P3_FindTheElemtWhoseFrequencyGreaterThanOne {
 
 	public static void main(String[] args) {
-		
+
 		int arr1[] = { 52, 23, 14, 12,12,15,12,14,8,3,14};
 		int n=arr1.length;
-		
+
 		boolean temp[]=new boolean[n];
 
 
 		for (int i = 0; i < n; i++) {
 			int count=1; //because current element khud ek baar to present hai hi.
-			
-		if(temp[i]==true) {
+
+		if(temp[i]) {
 				continue;
 		}
-		
+
 			for(int j=i+1;j<n;j++) {
-				
+
 				if(arr1[i]==arr1[j]) {
-				
+
 				count++;
 				temp[j]=true;
 				}

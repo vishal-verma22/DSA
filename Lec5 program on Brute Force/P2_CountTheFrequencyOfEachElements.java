@@ -1,5 +1,5 @@
 // wap to count the frequency of each elements
-// method-1 
+// method-1
 
 public class P2_CountTheFrequencyOfEachElements {
 

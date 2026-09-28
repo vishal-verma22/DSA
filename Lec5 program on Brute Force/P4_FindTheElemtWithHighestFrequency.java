@@ -15,7 +15,7 @@ public class P4_FindTheElemtWithHighestFrequency {
 		for (int i = 0; i < n; i++) {
 			int count = 1; // because current element khud ek baar to present hai hi.
 
-			if (temp[i] == true) {
+			if (temp[i]) {
 				continue;
 			}
 			for (int j = i + 1; j < n; j++) {

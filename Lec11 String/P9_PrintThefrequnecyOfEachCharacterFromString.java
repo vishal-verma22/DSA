@@ -1,4 +1,4 @@
-
+// wap to print the frequency of each character from string
 public class P9_PrintThefrequnecyOfEachCharacterFromString {
 
 	public static void main(String[] args) {
@@ -14,6 +14,7 @@ public class P9_PrintThefrequnecyOfEachCharacterFromString {
 			for (int k = i - 1; k >= 0; k--) {
 				if (str1.charAt(i) == str1.charAt(k)) {
 					found = true;
+					break;
 				}
 
 			}

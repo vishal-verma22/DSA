@@ -4,7 +4,7 @@ public class P15_ReverseTheElementBetwnTwoGivenIndices {
 
 	public static void main(String[] args) {
 
-		
+
 
 		int arr1[] = { 5, 6, 7, 45 ,5,4,67};
 
@@ -23,7 +23,7 @@ public class P15_ReverseTheElementBetwnTwoGivenIndices {
 
 			System.out.print(no + " ");
 		}
-			
+
 		}
 	}
 

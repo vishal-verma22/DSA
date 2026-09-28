@@ -21,13 +21,13 @@ public class P8_RemoveDuplicateUsgTemporaryArray {
 
 			}
 			/*
-			 * Also do like this if we not want to use if-else both if 
+			 * Also do like this if we not want to use if-else both if
 			 * (!found) {
-			 * temp[index] = arr1[i]; 
+			 * temp[index] = arr1[i];
 			 * index++;
-			 * 
+			 *
 			 * }
-			 * 
+			 *
 			 */
 			if (found) {
 				continue;

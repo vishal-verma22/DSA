@@ -1,5 +1,5 @@
 
-// Deleting Array Element by giving Array value 
+// Deleting Array Element by giving Array value
 public class P6_DeletngElemtBasdOnValueNotOnIndexBased {
 
 	public static void main(String[] args) {
@@ -36,7 +36,7 @@ public class P6_DeletngElemtBasdOnValueNotOnIndexBased {
 		if (flag >= 0) {
 			for (int i = flag; i < arr.length - 1; i++) {
 				arr[i] = arr[i + 1];
-				
+
 
 			}
 

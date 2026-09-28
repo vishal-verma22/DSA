@@ -22,7 +22,7 @@ public class P5_SwapTwoElementInArrayAtSpecificedPosition {
 		int index1 = sc.nextInt();
 		int index2 = sc.nextInt();
 
-		
+
 		int temp = arr1[index1];
 		arr1[index1] = arr1[index2];
 		arr1[index2] = temp;

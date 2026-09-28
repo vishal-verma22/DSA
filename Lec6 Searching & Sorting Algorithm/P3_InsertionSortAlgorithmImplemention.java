@@ -25,39 +25,39 @@
 // In-place Sorting: Yes
 
 /* method-1 using for loop
- 
- 
- 
+
+
+
 public class P3_InsertionSortAlgorithmImplemention {
 
 	public static void main(String[] args) {
-		
+
 		int arr[] = { 5, 6, 3, 2, 11, 9, 7 };
-		
+
 		// { 5, 5, 6, 2, 11, 9, 7 }
 		int n = arr.length;
-		
+
 		for(int i=1;i<n;i++) {     // i=1,2
 			int temp=arr[i];
 			int j=i-1;
-			
+
 			for(;j>=0;j--) {   //j=1,0
 				if(arr[j]>temp) {
-					
+
 					arr[j+1]=arr[j];
-					
-					
+
+
 				}else {
-					
+
 					break;
 				}
-				
-				
+
+
 			}
 			arr[j+1]=temp;
-			
+
 		}
-		
+
 		for (int no : arr) {
 			System.out.print(no + " ");
 		}
@@ -87,11 +87,11 @@ public class P3_InsertionSortAlgorithmImplemention {
 				j--;
 
 			}
-			
+
 			arr[j+1]=temp;
 
 		}
-		
+
 
 		for (int no : arr) {
 			System.out.print(no + " ");
