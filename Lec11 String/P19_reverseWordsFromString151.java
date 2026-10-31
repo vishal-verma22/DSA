@@ -47,7 +47,7 @@ public class P19_reverseWordsFromString151  {
      /*
       * split("\\s+"):
       *
-      * \\s  -> whitespace character
+      * \\s  ->remove only one whitespace character
       * +    -> one or more
       *
       * Isliye multiple spaces bhi ek separator ki tarah
