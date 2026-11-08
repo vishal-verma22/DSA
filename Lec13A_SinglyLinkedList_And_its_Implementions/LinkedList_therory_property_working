@@ -1,0 +1,168 @@
+==================================================
+SINGLY LINKED LIST
+==================================================
+
+1. What is Linked List?
+	A Linked List is a linear data structure in which elements are stored in the form of nodes. Each node contains two parts: data and a reference to the next node.
+	
+	- Elements are not stored in continuous memory locations.
+	- Each node is connected to the next node using a reference.
+	- Linked List has a dynamic size, meaning we can add or remove nodes at runtime.
+
+
+2. What is Node?
+	A Node is an individual element of a Linked List. Each node contains two parts:
+
+	1. Data: Stores the actual value (e.g. 10, 20, 30).
+	2. Next: Stores the reference (address) of the next node.
+
+Syntax:
+
+class Node {
+    int data;
+    Node next;
+	}
+
+	Here, Node is a user-defined reference data type. It stores the reference of another Node object.
+
+
+3. What is Head?
+	Head is a reference variable that stores the reference (address) of the first node in the Linked List.
+	
+		- Initially, head is null because the Linked List is empty.
+	- After inserting the first node, head points to that node.
+	- Head continues to point to the first node even when new nodes are added at the end.
+
+
+4. What is Tail?
+
+	Tail is a reference variable that stores the reference (address) of the last node in the Linked List.
+
+	- Initially, tail is null.
+	- After inserting the first node, both head and tail point to the same node.
+	- Whenever a new node is added at the end, tail gets updated to point to the new last node.
+
+
+5. Why Do We Create Two Classes?
+	We create two separate classes because both classes have different responsibilities.
+
+1. Node Class:
+   - Creates individual nodes.
+   - Stores data and next reference.
+
+2. LinkedList Class:
+   - Manages the complete Linked List.
+   - Maintains head and tail references.
+   - Performs operations like add, delete and display.
+
+NOTE:
+Node class represents an individual node, whereas LinkedList class manages the complete Linked List.
+
+
+6. Structure of Linked List
+
+Example:
+
+10 -> 20 -> 30 -> null
+
+- Head points to the first node (10).
+- Tail points to the last node (30).
+- Node 10's next stores the reference of Node 20.
+- Node 20's next stores the reference of Node 30.
+- Node 30's next contains null because there is no next node.
+
+
+7. Constructor in Node Class
+
+The constructor is called whenever a new Node object is created using the new keyword.
+
+Example:
+
+Node(int data) {
+    this.data = data;
+    this.next = null;
+}
+
+- this.data = data assigns the given value to the current node.
+- this.next = null means initially the new node does not point to any other node.
+
+NOTE:
+If add() is called three times and each call executes new Node(data), the constructor also executes three times.
+
+
+8. Add Method (Insertion)
+
+The add method is used to insert a new node at the end of the Linked List.
+
+Working:
+
+1. First, a new node is created using the new keyword.
+2. The constructor initializes its data and sets next to null.
+3. If the Linked List is empty (head == null), both head and tail point to the new node.
+4. If the Linked List is not empty, the current tail's next is updated to the new node.
+5. Finally, tail is updated to point to the new node.
+
+Important Code:
+
+Node newNode = new Node(data);
+
+if (head == null) {
+    head = newNode;
+    tail = newNode;
+}
+else {
+    tail.next = newNode;
+    tail = newNode;
+}
+
+Remember:
+
+- tail.next = newNode connects the previous last node to the new node.
+- tail = newNode updates tail to the new last node.
+
+
+
+Why do we use temp != null instead of temp.next != null?
+
+- temp != null checks whether the current node exists. It prints all nodes, including the last node.
+- temp.next != null checks whether the next node exists. It skips the last node.
+
+NOTE:
+We use temp instead of directly moving head because we do not want to change the original head reference.
+
+
+10. Advantages of Linked List
+
+1. Dynamic Size: We can increase or decrease the size at runtime.
+2. Easy Insertion and Deletion: Nodes can be inserted or deleted by updating references.
+3. Memory Flexibility: Nodes do not need continuous memory locations.
+
+
+11. Disadvantages of Linked List
+
+1. Extra Memory: Each node requires additional memory to store the next reference.
+2. No Direct Access: We cannot directly access elements using an index like arrays.
+3. More Complex: Reference management is required while inserting and deleting nodes.
+
+
+12. Time Complexity
+
+1. Add at End: O(1) (when tail is maintained).
+2. Display / Traversal: O(n).
+3. Searching: O(n).
+4. Access by Index: O(n).
+5. Delete from Beginning: O(1).
+
+
+13. Important Points for Revision
+
+- Node = Data + Next.
+- Head = Reference of First Node.
+- Tail = Reference of Last Node.
+- Next = Reference of Next Node.
+- Temp = Temporary reference used for traversal.
+- Null = Indicates that there is no next node.
+- Initially, head = null and tail = null.
+- When the first node is added, head and tail both point to the same node.
+- When a new node is added, tail is updated to the new last node.
+- The last node's next always contains null.

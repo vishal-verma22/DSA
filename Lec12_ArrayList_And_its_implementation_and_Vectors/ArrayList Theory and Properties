@@ -1,0 +1,153 @@
+Dynamic Array (ArrayList): 
+
+1. Introduction
+	->A Dynamic Array is a linear data structure whose size can grow automatically at runtime.
+	->It stores elements in continuous memory, just like a normal array.
+	->In Java, the ArrayList class (in java.util, Collections Framework) is the implementation of a Dynamic Array.
+
+2. Why do we need it? (Problem with a normal array)
+	
+	->A normal array has a fixed size, decided at creation (int[] a = new int[5]).
+	->If we need to store more elements, we cannot extend it. We must create a new array manually and copy the data.
+	->If we create a very big array “just in case”, memory is wasted.
+	->A Dynamic Array solves this by resizing itself automatically when it becomes full.
+3. Important Terms
+	
+	->Size: number of elements currently stored in arrayList.
+	->Capacity: maximum number of elements the internal array can store(hold) before resizing.
+	->Initial ArrayList capacity is 10
+	->ArrayList  growing capacity formula:
+			New Capacity = Old Capacity + (Old Capacity / 2)
+	->Rule: size <= capacity always.
+	->Example: elements 10, 20, 30, 40 in an array of 10 boxes means size = 4, capacity = 10.
+	
+4. Internal Structure
+
+	->Internally, ArrayList keeps an Object[] array plus an int size variable.
+	->add() puts the element at index size and then does size++.
+
+
+5. Working of Dynamic Array (Step by Step)
+
+	->Create a simple array with a starting capacity and size = 0.
+		arra=>	|   |  |   |	   |	   |		|   |  |   |	   |
+			=> its 
+				->Size=0
+				->Capacity=10
+				
+	->Add elements in arraylist
+			
+		arra=>	| 8  | 9  | 3  |	 5  |	   |		|   |  |   |	   |
+			=> its 
+				->Size=4
+				->Capacity=10
+				
+	->Check if full: when size == capacity, the array cannot take another element.
+	
+		arra=>	| 8  | 9  | 3  |	 5  |	8  |	 3 | 8  | 6 | 33  |	5   |
+			=> its 
+				->Size=10
+				->Capacity=10
+		=>So Resize: calculate the new capacity.
+		=>New Capacity = Old Capacity + (Old Capacity / 2)
+			Example: 10 + (10 / 2) = 15
+			
+	->Create a new array of the new capacity.
+		
+			
+				NewArray=>	|   |   |   |	   |  	|	|   |  |   |	   |   |		|   |  |   |	
+			=> its 
+				->Size=0
+				->Capacity=15
+				
+	->Copy all elements from the old array to the new array. This takes O(n) time.
+			NewArray=>	| 8  | 9  | 3  |	 5  |	8  |	 3 | 8  | 6 | 33  |	5   |  |		|   |  |   |	
+	
+	->Update reference: the old array reference now points to the new array.
+	 			arra=>	| 8  | 9  | 3  |	 5  |	8  |	 3 | 8  | 6 | 33  |	5   |  |		|   |  |   |	
+	 
+	->The old array has no reference left, so it becomes eligible for Garbage Collection.
+	->Add the new element in the new array.
+
+
+
+5. Java ArrayList: Important Properties
+	->Default capacity: 10. An empty new ArrayList<>() starts with an empty internal array, and the capacity becomes 10 when the first element is added.
+	->Growth: new capacity = old + (old / 2)
+	->Stores objects only. Primitives use wrapper classes (int → Integer), which is called autoboxing.
+	->Allows duplicates and null.
+	->Maintains insertion order.
+	->Index based, with fast random access.
+	->Fail-fast iterator: if the list is modified during iteration (except through the iterator), it throws ConcurrentModificationException.
+	->Generics supported: ArrayList<String>.
+
+	-> constructors 
+
+	ArrayList<Integer> a = new ArrayList<>();        // default
+	ArrayList<Integer> b = new ArrayList<>(50);      // initial capacity 50
+	ArrayList<Integer> c = new ArrayList<>(a);       // copy from another collection
+	
+	-> methods
+
+	a.add(10);          // add at end
+	a.add(0, 5);        // insert at index
+	a.get(1);           // access
+	a.set(1, 99);       // update
+	a.remove(0);        // remove by index
+	a.remove(Integer.valueOf(99));  // remove by value
+	a.contains(10);     // search
+	a.indexOf(10);      // first index
+	a.size();           // number of elements
+	a.isEmpty();        // check empty
+	a.clear();          // remove all
+	a.ensureCapacity(100);  // reserve capacity in advance
+	a.trimToSize();     // reduce capacity to size
+
+->Common mistake: for ArrayList<Integer>, list.remove(1) removes the element at index 1, not the value 1. To remove by value, use list.remove(Integer.valueOf(1)).
+
+6. 	ArrayList vs Array
+
+Point			Array						ArrayList
+Size				Fixed						Dynamic
+Data type		Primitives and objects		Objects only
+Length			arr.length					list.size()
+Access			arr[i]						list.get(i)
+Generics			No							Yes
+
+
+7. ArrayList vs String
+Point			String					ArrayList
+Stores			Only characters			Any objects
+Mutability	    Immutable				Mutable
+Size				Fixed once created		Dynamic
+Length			length()					size()
+Access			charAt(i)				get(i)
+Memory			String Constant Pool		Heap
+Package			java.lang				java.util
+
+
+
+8. ArrayList vs LinkedList
+
+Point					ArrayList	LinkedList
+Internal structure		Dynamic array	Doubly linked list
+Random access (get)		O(1)				O(n)
+
+9. Advantages
+	->Dynamic size.
+	->Fast random access, O(1).
+	->Easy to implement and use.
+	->Better cache locality, because elements are in continuous memory.
+	->Many built-in methods.
+14. Disadvantages
+	
+	->Insertion and deletion at the start or middle are expensive because elements must be shifted.
+	->Resizing requires copying all elements, which is expensive.
+	->It can have some unused allocated memory (capacity is greater than size).
+	->Stores only objects, so there is boxing and unboxing overhead.
+	->Not thread-safe.
+	
+10. Applications
+	->Storing a list of records whose count is not known in advance (students, products).
+	->Implementing stacks, queues and other data structures.
+	->Dynamic lists in programs that mostly read data by index.
