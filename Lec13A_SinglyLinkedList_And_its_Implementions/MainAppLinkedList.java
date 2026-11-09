@@ -10,7 +10,20 @@ public class MainAppLinkedList {
 		sll.add(40);
 		sll.add(50);
 
+		//sll.show();
+
+		sll.addFirst(20);
+		sll.addFirst(99);
+		
+		sll.addLast(6);
+		sll.addLast(68);
+		//sll.show();
+
+		//System.out.println(sll.removeFirst());
+		//System.out.println(sll.removeAtIndexPosition(1));
+
 		sll.show();
+		System.out.println(sll.contains(3));
 	}
 
 }
