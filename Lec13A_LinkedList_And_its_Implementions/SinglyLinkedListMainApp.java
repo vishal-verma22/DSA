@@ -1,6 +1,6 @@
-package Lec13A_SinglyLinkedList_And_its_Implementions;
+package Lec13A_LinkedList_And_its_Implementions;
 
-public class MainAppLinkedList {
+public class SinglyLinkedListMainApp {
 
 	public static void main(String[] args) {
 

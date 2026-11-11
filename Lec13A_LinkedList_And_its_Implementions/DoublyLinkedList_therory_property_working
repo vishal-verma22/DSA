@@ -1,0 +1,526 @@
+==================================================
+DOUBLY LINKED LIST
+==================================================
+
+1. What is Doubly Linked List?
+
+	-A Doubly Linked List is a linear data structure in which elements are stored in the form of nodes.
+	- Each node contains three parts: previous reference, data and next reference.
+	- Elements are not stored in continuous memory locations.
+	- Each node is connected to both the previous and next node using references.
+	- We can traverse the Linked List in both forward and backward directions.
+	- Doubly Linked List has a dynamic size, meaning we can add or remove nodes at runtime.
+
+NOTE
+	-Whenever a new Node is created, its previous reference  and next reference  are initially  null.
+	- We establish connections between nodes after  the new Node is created.	
+	
+	
+	-head, tail, prev and next are reference variables that store the reference (memory address) of Node objects.
+	-When we compare two Node references using ==, Java compares their references (whether they point to the same object), not their data values.	
+
+	- Example
+
+	Node n1 = new Node(10);
+	Node n2 = new Node(20);
+
+	head = n1;
+	tail = n2;
+
+	n1.next = n2;
+	n2.prev = n1;
+
+
+3. Memory Representation
+
+        Reference Variables
+
+        head  --------->  1001
+        tail  --------->  2002
+
+
+        HEAP MEMORY
+
+     Address: 1001
+    +------------------+
+    | prev = null      |
+    | data = 10        |
+    | next = 2002      |
+    +------------------+
+             |
+             | Reference
+             v
+     Address: 2002
+    +------------------+
+    | prev = 1001      |
+    | data = 20        |
+    | next = null      |
+    +------------------+
+
+==> important for understanding whole linkedList concept what head ,tail,next and previous store 
+4. Reference Comparison Using ==
+
+head(1001) == n1(1001);       // true
+
+tail(2002) == n2(2002);       // true
+
+head(1001) == tail(2002);     // false
+
+n1.next(2002) == n2(2002);    // true
+
+EXPLANATION:
+
+- head == n1 returns true because both refer to
+  the same Node object (1001).
+
+- head == tail returns false because they refer
+  to different Node objects (1001 and 2002).
+
+- n1.next == n2 returns true because both refer
+  to the same Node object (2002).
+
+
+5. Important Points to Remember
+
+- == compares object references, not data values.
+
+- Two reference variables can point to the same
+  Node object.
+
+- Different reference variables can store the
+  reference of the same object.
+
+- prev and next maintain connections between
+  Node objects.
+
+- head and tail maintain the starting and ending
+  references of the Linked List.
+
+
+==================================================
+*/
+
+2. What is Node?
+	A Node is an individual element of a Doubly Linked List. Each node contains three parts:
+		1. Prev: Stores the reference (address) of the previous node.
+		2. Data: Stores the actual value (e.g. 10, 20, 30).
+		3. Next: Stores the reference (address) of the next node.
+
+Syntax:
+
+class Node {
+
+	    int data;
+	    Node prev;
+	    Node next;
+
+}
+
+	Here, Node is a user-defined reference data type.
+
+	- prev stores the reference of another Node object.
+	- next stores the reference of another Node object.
+	- data stores the actual value.
+
+
+3. What is Head?
+
+	Head is a reference variable that stores the reference (address) of the first node in the Doubly Linked List.
+	- Initially, head is null because the Linked List is empty.
+	- After inserting the first node, head points to that node.
+	- Head continues to point to the first node even when new nodes are added at the end.
+	- The first node's prev always contains null because there is no previous node.
+
+
+4. What is Tail?
+
+	Tail is a reference variable that stores the reference (address) of the last node in the Doubly Linked List.
+	- Initially, tail is null.
+	- After inserting the first node, both head and tail point to the same node.
+	- Whenever a new node is added at the end, tail gets updated to point to the new last node.
+	- The last node's next always contains null because there is no next node.
+
+
+5. Why Do We Create Two Classes?
+
+	We create two separate classes because both classes have different responsibilities.
+
+1. Node Class:
+
+   - Creates individual nodes.
+   - Stores data, prev and next references.
+
+2. DoublyLinkedList Class:
+
+   - Manages the complete Doubly Linked List.
+   - Maintains head and tail references.
+   - Maintains the size variable.
+   - Performs operations like insertion, deletion and display.
+
+NOTE:
+
+Node class represents an individual node, whereas DoublyLinkedList class manages the complete Doubly Linked List.
+
+
+6. Structure of Doubly Linked List
+
+Example:
+
+null <- [10] <-> [20] <-> [30] -> null
+
+       head              tail
+
+	Each node contains:
+
+	Node 10:
+		prev = null
+		data = 10
+		next = Node 20
+
+	Node 20:
+		prev = Node 10
+		data = 20
+		next = Node 30
+
+	Node 30:
+		prev = Node 20
+		data = 30
+		next = null
+
+	- Head points to the first node (10).
+
+	- Tail points to the last node (30).
+
+	- Node 10's next stores the reference of Node 20.
+
+	- Node 20's prev stores the reference of Node 10.
+
+	- Node 20's next stores the reference of Node 30.
+
+	- Node 30's prev stores the reference of Node 20.
+
+	- First node's prev is null.
+
+	- Last node's next is null.
+
+
+7. Constructor in Node Class
+
+	The constructor is called whenever a new Node object is created using the new keyword.
+
+Example:
+
+Node(int data) {
+
+    this.data = data;
+
+    this.prev = null;
+
+    this.next = null;
+
+}
+
+	- this.data = data assigns the given value to the current node.
+	- this.prev = null means initially the new node does not point to any previous node.
+	- this.next = null means initially the new node does not point to any next node.
+
+NOTE:
+
+If add() is called three times and each call executes new Node(data), the constructor also executes three times.
+
+
+8. Add Method (Insertion at End)
+
+	The add method is used to insert a new node at the end of the Doubly Linked List.
+
+Working:
+
+	1. First, a new node is created using the new keyword .
+	2. The constructor initializes its data and sets prev and next to null.
+	3. If the Linked List is empty (head == null), both head and tail point to the new node.
+	4. If the Linked List is not empty:
+		- The new node's prev is connected to the current tail.
+		- The current tail's next is connected to the new node.
+		- Finally, tail is updated to point to the new node.
+
+Important Code:
+
+Node newNode = new Node(data);
+
+if (head == null) {
+
+    head = newNode;
+
+    tail = newNode;
+
+}
+
+else {
+
+    newNode.prev = tail;
+
+    tail.next = newNode;
+
+    tail = newNode;
+
+}
+
+Remember:
+
+	- newNode.prev = tail connects the new node to the previous last node.
+	- tail.next = newNode connects the previous last node to the new node.
+	- tail = newNode updates tail to the new last node.
+
+IMPORTANT:
+
+	In Doubly Linked List, we have to maintain connections in both directions.
+
+
+9. Display Method (Forward Traversal)
+
+	The display method is used to print all elements from the first node to the last node.
+
+Working:
+
+	1. Create a temporary reference variable temp and initialize it with head.
+	2. Check temp != null.
+	3. Print the data of the current node.
+	4. Move temp to the next node using temp = temp.next.
+	5. Repeat until temp becomes null.
+
+Important Code:
+
+Node temp = head;
+
+while (temp != null) {
+
+    System.out.println(temp.data);
+
+    temp = temp.next;
+
+}
+
+Remember:
+
+	- temp = head starts traversal from the first node.
+	- temp = temp.next moves to the next node.
+	- We use temp instead of directly moving head because we do not want to change the original head reference.
+
+
+10. Display Reverse Method (Backward Traversal)
+
+	The displayReverse method is used to print all elements from the last node to the first node.
+
+Working:
+
+	1. Create a temporary reference variable temp and initialize it with tail.
+	2. Check temp != null.
+	3. Print the data of the current node.
+	4. Move temp to the previous node using temp = temp.prev.
+	5. Repeat until temp becomes null.
+
+Important Code:
+
+Node temp = tail;
+
+while (temp != null) {
+
+    System.out.println(temp.data);
+
+    temp = temp.prev;
+
+}
+
+Remember:
+
+	- temp = tail starts traversal from the last node.
+	- temp = temp.prev moves to the previous node.
+	- We can traverse backward because every node maintains a prev reference.
+
+
+11. Add First Method (Insertion at Beginning)
+
+	The addFirst method is used to insert a new node at the beginning of the Doubly Linked List.
+
+Working:
+
+	1. Create a new node using new Node(data).
+	2. If the Linked List is empty, both head and tail point to the new node.
+	3. If the Linked List is not empty:
+		- Connect the new node's next to the current head.
+		- Connect the current head's prev to the new node.
+		- Update head to point to the new node.
+
+Important Code:
+
+Node newNode = new Node(data);
+
+if (head == null) {
+
+    head = newNode;
+
+    tail = newNode;
+
+}
+
+else {
+
+    newNode.next = head;
+
+    head.prev = newNode;
+
+    head = newNode;
+
+}
+
+Remember:
+
+	- newNode.next = head connects the new node to the current first node.
+	- head.prev = newNode connects the current first node back to the new node.
+	- head = newNode updates head to the new first node.
+
+
+12. Remove First Method (Deletion at Beginning)
+
+	The removeFirst method is used to remove the first node from the Doubly Linked List.
+
+Working:
+
+	1. First, check whether the Linked List is empty (head == null).
+	2. If empty, there is no node to remove.
+	3. If only one node exists (head == tail), set both head and tail to null.
+	4. Otherwise:
+
+		- Move head to the next node using head = head.next.
+		- Set the new head's prev to null.
+	5. Decrease size by 1.
+
+Important Code:
+
+if (head == null) {
+
+    return;
+
+}
+
+if (head == tail) {
+
+    head = null;
+
+    tail = null;
+
+}
+
+else {
+
+    head = head.next;
+
+    head.prev = null;
+
+}
+
+size--;
+
+Remember:
+
+	- head = head.next moves head to the second node.
+	- head.prev = null removes the backward connection to the deleted first node.
+	- If only one node exists, both head and tail must become null.
+
+
+13. Remove Last Method (Deletion at End)
+
+	The removeLast method is used to remove the last node from the Doubly Linked List.
+
+Working:
+
+	1. First, check whether the Linked List is empty (head == null).
+	2. If empty, there is no node to remove.
+	3. If only one node exists (head == tail), set both head and tail to null.
+	4. Otherwise:
+		- Move tail to the previous node using tail = tail.prev.
+		- Set the new tail's next to null.
+
+	5. Decrease size by 1.
+
+Important Code:
+
+if (head == null) {
+
+    return;
+
+}
+
+if (head == tail) {
+
+    head = null;
+
+    tail = null;
+
+}
+
+else {
+
+    tail = tail.prev;
+
+    tail.next = null;
+
+}
+
+size--;
+
+Remember:
+
+	- tail = tail.prev moves tail to the previous node.
+	- tail.next = null removes the forward connection to the deleted last node.
+
+
+14. Advantages of Doubly Linked List
+
+	1. Bidirectional Traversal: We can traverse in both forward and backward directions.
+	2. Easy Deletion: We can access the previous node directly using prev.
+	3. Efficient Insertion and Deletion: We can update both references without searching for the previous node, when the required node reference is already available.
+	4. Dynamic Size: We can increase or decrease the size at runtime.
+
+
+15. Disadvantages of Doubly Linked List
+
+	1. Extra Memory: Each node requires additional memory to store the prev reference.
+	2. More Complex: We need to maintain both prev and next references.
+	3. More Pointer Updates: Insertion and deletion require updating multiple references.
+
+
+16. Time Complexity
+
+	1. Add at Beginning: O(1).
+	2. Add at End: O(1) (when tail is maintained).
+	3. Display Forward: O(n).
+	4. Display Reverse: O(n).
+	5. Searching: O(n).
+	6. Access by Index: O(n).
+	7. Remove from Beginning: O(1).
+	8. Remove from End: O(1) (when tail is maintained).
+	9. Add at Index: O(n).
+	10. Remove at Index: O(n).
+
+
+17. Important Points for Revision
+
+	- Node = Prev + Data + Next.
+	- Head = Reference of First Node.
+	- Tail = Reference of Last Node.
+	- Prev = Reference of Previous Node.
+	- Next = Reference of Next Node.
+	- Temp = Temporary reference used for traversal.
+	- Null = Indicates that there is no previous or next node.
+	- Initially, head = null and tail = null.
+	- When the first node is added, head and tail both point to the same node.
+	- First node's prev always contains null.
+	- Last node's next always contains null.
+	- temp = temp.next moves forward.
+	- temp = temp.prev moves backward.
+	- Insertion at the beginning requires updating head.
+	- Insertion at the end requires updating tail.
+	- Deletion at the beginning requires updating head.
+	- Deletion at the end requires updating tail.
+	- Both prev and next references must be maintained properly.

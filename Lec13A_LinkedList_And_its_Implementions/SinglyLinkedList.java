@@ -1,5 +1,5 @@
 
-package Lec13A_SinglyLinkedList_And_its_Implementions;
+package Lec13A_LinkedList_And_its_Implementions;
 
 public class SinglyLinkedList {
 
@@ -32,7 +32,7 @@ public class SinglyLinkedList {
 
 		Node newNode = new Node(element);
 
-		// Check whether the Linked List is empty
+		// Check whether the Linked List is empty(koi node hai ki nhi linkedlist me)
 		if(head == null) {
 
 			head = newNode;

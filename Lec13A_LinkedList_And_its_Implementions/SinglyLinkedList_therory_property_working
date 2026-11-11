@@ -10,6 +10,115 @@ SINGLY LINKED LIST
 	- Linked List has a dynamic size, meaning we can add or remove nodes at runtime.
 
 
+NOTE
+	-Whenever a new Node is created, its  next reference is null. 
+	- We establish connections between nodes after  the new Node is created.
+	
+	
+	
+
+- head ,next and tail are reference variables that store the reference  address of of Node objects.
+
+- When we compare two Node references using ==,
+  Java compares their references (whether they point
+  to the same object), not their data values.
+
+
+2. Example
+	Node n1 = new Node(10);
+	Node n2 = new Node(20);
+	
+		head = n1;
+	tail = n2;
+	n1.next = n2;
+
+
+3. Memory Representation
+
+        REFERENCE VARIABLES
+
+        head  --------->  1001
+
+        tail  --------->  2002
+
+
+        HEAP MEMORY
+
+     Address: 1001
+
+    +------------------+
+    | data = 10        |
+    | next = 2002      |
+    +------------------+
+             |
+             | Reference
+             v
+     Address: 2002
+
+    +------------------+
+    | data = 20        |
+    | next = null      |
+    +------------------+
+
+
+NOTE:
+
+- head stores the reference of the first Node (1001).
+- tail stores the reference of the last Node (2002).
+- n1.next stores the reference of the next Node (2002).
+- The last Node's next contains null because there
+  is no next Node.
+- This representation helps us understand how head,
+  tail and next maintain connections between nodes.
+
+==> important for understanding whole linkedList concept what head ,tail,next stores 
+
+
+4. Reference Comparison Using ==
+
+	head(1001) == n1(1001);       // true
+
+	tail(2002) == n2(2002);       // true
+
+	head(1001) == tail(2002);     // false
+
+	n1.next(2002) == n2(2002);    // true
+
+
+EXPLANATION:
+
+- head == n1 returns true because both refer to
+  the same Node object (1001).
+
+- head == tail returns false because they refer
+  to different Node objects (1001 and 2002).
+
+- n1.next == n2 returns true because both refer
+  to the same Node object (2002).
+
+
+5. Important Points to Remember
+
+- == compares object references, not data values.
+
+- Two reference variables can point to the same
+  Node object.
+
+- Different reference variables can store the
+  reference of the same Node object.
+
+- next maintains the connection between two nodes.
+
+- head maintains the reference of the first node.
+
+- tail maintains the reference of the last node.
+
+- The last node's next always contains null.
+
+==================================================
+
+
+
 2. What is Node?
 	A Node is an individual element of a Linked List. Each node contains two parts:
 
