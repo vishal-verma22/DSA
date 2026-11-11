@@ -1,0 +1,221 @@
+
+
+===================================================
+        DOUBLY CIRCULAR LINKED LIST
+===================================================
+
+
+1. What is Doubly Circular Linked List?
+
+    - A Doubly Circular Linked List is a linear data
+      structure in which elements are stored in the
+      form of nodes.
+
+    - Each node contains three parts: data, next
+      reference and Previous reference.
+
+    - Elements are not stored in continuous memory
+      locations.
+
+    - Each node is connected to the next node using
+      the next reference.
+
+    - Each node is also connected to the previous
+      node using the Previous reference.
+
+    - The last node points back to the first node
+      (head), forming a circular connection.
+
+    - The first node points back to the last node
+      (tail), forming a circular connection in the
+      backward direction.
+
+    - We can traverse the Linked List in both
+      forward and backward directions.
+
+    - Doubly Circular Linked List has a dynamic size,
+      meaning we can add or remove nodes at runtime.
+
+
+NOTE:
+
+    - Whenever a new Node is created, its next and
+      Previous references are initially null.
+
+    - We establish connections between nodes after
+      the new Node is created.
+
+    - In a Doubly Circular Linked List, the last
+      node's next reference always points to head.
+
+    - The first node's Previous reference always
+      points to tail.
+
+    - There is no null reference at either end when
+      the list is non-empty.
+
+
+Syntax:
+
+    class Node {
+
+        int data;
+
+        Node next;
+
+        Node Previous;
+
+    }
+
+
+===================================================
+2. What is Head?
+===================================================
+
+    - Head is a reference variable that stores the
+      reference (address) of the first node in the
+      Doubly Circular Linked List.
+
+    - Initially, head is null because the Linked
+      List is empty.
+
+    - After inserting the first node, head points
+      to that node.
+
+    - Head continues to point to the first node
+      even when new nodes are added at the end.
+
+    - The first node's Previous reference points
+      to tail.
+
+
+===================================================
+3. What is Tail?
+===================================================
+
+    - Tail is a reference variable that stores the
+      reference (address) of the last node in the
+      Doubly Circular Linked List.
+
+    - Initially, tail is null.
+
+    - After inserting the first node, both head
+      and tail point to the same node.
+
+    - Whenever a new node is added at the end,
+      tail gets updated to point to the new last node.
+
+    - The last node's next reference always points
+      back to head.
+
+    - The last node's Previous reference points
+      to the second-last node when more than one
+      node exists.
+
+
+IMPORTANT:
+
+    tail.next = head;
+
+    head.Previous = tail;
+
+
+    - tail.next = head creates the circular
+      connection in the forward direction.
+
+    - head.Previous = tail creates the circular
+      connection in the backward direction.
+
+
+===================================================
+4. Structure of Doubly Circular Linked List
+===================================================
+
+Example:
+
+                  head                         tail
+                    |                            |
+                    v                            v
+
+               [10] <----> [20] <----> [30]
+                 ^                           |
+                 |___________________________|
+
+
+Remember:
+
+    - Head points to the first node (10).
+
+    - Tail points to the last node (30).
+
+    - Every node's next stores the reference of
+      the next node.
+
+    - Every node's Previous stores the reference
+      of the previous node.
+
+    - The last node's next points back to head.
+
+    - The first node's Previous points back to tail.
+
+    - There is no null reference at either end
+      when the list is non-empty.
+
+
+===================================================
+5. Working of Doubly Circular Linked List
+===================================================
+
+    1. First, a new node is created using the
+       new keyword.
+
+    2. The constructor initializes its data and
+       sets both next and Previous to null.
+
+    3. If the Linked List is empty (head == null):
+
+           - Both head and tail point to the new node.
+
+           - Set head.next = tail to create the
+             forward circular connection.
+
+           - Set head.Previous = tail to create
+             the backward circular connection.
+
+    4. If the Linked List is not empty:
+
+           - Connect the new node's Previous to
+             the current tail.
+
+           - Connect the new node's next to head.
+
+           - Connect the current tail's next to
+             the new node.
+
+           - Update tail to point to the new node.
+
+           - Connect head's Previous to the new tail.
+
+    5. Increase size by 1.
+
+
+IMPORTANT:
+
+    In a Doubly Circular Linked List, we maintain
+    two circular connections:
+
+        Forward Circular Connection:
+
+            tail.next = head;
+
+
+        Backward Circular Connection:
+
+            head.Previous = tail;
+
+
+    Both connections are necessary to maintain
+    the circular structure in a Doubly Circular
+    Linked List.
+
+===================================================

@@ -1,0 +1,89 @@
+# SINGLY CIRCULAR LINKED LIST
+
+---
+
+## 1. What is Singly Circular Linked List?
+
+	- A Singly Circular Linked List is a linear data structure in which elements are stored in the form of nodes.
+	- Each node contains two parts: data and next reference.
+	- Elements are not stored in continuous memory locations.
+	- Each node is connected to the next node using a reference.
+	- The last node points back to the first node(head), forming a circle.
+	- We can traverse the Linked List in the forward direction.
+	- Singly Circular Linked List has a dynamic size, meaning we can add or remove nodes at runtime.
+
+**NOTE:**
+
+	- Whenever a new Node is created, its next reference is initially null.
+	- We establish connections between nodes after the new Node is created.
+	- In a Singly Circular Linked List, the last node's next reference always points to head.
+	- There is no null reference at the end when the list is non-empty.
+
+
+**Syntax:**
+
+class Node {
+
+    int data;
+    Node next;
+
+}
+
+## 2. What is Head?
+
+	-Head is a reference variable that stores the reference (address
+     of the first node in the Singly Circular Linked List.
+
+	- Initially, head is null because the Linked List is empty.
+	- After inserting the first node, head points to that node.
+	- Head continues to point to the first node even when new nodes are added at the end.
+
+## 3. What is Tail?
+
+	-Tail is a reference variable that stores the reference (address)
+	 of the last node in the Singly Circular Linked List.
+
+	- Initially, tail is null.
+	- After inserting the first node, both head and tail point to the same node.
+	- Whenever a new node is added at the end, tail gets updated to point to the new last node.
+	- The last node's next always points back to head.
+
+**IMPORTANT:**
+
+
+	-tail.next = head;
+	-This connection makes the Linked List circular.
+
+## 4. Structure of Singly Circular Linked List
+
+**Example:**
+
+
+        head
+         |
+         v
+       [10] -> [20] -> [30]
+         ^               |
+         |_______________|
+ 
+Remember:
+
+
+	- Head points to the first node (10).
+	- Tail points to the last node (30).
+	- Every node's next stores the reference of the next node.
+	- The last node's next points back to head.
+	- There is no null reference at the end when the list is non-empty.
+
+**Working:**
+
+	1. First, a new node is created using the new keyword.
+	2. The constructor initializes its data and sets next to null.
+	3. If the Linked List is empty (head == null), both head and tail point to the new node.
+	4. Set `tail.next = head` to create the circular connection.
+	5. If the Linked List is not empty:
+   		- Connect the current tail's next to the new node.
+   		- Update tail to point to the new node.
+   		- Connect the new tail's next to head.
+	6. Increase size by 1.
+		circular connection between the last node and the first node.

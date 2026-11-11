@@ -1,4 +1,4 @@
-package Lec13A_LinkedList_And_its_Implementions;
+package Lec13_LinkedList_And_its_Implementions;
 
 public class SinglyLinkedListMainApp {
 
