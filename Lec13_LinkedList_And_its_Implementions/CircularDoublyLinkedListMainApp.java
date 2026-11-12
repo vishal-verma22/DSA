@@ -14,14 +14,14 @@ public class CircularDoublyLinkedListMainApp {
 		Cdll.addFirst(30);
 		Cdll.display();
 
-		// Cdll.addAtIndexPosition(2, 9);
+		//Cdll.addAtIndexPosition(2, 9);
 
 //Cdll.clear();
-
-		// Cdll.removeAtIndexPosition(2);
-		System.out.println(Cdll.contains(3));
-		System.out.println(Cdll.indexOf(34));
-		Cdll.display();
+		
+		//Cdll.removeAtIndexPosition(2);
+	System.out.println(Cdll.contains(3));
+		System.out.println( Cdll.indexOf(34));
+		 Cdll.display();
 	}
 
 }
