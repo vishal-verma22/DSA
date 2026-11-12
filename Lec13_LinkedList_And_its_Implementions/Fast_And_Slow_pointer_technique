@@ -1,0 +1,154 @@
+
+
+================================================================================
+                    FAST AND SLOW POINTER TECHNIQUE
+================================================================================
+
+1. What is Fast and Slow Pointer Technique?
+
+    - Fast and Slow Pointer is a technique used to traverse a Linked List
+      using two pointers simultaneously.
+
+    - Both pointers initially point to the head node of the Linked List.
+
+    - Slow Pointer moves one node at a time.
+
+    - Fast Pointer moves two nodes at a time.
+
+    - Since Fast Pointer moves twice as fast as Slow Pointer,
+      when Fast Pointer reaches the end of the Linked List,
+      Slow Pointer reaches the middle node.
+
+--------------------------------------------------------------------------------
+
+2. How Does It Work?
+
+    - Initially, both Fast and Slow pointers point to the head node.
+
+    - In every iteration:
+        1. Fast Pointer moves 2 nodes.
+        2. Slow Pointer moves 1 node.
+
+    - The loop continues until Fast Pointer or Fast Pointer's next
+      becomes null.
+
+    - When the loop stops, Slow Pointer points to the required node.
+
+--------------------------------------------------------------------------------
+
+3. Diagram (Even Number of Nodes)
+
+    Linked List:
+
+    1 -> 2 -> 3 -> 4 -> 5 -> 6 -> null
+
+    Initially:
+
+    Slow
+     |
+     v
+    [1] -> [2] -> [3] -> [4] -> [5] -> [6] -> null
+     ^
+     |
+    Fast
+
+
+    After 1st Iteration:
+
+           Slow
+            |
+            v
+    [1] -> [2] -> [3] -> [4] -> [5] -> [6] -> null
+     ^
+     |
+    Fast has moved to node 3.
+
+
+    After 2nd Iteration:
+
+                   Slow
+                    |
+                    v
+    [1] -> [2] -> [3] -> [4] -> [5] -> [6] -> null
+                              ^
+                              |
+                         Fast is at node 5.
+
+
+    After 3rd Iteration:
+
+                          Slow
+                           |
+                           v
+    [1] -> [2] -> [3] -> [4] -> [5] -> [6] -> null
+                                               
+    Fast moves from node 5 to node 6 and then becomes null.
+
+    Final Position:
+
+        Slow Pointer = Node 4
+        Fast Pointer = null
+
+    Therefore, Node 4 is returned as the middle node.
+
+    NOTE:
+    If the Linked List contains an even number of nodes,
+    Slow Pointer returns the SECOND middle node.
+
+--------------------------------------------------------------------------------
+
+4. Why Do We Use This Condition?
+
+    while (fastPointer != null && fastPointer.next != null)
+
+    - fastPointer != null:
+
+      Check karta hai ki Fast Pointer kisi valid node par hai.
+
+    - fastPointer.next != null:
+
+      Check karta hai ki Fast Pointer ke aage ek aur node available hai.
+
+    - Dono conditions isliye check karte hain kyunki Fast Pointer ko
+      ek iteration mein 2 steps move karna hota hai.
+
+    - Agar fastPointer ya fastPointer.next null hua,
+      toh loop stop ho jayega.
+
+--------------------------------------------------------------------------------
+
+5. Code Implementation:
+
+    ListNode fastPointer = head;
+    ListNode slowPointer = head;
+
+    while (fastPointer != null && fastPointer.next != null) {
+
+        fastPointer = fastPointer.next.next; // Moves 2 nodes
+        slowPointer = slowPointer.next;      // Moves 1 node
+    }
+
+    return slowPointer;
+
+--------------------------------------------------------------------------------
+
+6. Applications of Fast and Slow Pointer Technique:
+
+    1. Finding the Middle Node of a Linked List.
+    2. Detecting a Cycle in a Linked List.
+    3. Finding the Starting Point of a Cycle.
+    4. Finding the Nth Node from the End (using a gap between pointers).
+    5. Checking whether a Linked List is a Palindrome.
+
+--------------------------------------------------------------------------------
+
+7. Time and Space Complexity:
+
+    Time Complexity  : O(n)
+    Space Complexity : O(1)
+
+    - O(n): Linked List ko traverse karne ke liye.
+    - O(1): Only two pointers are used, no extra data structure.
+
+================================================================================
+
