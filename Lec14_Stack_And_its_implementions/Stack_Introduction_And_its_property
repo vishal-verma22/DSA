@@ -1,0 +1,315 @@
+
+============================================================
+                    STACK
+============================================================
+
+1. INTRODUCTION TO STACK
+------------------------------------------------------------
+
+Stack is a linear data structure that follows the LIFO
+(Last In First Out) principle.
+
+LIFO means the element which is inserted last will be
+removed first.
+
+Example:
+If we insert 10, 20, 30 and 40 into Stack,
+then 40 will be removed first because it was inserted last.
+
+In Stack, insertion and deletion both take place from
+the same end, which is called TOP.
+
+Example:
+
+             TOP
+              |
+             40
+             30
+             20
+             10
+          ---------
+
+2. BASIC OPERATIONS OF STACK
+------------------------------------------------------------
+
+1. push()    : To insert an element at the top of Stack.
+2. pop()     : To remove and return the top element.
+3. peek()    : To get the top element without removing it.
+4. isEmpty() : To check whether Stack is empty or not.
+5. size()    : To get the total number of elements.
+6. display() : To display all elements of Stack.
+
+Important Conditions:
+
+1. Overflow:
+   When we try to insert an element into a full Stack,
+   it is called Stack Overflow.
+   (Mainly applicable to fixed-size Array implementation.)
+
+2. Underflow:
+   When we try to remove an element from an empty Stack,
+   it is called Stack Underflow.
+
+
+3. STACK IMPLEMENTATION IN JAVA
+------------------------------------------------------------
+
+In Java, we can implement Stack using different
+classes and data structures.
+
+There are TWO main approaches:
+
+A. Using Built-in Classes
+B. Manual Implementation
+
+
+============================================================
+A. USING BUILT-IN CLASSES
+============================================================
+
+Java Collection Framework provides built-in classes
+which already provide Stack operations.
+
+We do not need to write the internal logic of push(),
+pop() and peek() methods.
+
+We just need to create objects and use their methods.
+
+The following classes can be used:
+
+1. Stack Class
+------------------------------------------------------------
+
+Stack is a built-in class of Java Collection Framework.
+
+Package: java.util
+
+It directly provides Stack methods like:
+
+push(), pop(), peek(), search(), isEmpty(), etc.
+
+Example:
+
+Stack<Integer> stack = new Stack<>();
+
+stack.push(10);
+stack.push(20);
+stack.pop();
+
+
+
+
+==>STACK TIME COMPLEXITY
+
+
+	push()       : O(1) Amortized
+	pop()        : O(1)
+	peek()       : O(1)
+	search()     : O(n)
+	contains()   : O(n)
+	size()       : O(1)
+	isEmpty()    : O(1)
+	clear()      : O(n)
+
+
+
+2. ArrayDeque Class
+------------------------------------------------------------
+
+ArrayDeque is a built-in class of Java Collection Framework.
+
+Package: java.util
+
+ArrayDeque implements the Deque interface.
+
+Deque interface provides Stack methods like:
+
+push(), pop(), peek(), etc.
+
+Example:
+
+ArrayDeque<Integer> stack = new ArrayDeque<>();
+
+stack.push(10);
+stack.push(20);
+stack.pop();
+
+Note:
+ArrayDeque is generally preferred over the legacy
+Stack class for Stack implementation in modern Java.
+
+
+3. LinkedList Class
+------------------------------------------------------------
+
+LinkedList is a built-in class of Java Collection Framework.
+
+Package: java.util
+
+LinkedList implements the Deque interface.
+
+Deque interface provides Stack methods like:
+
+push(), pop(), peek(), etc.
+
+Example:
+
+LinkedList<Integer> stack = new LinkedList<>();
+
+stack.push(10);
+stack.push(20);
+stack.pop();
+
+
+============================================================
+B. MANUAL STACK IMPLEMENTATION
+============================================================
+
+We can also create our own Stack class using different
+data structures.
+
+In this approach, Java does not provide us with a
+ready-made Stack implementation.
+
+We have to create our own Stack methods and write
+their internal logic.
+
+We can manually implement Stack using:
+
+1. Array
+------------------------------------------------------------
+
+We can use an Array to implement Stack manually.
+
+We have to:
+
+- Create an Array to store elements.
+- Maintain a TOP variable to track the top element.
+- Implement push(), pop(), peek(), isEmpty() and display().
+- Manage the Array capacity.
+- Handle Stack Overflow and Underflow conditions.
+
+Note:
+Array has a fixed size, so we need to manage its capacity.
+
+
+2. ArrayList
+------------------------------------------------------------
+
+We can use ArrayList to implement Stack manually.
+
+We have to:
+
+- Create an ArrayList to store elements.
+- Implement our own push(), pop(), peek() and other methods.
+- Write the logic for Stack operations.
+
+Note:
+ArrayList automatically manages its dynamic size,
+but it does not directly provide Stack-specific methods
+like push(), pop() and peek().
+
+
+3. LinkedList
+------------------------------------------------------------
+
+We can also use LinkedList to implement Stack manually.
+
+We have to:
+
+- Create our own Node class.
+- Each Node will store data and a reference to the next Node.
+- Maintain a TOP reference to track the top Node.
+- Implement push(), pop(), peek() and other methods.
+- Manage Node connections manually.
+
+Note:
+We will not use LinkedList's built-in push(), pop()
+and peek() methods.
+
+Instead, we will create our own logic using Nodes
+and references.
+
+
+4. Using Custom Wrapper Classes with Built-in Storage
+------------------------------------------------------------
+
+We can also create our own Stack class and internally
+use built-in classes like Stack, ArrayDeque or LinkedList.
+
+In this approach, we define our own methods and use
+the built-in data structure internally.
+
+However, this is different from implementing the
+entire Stack logic manually.
+
+
+============================================================
+4. COMPARISON OF DIFFERENT APPROACHES
+============================================================
+
+Data Structure     Built-in Stack Methods    Manual Implementation
+
+Stack Class        Yes                       Yes
+ArrayDeque         Yes                       Yes
+LinkedList         Yes                       Yes
+Array              No                        Yes
+ArrayList          No                        Yes
+
+Important:
+
+- Built-in Approach:
+  We directly use already implemented methods.
+
+- Manual Approach:
+  We create our own Stack class, methods and logic.
+
+
+============================================================
+5. WHEN SHOULD WE USE WHICH APPROACH?
+============================================================
+
+1. Stack Class:
+   To understand and use Java's built-in Stack class.
+
+2. ArrayDeque:
+   Preferred for modern Java Stack implementation.
+
+3. LinkedList:
+   To understand Stack operations using LinkedList.
+
+4. Array:
+   To understand internal Stack working, TOP variable,
+   fixed capacity and Overflow/Underflow.
+
+5. ArrayList:
+   To implement Stack using a dynamic array.
+
+6. LinkedList Manually:
+   To understand Node creation, references and
+   insertion/deletion using pointers.
+
+
+============================================================
+6. IMPORTANT POINTS TO REMEMBER
+============================================================
+
+1. Stack follows LIFO (Last In First Out).
+
+2. Insertion and deletion both take place from TOP.
+
+3. push() inserts an element at the top.
+
+4. pop() removes the top element.
+
+5. peek() returns the top element without removing it.
+
+6. Stack can be implemented using Array, ArrayList
+   and LinkedList manually.
+
+7. Java provides built-in Stack functionality through
+   Stack, ArrayDeque and LinkedList classes.
+
+8. ArrayDeque is generally preferred for Stack usage
+   in modern Java.
+
