@@ -5,7 +5,7 @@ package Lec14_Stack_And_its_implementions;
 //Implementing Stack using Built-in ArrayDeque Class
 //of Java Collection Framework
 //============================================================
-
+//ArrayDeque is a class that implements the Deque interface in Java Collection Framework.
 
 import java.util.ArrayDeque;
 
