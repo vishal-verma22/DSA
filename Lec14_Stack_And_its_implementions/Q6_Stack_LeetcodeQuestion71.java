@@ -3,7 +3,7 @@ package Lec14_Stack_And_its_implementions;
 
 import java.util.Stack;
 
-// 71. Simplify Path
+// Leetcode 71: Simplify Path
 
 public class Q6_Stack_LeetcodeQuestion71 {
 
