@@ -53,7 +53,7 @@ package Lec15_Queue_And_its_Implementions;
  * ============================================================
  */
 
-public class P3_ImplementingSimpleQueueUsgLinkedList {
+public class P3_SimpleQueueImplementionUsgLinkedList {
 
 	private class Node {
 
