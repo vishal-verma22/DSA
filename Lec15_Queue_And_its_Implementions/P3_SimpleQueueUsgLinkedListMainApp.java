@@ -7,7 +7,7 @@ public class P3_SimpleQueueUsgLinkedListMainApp {
 
 		P3_ImplementingSimpleQueueUsgLinkedList Queue = new P3_ImplementingSimpleQueueUsgLinkedList();
 
-		//============================================================
+		//===========================================================
 		// Adding Elements into the Queue
 		//============================================================
 
