@@ -2,12 +2,59 @@ package Lec14_Stack_And_its_implementions;
 
 
 //============================================================
+
 //Implementing Stack using Built-in ArrayDeque Class
 //of Java Collection Framework
-//============================================================
-//ArrayDeque is a built-in class of Java Collection Framework.
 
-//ArrayDeque is a class that implements the Deque interface in Java Collection Framework.
+//============================================================
+
+/*
+
+=> ArrayDeque is a built-in class of Java Collection Framework.
+
+=> ArrayDeque implements the Deque interface.
+
+=> Deque stands for Double Ended Queue.
+
+=> Deque interface provides methods to perform Stack operations
+  as well as Queue operations.
+
+=> We can use ArrayDeque to implement Stack without creating
+  our own Node class or managing TOP reference manually.
+
+=> Important Stack Operations:
+
+      1. push(element) : To insert an element at the TOP.
+      2. pop()         : To remove and return the TOP element.
+      3. peek()        : To return the TOP element without removing it.
+      4. isEmpty()     : To check whether Stack is empty or not.
+      5. size()        : To return total number of elements.
+
+=> Important:
+
+      1. LinkedList implements Deque interface.
+      2. ArrayDeque implements Deque interface.
+      3. Both classes can be used to implement Stack.
+      4. Both provide push(), pop() and peek() methods.
+
+=> Class Relationship:
+
+      Deque (Interface)
+            ^
+            |
+      -----------------
+      |               |
+   LinkedList     ArrayDeque
+      Class          Class
+
+=> Note:
+
+      ArrayDeque is generally preferred over the legacy
+      Stack class for Stack implementation in Java.
+
+      ArrayDeque does not allow NULL elements.
+
+*/
 
 import java.util.ArrayDeque;
 

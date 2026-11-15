@@ -1,0 +1,208 @@
+
+//=====================================================================
+// MONOTONIC STACK - COMPLETE THEORY
+//=====================================================================
+
+
+What is Monotonic Stack?
+
+Monotonic Stack is a special technique in which we use Stack
+to maintain elements in a particular increasing or decreasing order.
+
+It helps us find the nearest greater or smaller element
+for every element in an array.
+
+Instead of checking every element using nested loops,
+we use a Stack to solve the problem efficiently.
+
+
+//=====================================================================
+// 1. WHY DO WE USE MONOTONIC STACK?
+//=====================================================================
+
+Problem with Brute Force:
+
+- Har element ke liye hum aage ya piche ke elements check karte hain.
+- Iske liye nested loops use karne pad sakte hain.
+- Time Complexity generally O(n * n) hoti hai.
+
+Using Monotonic Stack:
+
+- Stack unnecessary elements ko remove karta rehta hai.
+- Har element maximum ek baar push aur ek baar pop hota hai.
+- Isliye Time Complexity O(n) ho jaati hai.
+
+
+//=====================================================================
+// 2. TYPES OF MONOTONIC STACK
+//=====================================================================
+
+There are mainly two types:
+
+1. Monotonic Increasing Stack
+2. Monotonic Decreasing Stack
+
+
+Monotonic Increasing Stack:
+
+- Stack elements increasing order mein maintain hote hain.
+- Bottom se Top tak values increasing hoti hain.
+- Example: [2, 4, 6, 8]
+
+Monotonic Decreasing Stack:
+
+- Stack elements decreasing order mein maintain hote hain.
+- Bottom se Top tak values decreasing hoti hain.
+- Example: [8, 6, 4, 2]
+
+
+//=====================================================================
+// 3. TRAVERSAL DIRECTION
+//=====================================================================
+
+LEFT TO RIGHT (0 to n-1):
+
+1. Previous Greater Element
+   - Current element ke LEFT side mein nearest greater element find karna.
+
+2. Previous Smaller Element
+   - Current element ke LEFT side mein nearest smaller element find karna.
+
+
+RIGHT TO LEFT (n-1 to 0):
+
+1. Next Greater Element
+   - Current element ke RIGHT side mein nearest greater element find karna.
+
+2. Next Smaller Element
+   - Current element ke RIGHT side mein nearest smaller element find karna.
+
+
+//=====================================================================
+// 4. POP CONDITIONS
+//=====================================================================
+
+GREATER ELEMENT:
+
+- Smaller aur equal elements ko remove karna hai.
+
+while (!stk.isEmpty() && stk.peek() <= arr[i])
+
+
+SMALLER ELEMENT:
+
+- Greater aur equal elements ko remove karna hai.
+
+while (!stk.isEmpty() && stk.peek() >= arr[i])
+
+
+Why do we pop?
+
+- Jo elements required condition satisfy nahi karte,
+  unhe Stack se remove kar dete hain.
+- Pop karne ke baad Stack ka Top nearest valid candidate
+  ho sakta hai.
+- Agar Stack empty hai, toh answer -1 hoga.
+
+Note:
+<= and >= use karne se strictly greater aur strictly
+smaller element find hota hai.
+
+
+//=====================================================================
+// 5. COMPLETE QUICK REVISION
+//=====================================================================
+
+LEFT TO RIGHT (0 to n-1):
+
+1. Previous Greater Element
+2. Previous Smaller Element
+
+
+RIGHT TO LEFT (n-1 to 0):
+
+1. Next Greater Element
+2. Next Smaller Element
+
+
+POP CONDITIONS:
+
+Greater Element -> Pop <= arr[i]
+
+Smaller Element -> Pop >= arr[i]
+
+
+//=====================================================================
+// 6. BASIC WORKING LOGIC
+//=====================================================================
+
+Step 1:
+Create a Stack to store elements or their indices.
+
+Step 2:
+Traverse the array in the required direction.
+
+Step 3:
+Check the Stack Top with the current array element.
+
+Step 4:
+Pop elements until the required condition is satisfied.
+
+Step 5:
+If Stack is not empty, Stack Top is the nearest valid answer.
+
+Step 6:
+If Stack is empty, store -1.
+
+Step 7:
+Push the current element or its index into the Stack.
+
+
+//=====================================================================
+// 7. IMPORTANT POINTS TO REMEMBER
+//=====================================================================
+
+1. Stack Top gives the nearest valid candidate after popping.
+
+2. Stack empty means no valid element is available.
+
+3. We can store array values or indices in Stack.
+   Indices are useful when we need positions or distances.
+
+4. Every element is pushed and popped at most once.
+
+5. Always decide traversal direction and pop condition
+   according to the question.
+
+
+//=====================================================================
+// 8. TIME AND SPACE COMPLEXITY
+//=====================================================================
+
+Time Complexity  : O(n)
+
+Space Complexity : O(n)
+
+Reason:
+
+- Every element is pushed at most once.
+- Every element is popped at most once.
+- Extra Stack and result array may require O(n) space.
+
+
+//=====================================================================
+// 9. COMMON QUESTIONS BASED ON MONOTONIC STACK
+//=====================================================================
+
+1. Next Greater Element
+2. Next Smaller Element
+3. Previous Greater Element
+4. Previous Smaller Element
+5. Daily Temperatures
+6. Stock Span Problem
+7. Largest Rectangle in Histogram
+8. Trapping Rain Water
+
+=====================================================================
+
+
