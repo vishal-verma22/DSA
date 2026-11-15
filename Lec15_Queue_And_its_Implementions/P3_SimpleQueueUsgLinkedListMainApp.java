@@ -5,7 +5,7 @@ public class P3_SimpleQueueUsgLinkedListMainApp {
 
 	public static void main(String args[]) {
 
-		P3_ImplementingSimpleQueueUsgLinkedList Queue = new P3_ImplementingSimpleQueueUsgLinkedList();
+		P3_SimpleQueueImplementionUsgLinkedList Queue = new P3_SimpleQueueImplementionUsgLinkedList();
 
 		//===========================================================
 		// Adding Elements into the Queue
