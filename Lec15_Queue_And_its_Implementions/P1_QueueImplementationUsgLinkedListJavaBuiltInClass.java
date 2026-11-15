@@ -20,8 +20,7 @@ package Lec15_Queue_And_its_Implementions;
 
 => Queue follows FIFO (First In First Out).
 
-=> FIFO means: Jo element sabse pehle insert hoga,
-  wahi element sabse pehle remove hoga.
+=> FIFO means: Jo element sabse pehle insert hoga, wahi element sabse pehle remove hoga.
 
 => In Queue, elements are added (Enqueue) from the REAR end
   and removed (Dequeue) from the FRONT end.
