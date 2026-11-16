@@ -84,6 +84,33 @@ public class P7_DequeImplementnUsgCircularArrayWithoutModulasFormula {
 	}
 	
 	
+	
+	//============================================
+	// DeleteRear Method: To delete an element from the rear
+	//============================================
+
+	public int deleteRear() {
+
+	    if(front == -1) {
+	        System.out.println("Deque is empty");
+	        return -1;
+	    }
+
+	    int removedElement = arr[rear];
+
+	    if(front == rear) {
+	        front = rear = -1;
+	    }
+	    else if(rear == 0) {
+	        rear = capacity - 1;
+	    }
+	    else {
+	        rear--;
+	    }
+
+	    return removedElement;
+	}
+	
 	void display() {
 
 		int i = front;

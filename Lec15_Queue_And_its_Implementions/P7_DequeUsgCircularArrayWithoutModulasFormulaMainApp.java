@@ -13,9 +13,15 @@ public class P7_DequeUsgCircularArrayWithoutModulasFormulaMainApp {
 		deque.addRear(61);
 		deque.addRear(62);
 		deque.addRear(63);
-		deque.addFront(9);
-		
-		deque.deleteFront();
+		//deque.addFront(9);
+		deque.display();
+System.out.println();
+		//deque.deleteFront();
+		deque.deleteRear();
+		deque.deleteRear();
+		deque.deleteRear();
+		deque.deleteRear();
+
 
 		deque.display();
 	}
