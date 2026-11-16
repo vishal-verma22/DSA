@@ -8,14 +8,16 @@ public class P7_DequeUsgCircularArrayWithoutModulasFormulaMainApp {
 		P7_DequeImplementnUsgCircularArrayWithoutModulasFormula deque = new P7_DequeImplementnUsgCircularArrayWithoutModulasFormula(
 				5);
 
-		deque.AddFront(6);
+		
 
-		deque.AddFront(61);
-		deque.AddFront(62);
-		deque.AddFront(63);
-		deque.AddFront(66);
-		deque.AddFront(69);
 
+
+		deque.addRear(6);
+
+		deque.addRear(61);
+		deque.addRear(62);
+		deque.addRear(63);
+deque.addFront(9);
 
 		
 		deque.display();
