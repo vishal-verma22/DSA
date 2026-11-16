@@ -4,23 +4,33 @@ import java.util.Deque;
 
 public class P7_DequeUsgCircularArrayWithoutModulasFormulaMainApp {
 
-	public static void main(String args[]) {
-		P7_DequeImplementnUsgCircularArrayWithoutModulasFormula deque = new P7_DequeImplementnUsgCircularArrayWithoutModulasFormula(
-				5);
 
-		deque.addRear(6);
+	//============================================================
+	// Main Method: To test all Deque operations
+	//============================================================
 
-		deque.addRear(61);
-		deque.addRear(62);
-		deque.addRear(63);
-		//deque.addFront(9);
-		deque.display();
-System.out.println();
-		//deque.deleteFront();
-	
-deque.getFrontPeek();
+	public static void main(String[] args) {
 
+		P7_DequeImplementnUsgCircularArrayWithoutModulasFormula dq =
+				new P7_DequeImplementnUsgCircularArrayWithoutModulasFormula(5);
 
-		deque.display();
+		dq.addRear(10);
+		dq.addRear(20);
+		dq.addRear(30);
+
+		dq.addFront(5);
+		dq.addFront(1);
+
+		System.out.println("Deque Elements:");
+		dq.display();
+
+		System.out.println("Front Peek: " + dq.getFrontPeek());
+		System.out.println("Rear Peek: " + dq.getRearPeek());
+
+		System.out.println("Deleted Front: " + dq.deleteFront());
+		System.out.println("Deleted Rear: " + dq.deleteRear());
+
+		System.out.println("After Deletion:");
+		dq.display();
 	}
 }
