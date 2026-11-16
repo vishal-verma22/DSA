@@ -1,0 +1,2315 @@
+
+/*
+============================================================
+                 QUEUE – COMPLETE DSA NOTES
+============================================================
+
+TOPICS:
+
+1. Introduction to Queue
+2. Queue Terminology
+3. Basic Queue Operations
+4. Types of Queue
+5. Queue Implementation Methods
+6. Linear Queue Using Array
+7. Linear Queue Using Singly Linked List
+8. Linear Queue Using Doubly Linked List
+9. Circular Queue Using Array
+10. Circular Queue Using Singly Linked List
+11. Deque Using Array
+12. Deque Using Circular Array
+13. Deque Using Doubly Linked List
+14. Priority Queue Using Unsorted Array
+15. Priority Queue Using Sorted Array
+16. Priority Queue Using Unsorted Linked List
+17. Priority Queue Using Sorted Linked List
+18. Priority Queue Using Binary Heap
+19. Queue Using Two Stacks
+20. Queue Using One Stack (Recursion)
+21. Stack Using Two Queues
+22. Stack Using One Queue
+23. Java Collection Framework
+24. Applications of Queue
+25. Time Complexity
+26. Important Differences
+
+
+============================================================
+1. INTRODUCTION TO QUEUE
+============================================================
+
+Queue is a linear data structure that follows FIFO.
+
+FIFO = First In First Out.
+
+The element inserted first will be removed first.
+
+Real-Life Example:
+
+People standing in a line for a ticket.
+
+The person who comes first gets the ticket first.
+
+Queue works on two ends:
+
+1. FRONT:
+   Points to the first element.
+   Deletion takes place from FRONT.
+
+2. REAR:
+   Points to the last element.
+   Insertion takes place from REAR.
+
+
+DIAGRAM:
+
+       FRONT                     REAR
+         |                         |
+         v                         v
+       [10] ---> [20] ---> [30] ---> [40]
+
+       Deletion                 Insertion
+
+
+EXAMPLE:
+
+Enqueue(10)
+Enqueue(20)
+Enqueue(30)
+
+Queue:
+
+       FRONT                REAR
+         |                    |
+         v                    v
+       [10] ---> [20] ---> [30]
+
+
+Dequeue()
+
+Removed Element = 10
+
+Queue:
+
+                 FRONT      REAR
+                   |          |
+                   v          v
+                 [20] ---> [30]
+
+
+============================================================
+2. QUEUE TERMINOLOGY
+============================================================
+
+1. FRONT:
+   Points to the first element of the queue.
+
+2. REAR:
+   Points to the last element of the queue.
+
+3. ENQUEUE:
+   Operation used to insert an element into the queue.
+
+4. DEQUEUE:
+   Operation used to remove an element from the queue.
+
+5. PEEK:
+   Returns the front element without deleting it.
+
+6. ISEMPTY:
+   Checks whether the queue is empty.
+
+7. ISFULL:
+   Checks whether the queue is full.
+   Mainly used in fixed-size array implementations.
+
+8. OVERFLOW:
+   Trying to insert an element when the queue is full.
+
+9. UNDERFLOW:
+   Trying to delete an element when the queue is empty.
+
+
+============================================================
+3. BASIC QUEUE OPERATIONS
+============================================================
+
+A. ENQUEUE (INSERTION)
+
+Insertion takes place from REAR.
+
+Example:
+
+Before:
+
+       FRONT                REAR
+         |                    |
+         v                    v
+       [10] ---> [20] ---> [30]
+
+Enqueue(40)
+
+After:
+
+       FRONT                         REAR
+         |                             |
+         v                             v
+       [10] ---> [20] ---> [30] ---> [40]
+
+
+B. DEQUEUE (DELETION)
+
+Deletion takes place from FRONT.
+
+Before:
+
+       FRONT                REAR
+         |                    |
+         v                    v
+       [10] ---> [20] ---> [30]
+
+Dequeue()
+
+Removed Element = 10
+
+After:
+
+                 FRONT      REAR
+                   |          |
+                   v          v
+                 [20] ---> [30]
+
+
+C. PEEK
+
+Returns the front element without deleting it.
+
+Queue:
+
+       FRONT                REAR
+         |                    |
+         v                    v
+       [10] ---> [20] ---> [30]
+
+Peek() = 10
+
+Queue remains unchanged.
+
+
+D. ISEMPTY
+
+Array Queue:
+front == -1
+
+Linked List Queue:
+front == null
+
+
+E. ISFULL
+
+Linear Array Queue:
+rear == capacity - 1
+
+Circular Array Queue:
+(front == 0 && rear == capacity - 1)
+OR
+front == rear + 1
+
+Linked List Queue:
+No fixed full condition.
+It can become full if memory allocation fails.
+
+
+============================================================
+4. TYPES OF QUEUE
+============================================================
+
+There are four main types of Queue:
+
+1. Linear Queue
+2. Circular Queue
+3. Deque (Double Ended Queue)
+4. Priority Queue
+
+
+============================================================
+5. QUEUE IMPLEMENTATION METHODS
+============================================================
+
+Queue can be implemented using:
+
+A. ARRAY IMPLEMENTATIONS
+
+1. Linear Queue Using Array
+2. Circular Queue Using Array
+
+B. LINKED LIST IMPLEMENTATIONS
+
+3. Linear Queue Using Singly Linked List
+4. Linear Queue Using Doubly Linked List
+5. Circular Queue Using Singly Linked List
+
+C. OTHER IMPLEMENTATIONS
+
+6. Queue Using Two Stacks
+7. Queue Using One Stack (Recursion)
+
+NOTE:
+
+A normal Queue does not require a Doubly Linked List.
+We can use a Singly Linked List efficiently.
+
+But a Doubly Linked List can also implement a Queue
+by maintaining front and rear pointers.
+
+
+============================================================
+6. LINEAR QUEUE USING ARRAY
+============================================================
+
+In Linear Queue:
+
+1. Insertion takes place from REAR.
+2. Deletion takes place from FRONT.
+3. It follows FIFO.
+
+We maintain:
+
+front = -1
+rear = -1
+
+Initially both pointers are -1.
+
+
+A. INSERTION (ENQUEUE)
+
+STEPS:
+
+1. Check whether rear == capacity - 1.
+   If true, queue is full.
+
+2. If front == -1:
+   It means queue is empty.
+   Set front = 0.
+
+3. Increase rear by 1.
+
+4. Insert the element at arr[rear].
+
+
+EXAMPLE:
+
+Capacity = 5
+
+Initially:
+
+Index:       0      1      2      3      4
+           +------+------+------+------+------+
+Array:     |      |      |      |      |      |
+           +------+------+------+------+------+
+
+front = -1
+rear = -1
+
+
+Insert 10, 20, 30:
+
+Index:       0      1      2      3      4
+           +------+------+------+------+------+
+Array:     |  10  |  20  |  30  |      |      |
+           +------+------+------+------+------+
+              ^             ^
+            FRONT          REAR
+
+
+B. DELETION (DEQUEUE)
+
+STEPS:
+
+1. Check whether front == -1.
+   If true, queue is empty.
+
+2. Store arr[front] in removedElement.
+
+3. If front == rear:
+   Only one element is present.
+   Set front = rear = -1.
+
+4. Otherwise:
+   Increase front by 1.
+
+5. Return removedElement.
+
+
+EXAMPLE:
+
+Before:
+
+Index:       0      1      2      3      4
+           +------+------+------+------+------+
+Array:     |  10  |  20  |  30  |      |      |
+           +------+------+------+------+------+
+              ^             ^
+            FRONT          REAR
+
+Delete 10:
+
+After:
+
+Index:       0      1      2      3      4
+           +------+------+------+------+------+
+Array:     |  10  |  20  |  30  |      |      |
+           +------+------+------+------+------+
+                     ^      ^
+                   FRONT   REAR
+
+IMPORTANT:
+
+The value 10 may still physically exist in the array.
+
+But it is logically deleted because front moved forward.
+
+
+C. PROBLEM WITH LINEAR QUEUE
+
+Capacity = 5
+
+Insert:
+
+10, 20, 30, 40, 50
+
+Index:       0      1      2      3      4
+           +------+------+------+------+------+
+Array:     |  10  |  20  |  30  |  40  |  50  |
+           +------+------+------+------+------+
+              ^                           ^
+            FRONT                       REAR
+
+Delete:
+
+10, 20, 30
+
+Index:       0      1      2      3      4
+           +------+------+------+------+------+
+Array:     |  10  |  20  |  30  |  40  |  50  |
+           +------+------+------+------+------+
+                                   ^      ^
+                                 FRONT   REAR
+
+Now rear == capacity - 1.
+
+We cannot insert another element.
+
+But indexes 0, 1 and 2 are logically empty.
+
+This problem is called FALSE OVERFLOW.
+
+SOLUTION:
+
+Use Circular Queue.
+
+
+TIME COMPLEXITY:
+
+Enqueue = O(1)
+Dequeue = O(1)
+Peek = O(1)
+Display = O(n)
+
+
+============================================================
+7. LINEAR QUEUE USING SINGLY LINKED LIST
+============================================================
+
+In this implementation, every node contains:
+
+1. Data
+2. Next
+
+We maintain two pointers:
+
+front = First Node
+rear = Last Node
+
+Initially:
+
+front = null
+rear = null
+
+
+A. INSERTION (ENQUEUE)
+
+STEPS:
+
+1. Create a new node.
+
+2. Check whether front == null.
+
+3. If true:
+   Set front = rear = newNode.
+
+4. Otherwise:
+   rear.next = newNode.
+   rear = newNode.
+
+
+EXAMPLE:
+
+Before:
+
+FRONT                       REAR
+  |                           |
+  v                           v
+[10] ---> [20] ---> [30] ---> null
+
+Insert 40:
+
+Step 1:
+Create newNode containing 40.
+
+Step 2:
+rear.next = newNode.
+
+Step 3:
+rear = newNode.
+
+After:
+
+FRONT                                REAR
+  |                                    |
+  v                                    v
+[10] ---> [20] ---> [30] ---> [40] ---> null
+
+
+B. DELETION (DEQUEUE)
+
+STEPS:
+
+1. Check whether front == null.
+   If true, queue is empty.
+
+2. Store front.data.
+
+3. If front == rear:
+   Only one node exists.
+   Set front = rear = null.
+
+4. Otherwise:
+   front = front.next.
+
+5. Return removedElement.
+
+
+EXAMPLE:
+
+Before:
+
+FRONT                       REAR
+  |                           |
+  v                           v
+[10] ---> [20] ---> [30] ---> null
+
+Delete 10:
+
+front = front.next
+
+After:
+
+          FRONT              REAR
+            |                  |
+            v                  v
+          [20] ---> [30] ---> null
+
+
+TIME COMPLEXITY:
+
+Enqueue = O(1)
+Dequeue = O(1)
+Peek = O(1)
+Display = O(n)
+
+
+============================================================
+8. LINEAR QUEUE USING DOUBLY LINKED LIST
+============================================================
+
+A Doubly Linked List node contains:
+
+1. Previous
+2. Data
+3. Next
+
+We maintain:
+
+front = First Node
+rear = Last Node
+
+Initially:
+
+front = null
+rear = null
+
+
+A. INSERTION (ENQUEUE)
+
+Insertion takes place at REAR.
+
+STEPS:
+
+1. Create a new node.
+
+2. If front == null:
+   Set front = rear = newNode.
+
+3. Otherwise:
+
+   newNode.previous = rear
+   rear.next = newNode
+   rear = newNode
+
+
+DIAGRAM:
+
+Before:
+
+FRONT                       REAR
+  |                           |
+  v                           v
+[10] <----> [20] <----> [30]
+
+Insert 40:
+
+After:
+
+FRONT                                REAR
+  |                                    |
+  v                                    v
+[10] <----> [20] <----> [30] <----> [40]
+
+
+B. DELETION (DEQUEUE)
+
+Deletion takes place at FRONT.
+
+STEPS:
+
+1. Check whether front == null.
+
+2. Store front.data.
+
+3. If front == rear:
+   Set front = rear = null.
+
+4. Otherwise:
+
+   front = front.next
+   front.previous = null
+
+5. Return removedElement.
+
+
+DIAGRAM:
+
+Before:
+
+FRONT                       REAR
+  |                           |
+  v                           v
+[10] <----> [20] <----> [30]
+
+Delete 10:
+
+After:
+
+          FRONT              REAR
+            |                  |
+            v                  v
+          [20] <----------> [30]
+
+
+TIME COMPLEXITY:
+
+Enqueue = O(1)
+Dequeue = O(1)
+Peek = O(1)
+Display = O(n)
+
+
+============================================================
+9. CIRCULAR QUEUE USING ARRAY
+============================================================
+
+Circular Queue is an improved version of Linear Queue.
+
+In Circular Queue, the last index is logically
+connected to the first index.
+
+It follows FIFO.
+
+MAIN PURPOSE:
+
+To reuse empty spaces created after deletion.
+
+We maintain:
+
+front = -1
+rear = -1
+
+
+IMPORTANT FORMULAS:
+
+NEXT POSITION:
+
+(index + 1) % capacity
+
+PREVIOUS POSITION:
+
+(index - 1 + capacity) % capacity
+
+
+A. INSERTION (ENQUEUE)
+
+STEPS:
+
+1. Check whether queue is full.
+
+   (front == 0 && rear == capacity - 1)
+   OR
+   front == rear + 1
+
+2. If queue is empty:
+   front = rear = 0.
+
+3. Otherwise:
+   rear = (rear + 1) % capacity.
+
+4. Insert element at arr[rear].
+
+
+WHY USE MODULUS?
+
+Formula:
+
+rear = (rear + 1) % capacity
+
+It moves rear to the next index.
+
+If rear reaches the last index,
+it automatically moves to index 0.
+
+Example:
+
+capacity = 5
+rear = 4
+
+rear = (4 + 1) % 5
+rear = 0
+
+
+B. DELETION (DEQUEUE)
+
+STEPS:
+
+1. Check whether front == -1.
+
+2. Store arr[front].
+
+3. If front == rear:
+   Only one element is present.
+   Set front = rear = -1.
+
+4. Otherwise:
+   front = (front + 1) % capacity.
+
+5. Return removedElement.
+
+
+C. EXAMPLE
+
+Capacity = 5
+
+Insert:
+
+10, 20, 30, 40, 50
+
+front = 0
+rear = 4
+
+Delete:
+
+10, 20
+
+front = 2
+rear = 4
+
+Insert:
+
+60, 70
+
+For 60:
+
+rear = (4 + 1) % 5 = 0
+
+For 70:
+
+rear = (0 + 1) % 5 = 1
+
+
+FINAL LOGICAL QUEUE:
+
+FRONT                         REAR
+  |                             |
+  v                             v
+[30] ---> [40] ---> [50] ---> [60] ---> [70]
+  2         3         4         0         1
+
+The queue uses indexes 2, 3, 4, 0 and 1.
+
+
+TIME COMPLEXITY:
+
+Enqueue = O(1)
+Dequeue = O(1)
+Peek = O(1)
+Display = O(n)
+
+
+============================================================
+10. CIRCULAR QUEUE USING SINGLY LINKED LIST
+============================================================
+
+Circular Queue can also be implemented using
+a Singly Linked List.
+
+In this implementation, the last node points back
+to the first node.
+
+We maintain:
+
+front = First Node
+rear = Last Node
+
+Initially:
+
+front = null
+rear = null
+
+
+A. INSERTION (ENQUEUE)
+
+STEPS:
+
+1. Create a new node.
+
+2. If front == null:
+
+   front = rear = newNode
+   rear.next = front
+
+3. Otherwise:
+
+   rear.next = newNode
+   rear = newNode
+   rear.next = front
+
+
+EXAMPLE:
+
+Insert 10:
+
+        FRONT, REAR
+             |
+             v
+           [10]
+             |
+             +------+
+             ^      |
+             +------+
+
+
+Insert 20:
+
+        FRONT              REAR
+          |                  |
+          v                  v
+         [10] ------------> [20]
+          ^                  |
+          |                  |
+          +------------------+
+
+
+Insert 30:
+
+        FRONT                         REAR
+          |                             |
+          v                             v
+         [10] ------> [20] ----------> [30]
+          ^                             |
+          |                             |
+          +-----------------------------+
+
+
+B. DELETION (DEQUEUE)
+
+STEPS:
+
+1. Check whether front == null.
+
+2. Store front.data.
+
+3. If front == rear:
+   Set front = rear = null.
+
+4. Otherwise:
+
+   front = front.next
+   rear.next = front
+
+5. Return removedElement.
+
+
+EXAMPLE:
+
+Before:
+
+        FRONT                         REAR
+          |                             |
+          v                             v
+         [10] ------> [20] ----------> [30]
+          ^                             |
+          |                             |
+          +-----------------------------+
+
+Delete 10:
+
+Step 1:
+front = front.next
+
+Step 2:
+rear.next = front
+
+After:
+
+                   FRONT              REAR
+                     |                  |
+                     v                  v
+                   [20] ------------> [30]
+                     ^                  |
+                     |                  |
+                     +------------------+
+
+
+C. DISPLAY
+
+In normal Linked List:
+
+while (temp != null)
+
+In Circular Linked List:
+
+do-while loop is used.
+
+Stop when temp reaches front again.
+
+Reason:
+
+The last node points to front instead of null.
+
+
+TIME COMPLEXITY:
+
+Enqueue = O(1)
+Dequeue = O(1)
+Peek = O(1)
+Display = O(n)
+
+
+============================================================
+11. DEQUE USING ARRAY
+============================================================
+
+Deque stands for Double Ended Queue.
+
+Insertion and deletion can take place from BOTH ends.
+
+Operations:
+
+1. addFront()
+2. addRear()
+3. deleteFront()
+4. deleteRear()
+
+A simple array implementation can use shifting
+to make space for front insertion.
+
+But shifting elements takes O(n).
+
+Therefore, a Circular Array is generally preferred.
+
+
+============================================================
+12. DEQUE USING CIRCULAR ARRAY
+============================================================
+
+Deque allows insertion and deletion from both ends.
+
+We maintain:
+
+front = -1
+rear = -1
+
+FULL CONDITION:
+
+(front == 0 && rear == capacity - 1)
+OR
+front == rear + 1
+
+
+A. INSERTION AT FRONT
+
+STEPS:
+
+1. Check whether Deque is full.
+
+2. If empty:
+   front = rear = 0.
+
+3. Otherwise:
+   front = (front - 1 + capacity) % capacity.
+
+4. Insert element at arr[front].
+
+
+B. INSERTION AT REAR
+
+STEPS:
+
+1. Check whether Deque is full.
+
+2. If empty:
+   front = rear = 0.
+
+3. Otherwise:
+   rear = (rear + 1) % capacity.
+
+4. Insert element at arr[rear].
+
+
+C. DELETION FROM FRONT
+
+STEPS:
+
+1. Check whether Deque is empty.
+
+2. Store arr[front].
+
+3. If front == rear:
+   front = rear = -1.
+
+4. Otherwise:
+   front = (front + 1) % capacity.
+
+
+D. DELETION FROM REAR
+
+STEPS:
+
+1. Check whether Deque is empty.
+
+2. Store arr[rear].
+
+3. If front == rear:
+   front = rear = -1.
+
+4. Otherwise:
+   rear = (rear - 1 + capacity) % capacity.
+
+
+IMPORTANT FORMULAS:
+
+Move FRONT BACKWARD:
+
+(front - 1 + capacity) % capacity
+
+Move FRONT FORWARD:
+
+(front + 1) % capacity
+
+Move REAR FORWARD:
+
+(rear + 1) % capacity
+
+Move REAR BACKWARD:
+
+(rear - 1 + capacity) % capacity
+
+
+TIME COMPLEXITY:
+
+addFront = O(1)
+addRear = O(1)
+deleteFront = O(1)
+deleteRear = O(1)
+Peek = O(1)
+
+
+============================================================
+13. DEQUE USING DOUBLY LINKED LIST
+============================================================
+
+A Doubly Linked List node contains:
+
+Previous | Data | Next
+
+We maintain:
+
+front = First Node
+rear = Last Node
+
+
+A. INSERTION AT FRONT
+
+STEPS:
+
+1. Create newNode.
+
+2. If Deque is empty:
+   front = rear = newNode.
+
+3. Otherwise:
+
+   newNode.next = front
+   front.previous = newNode
+   front = newNode
+
+
+DIAGRAM:
+
+Before:
+
+FRONT                    REAR
+  |                        |
+  v                        v
+[10] <----> [20] <----> [30]
+
+Insert 5:
+
+After:
+
+FRONT                             REAR
+  |                                 |
+  v                                 v
+[5] <----> [10] <----> [20] <----> [30]
+
+
+B. INSERTION AT REAR
+
+STEPS:
+
+1. Create newNode.
+
+2. If Deque is empty:
+   front = rear = newNode.
+
+3. Otherwise:
+
+   newNode.previous = rear
+   rear.next = newNode
+   rear = newNode
+
+
+DIAGRAM:
+
+Before:
+
+FRONT                    REAR
+  |                        |
+  v                        v
+[10] <----> [20] <----> [30]
+
+Insert 40:
+
+After:
+
+FRONT                                 REAR
+  |                                     |
+  v                                     v
+[10] <----> [20] <----> [30] <----> [40]
+
+
+C. DELETION FROM FRONT
+
+STEPS:
+
+1. Check whether Deque is empty.
+
+2. Store front.data.
+
+3. If front == rear:
+   front = rear = null.
+
+4. Otherwise:
+
+   front = front.next
+   front.previous = null
+
+
+DIAGRAM:
+
+Before:
+
+FRONT                    REAR
+  |                        |
+  v                        v
+[10] <----> [20] <----> [30]
+
+Delete 10:
+
+After:
+
+          FRONT           REAR
+            |               |
+            v               v
+          [20] <--------> [30]
+
+
+D. DELETION FROM REAR
+
+STEPS:
+
+1. Check whether Deque is empty.
+
+2. Store rear.data.
+
+3. If front == rear:
+   front = rear = null.
+
+4. Otherwise:
+
+   rear = rear.previous
+   rear.next = null
+
+
+DIAGRAM:
+
+Before:
+
+FRONT                    REAR
+  |                        |
+  v                        v
+[10] <----> [20] <----> [30]
+
+Delete 30:
+
+After:
+
+FRONT           REAR
+  |               |
+  v               v
+[10] <--------> [20]
+
+
+TYPES OF DEQUE:
+
+1. INPUT RESTRICTED DEQUE
+
+   Insertion allowed from only one end.
+   Deletion allowed from both ends.
+
+2. OUTPUT RESTRICTED DEQUE
+
+   Deletion allowed from only one end.
+   Insertion allowed from both ends.
+
+
+TIME COMPLEXITY:
+
+addFront = O(1)
+addRear = O(1)
+deleteFront = O(1)
+deleteRear = O(1)
+Peek = O(1)
+
+
+============================================================
+14. PRIORITY QUEUE
+============================================================
+
+Priority Queue is a special type of Queue.
+
+In a normal Queue, elements are removed according to FIFO.
+
+In a Priority Queue, elements are removed according
+to their PRIORITY.
+
+Each element is associated with a priority.
+
+The element with the highest priority is served first.
+
+Example:
+
+Element       Priority
+
+A                 3
+B                 1
+C                 2
+
+Assume smaller number means higher priority.
+
+Deletion order:
+
+B -> C -> A
+
+IMPORTANT:
+
+Priority Queue does not always follow FIFO.
+
+If two elements have the same priority,
+their order depends on the implementation.
+
+A stable Priority Queue preserves insertion order
+for elements having equal priority.
+
+
+TYPES OF PRIORITY QUEUE:
+
+1. MIN PRIORITY QUEUE
+2. MAX PRIORITY QUEUE
+
+
+A. MIN PRIORITY QUEUE
+
+The smallest value has the highest priority.
+
+Insert:
+
+40, 10, 30, 20
+
+Deletion order:
+
+10 -> 20 -> 30 -> 40
+
+
+B. MAX PRIORITY QUEUE
+
+The largest value has the highest priority.
+
+Insert:
+
+40, 10, 30, 20
+
+Deletion order:
+
+40 -> 30 -> 20 -> 10
+
+
+============================================================
+15. PRIORITY QUEUE USING UNSORTED ARRAY
+============================================================
+
+In an unsorted array, elements are inserted
+at the next available position.
+
+No sorting is performed during insertion.
+
+Example:
+
+Insert:
+
+30, 10, 40, 20
+
+Array:
+
+Index:       0      1      2      3
+           +------+------+------+------+
+Array:     |  30  |  10  |  40  |  20  |
+           +------+------+------+------+
+
+
+MIN PRIORITY QUEUE:
+
+Deletion requires searching for the smallest element.
+
+STEPS:
+
+1. Traverse the complete array.
+
+2. Find the smallest element.
+
+3. Store that element.
+
+4. Remove it from the array.
+
+5. Shift elements if necessary.
+
+TIME COMPLEXITY:
+
+Insertion = O(1)
+Deletion = O(n)
+Peek = O(n)
+
+
+============================================================
+16. PRIORITY QUEUE USING SORTED ARRAY
+============================================================
+
+In a sorted array, elements are maintained
+in sorted order.
+
+For MIN Priority Queue:
+
+Elements are stored in ascending order.
+
+Example:
+
+Insert:
+
+30, 10, 40, 20
+
+Sorted Array:
+
+Index:       0      1      2      3
+           +------+------+------+------+
+Array:     |  10  |  20  |  30  |  40  |
+           +------+------+------+------+
+
+
+INSERTION:
+
+1. Find the correct sorted position.
+
+2. Shift larger elements to the right.
+
+3. Insert the new element at its correct position.
+
+DELETION:
+
+1. Remove the smallest element from index 0.
+
+2. Shift remaining elements if required.
+
+TIME COMPLEXITY:
+
+Insertion = O(n)
+Deletion = O(n) with shifting
+Peek = O(1)
+
+
+============================================================
+17. PRIORITY QUEUE USING UNSORTED LINKED LIST
+============================================================
+
+Elements are inserted without maintaining sorted order.
+
+Example:
+
+[30] ---> [10] ---> [40] ---> [20]
+
+For MIN Priority Queue:
+
+Deletion requires traversing the Linked List
+to find the smallest element.
+
+INSERTION:
+
+1. Create a new node.
+2. Insert it at the beginning or end.
+
+DELETION:
+
+1. Traverse the complete Linked List.
+2. Find the node with the smallest priority value.
+3. Remove that node.
+4. Update the required links.
+
+TIME COMPLEXITY:
+
+Insertion = O(1)
+Deletion = O(n)
+Peek = O(n)
+
+
+============================================================
+18. PRIORITY QUEUE USING SORTED LINKED LIST
+============================================================
+
+Elements are inserted at their correct sorted position.
+
+For MIN Priority Queue:
+
+[10] ---> [20] ---> [30] ---> [40]
+
+INSERTION:
+
+1. Create a new node.
+2. Find its correct sorted position.
+3. Update previous and next links.
+4. Insert the node at that position.
+
+DELETION:
+
+1. Delete the first node.
+2. Move front to the next node.
+
+TIME COMPLEXITY:
+
+Insertion = O(n)
+Deletion = O(1)
+Peek = O(1)
+
+
+============================================================
+19. PRIORITY QUEUE USING BINARY HEAP
+============================================================
+
+Binary Heap is the most common implementation
+of Priority Queue.
+
+A Binary Heap is a COMPLETE BINARY TREE.
+
+COMPLETE BINARY TREE:
+
+1. Every level is completely filled except
+   possibly the last level.
+
+2. The last level is filled from LEFT TO RIGHT.
+
+
+TYPES OF BINARY HEAP:
+
+1. MIN HEAP
+2. MAX HEAP
+
+
+A. MIN HEAP
+
+In Min Heap, parent node is smaller than
+or equal to its child nodes.
+
+Example:
+
+              10
+             /  \
+            20   30
+           /  \
+          40   50
+
+The smallest element is always at the ROOT.
+
+
+B. MAX HEAP
+
+In Max Heap, parent node is greater than
+or equal to its child nodes.
+
+Example:
+
+              50
+             /  \
+            40   30
+           /  \
+          20   10
+
+The largest element is always at the ROOT.
+
+
+BINARY HEAP USING ARRAY
+
+A Binary Heap can be stored using an array.
+
+For 0-based indexing:
+
+Parent Index:
+
+(i - 1) / 2
+
+Left Child Index:
+
+(2 * i) + 1
+
+Right Child Index:
+
+(2 * i) + 2
+
+
+EXAMPLE:
+
+Heap:
+
+              10
+             /  \
+            20   30
+           /  \
+          40   50
+
+Array:
+
+Index:       0      1      2      3      4
+           +------+------+------+------+------+
+Array:     |  10  |  20  |  30  |  40  |  50  |
+           +------+------+------+------+------+
+
+
+For index 1 (value 20):
+
+Parent Index = (1 - 1) / 2 = 0
+
+Left Child = (2 * 1) + 1 = 3
+
+Right Child = (2 * 1) + 2 = 4
+
+
+A. MIN HEAP INSERTION
+
+Insertion is performed using:
+
+UPHEAP / SIFT UP / HEAPIFY UP
+
+
+STEPS:
+
+1. Insert the new element at the end of the heap.
+
+2. Compare the new element with its parent.
+
+3. If the new element is smaller than its parent:
+   Swap both elements.
+
+4. Continue moving upward until:
+   - Parent is smaller than or equal to child.
+   - Or root is reached.
+
+
+EXAMPLE:
+
+Initially:
+
+              10
+             /  \
+            20   30
+
+Insert 5:
+
+              10
+             /  \
+            20   30
+           /
+          5
+
+Compare 5 with parent 20.
+
+5 < 20, so swap.
+
+              10
+             /  \
+             5   30
+            /
+           20
+
+Compare 5 with parent 10.
+
+5 < 10, so swap.
+
+               5
+             /   \
+            10    30
+           /
+          20
+
+Final Min Heap:
+
+              5
+             / \
+            10  30
+           /
+          20
+
+TIME COMPLEXITY = O(log n)
+
+
+B. MIN HEAP DELETION
+
+Deletion is performed using:
+
+DOWNHEAP / SIFT DOWN / HEAPIFY DOWN
+
+In a Min Heap, deletion removes the ROOT
+because the root contains the smallest element.
+
+
+STEPS:
+
+1. Store the root element.
+
+2. Replace the root with the last element.
+
+3. Remove the last element.
+
+4. Compare the new root with its children.
+
+5. Find the smaller child.
+
+6. If the parent is greater than the smaller child:
+   Swap them.
+
+7. Continue moving downward until
+   the heap property is satisfied.
+
+
+EXAMPLE:
+
+Initially:
+
+              5
+             / \
+            10  30
+           /
+          20
+
+Delete root 5.
+
+Replace root with last element 20:
+
+              20
+             /  \
+            10   30
+
+Compare 20 with its children.
+
+Smaller child = 10.
+
+Swap 20 and 10:
+
+              10
+             /  \
+            20   30
+
+Final Min Heap:
+
+              10
+             /  \
+            20   30
+
+TIME COMPLEXITY = O(log n)
+
+
+C. MAX HEAP INSERTION
+
+1. Insert new element at the end.
+2. Compare it with its parent.
+3. If child is greater than parent, swap.
+4. Continue moving upward.
+
+
+D. MAX HEAP DELETION
+
+1. Remove the root.
+2. Replace root with the last element.
+3. Remove the last element.
+4. Compare with both children.
+5. Swap with the larger child if required.
+6. Continue moving downward.
+
+
+BINARY HEAP COMPLEXITY:
+
+Insertion = O(log n)
+Deletion = O(log n)
+Peek = O(1)
+Build Heap = O(n)
+
+
+============================================================
+20. QUEUE USING TWO STACKS
+============================================================
+
+Queue follows FIFO.
+Stack follows LIFO.
+
+We can implement a Queue using two Stacks.
+
+We use:
+
+Stack 1 = Input Stack
+Stack 2 = Output Stack
+
+
+A. ENQUEUE
+
+1. Push the new element into Stack 1.
+
+B. DEQUEUE
+
+1. If Stack 2 is not empty:
+   Pop the top element from Stack 2.
+
+2. If Stack 2 is empty:
+   Transfer all elements from Stack 1 to Stack 2.
+
+3. Pop the top element from Stack 2.
+
+
+EXAMPLE:
+
+Enqueue:
+
+10, 20, 30
+
+Stack 1:
+
+TOP
+ |
+[30]
+[20]
+[10]
+
+Stack 2:
+
+EMPTY
+
+
+Transfer all elements to Stack 2:
+
+Stack 1:
+
+EMPTY
+
+Stack 2:
+
+TOP
+ |
+[10]
+[20]
+[30]
+
+
+Dequeue:
+
+Removed Element = 10
+
+This follows FIFO.
+
+
+TIME COMPLEXITY:
+
+Enqueue = O(1)
+
+Dequeue = O(1) Amortized
+
+A single dequeue can take O(n) when
+all elements need to be transferred.
+
+
+============================================================
+21. QUEUE USING ONE STACK (RECURSION)
+============================================================
+
+A Queue can also be implemented using only one Stack
+with the help of recursion.
+
+ENQUEUE:
+
+1. Push the new element into the Stack.
+
+DEQUEUE:
+
+1. If Stack is empty:
+   Queue is empty.
+
+2. Pop the top element.
+
+3. If Stack becomes empty:
+   This is the oldest element.
+   Return it.
+
+4. Otherwise:
+   Store the popped element.
+
+5. Recursively call dequeue().
+
+6. Push the stored elements back while returning.
+
+
+EXAMPLE:
+
+Stack:
+
+TOP
+ |
+[30]
+[20]
+[10]
+
+The oldest element is 10.
+
+Recursion removes 30, then 20, then 10.
+
+After returning:
+
+Push 20 and 30 back.
+
+Removed element = 10.
+
+
+TIME COMPLEXITY:
+
+Enqueue = O(1)
+Dequeue = O(n)
+
+Auxiliary recursion space = O(n)
+
+
+============================================================
+22. STACK USING TWO QUEUES
+============================================================
+
+A Stack follows LIFO.
+A Queue follows FIFO.
+
+We can implement a Stack using two Queues.
+
+Two approaches:
+
+1. Push Costly
+2. Pop Costly
+
+
+A. PUSH COSTLY
+
+Use:
+
+Queue 1
+Queue 2
+
+STEPS:
+
+1. Insert new element into empty Queue 2.
+
+2. Move all elements from Queue 1 to Queue 2.
+
+3. Swap Queue 1 and Queue 2.
+
+The newest element always comes at the front
+of Queue 1.
+
+Push = O(n)
+Pop = O(1)
+
+
+B. POP COSTLY
+
+STEPS:
+
+1. Insert all elements into Queue 1.
+
+2. During Pop, move all elements except the last
+   from Queue 1 to Queue 2.
+
+3. Remove the last element from Queue 1.
+
+4. Swap both queues.
+
+Push = O(1)
+Pop = O(n)
+
+
+============================================================
+23. STACK USING ONE QUEUE
+============================================================
+
+A Stack can also be implemented using only one Queue.
+
+APPROACH:
+
+After inserting a new element:
+
+1. Add the new element to the Queue.
+
+2. Move all previous elements behind the new element
+   by removing and adding them again.
+
+3. The newest element comes to the front.
+
+EXAMPLE:
+
+Queue:
+
+[10, 20]
+
+Push 30:
+
+Add 30:
+
+[10, 20, 30]
+
+Rotate previous elements:
+
+[20, 30, 10]
+[30, 10, 20]
+
+Now 30 is at the front.
+
+Pop removes 30.
+
+TIME COMPLEXITY:
+
+Push = O(n)
+Pop = O(1)
+
+
+============================================================
+24. JAVA COLLECTION FRAMEWORK – QUEUE
+============================================================
+
+Java provides Queue as an INTERFACE.
+
+Common implementation classes:
+
+1. LinkedList
+2. ArrayDeque
+3. PriorityQueue
+
+
+QUEUE INTERFACE METHODS:
+
+1. add(element)
+
+   Inserts an element.
+   Throws exception if insertion fails.
+
+2. offer(element)
+
+   Inserts an element.
+   Returns false if insertion fails.
+
+3. remove()
+
+   Removes and returns the front element.
+   Throws exception if queue is empty.
+
+4. poll()
+
+   Removes and returns the front element.
+   Returns null if queue is empty.
+
+5. element()
+
+   Returns the front element.
+   Throws exception if queue is empty.
+
+6. peek()
+
+   Returns the front element.
+   Returns null if queue is empty.
+
+
+IMPORTANT DIFFERENCES:
+
+add()     vs offer()
+remove()  vs poll()
+element() vs peek()
+
+
+JAVA QUEUE EXAMPLE:
+
+Queue<Integer> q = new LinkedList<>();
+
+q.offer(10);
+q.offer(20);
+q.offer(30);
+
+q.peek() = 10
+
+q.poll() = 10
+
+
+============================================================
+25. JAVA COLLECTION FRAMEWORK – DEQUE
+============================================================
+
+Java provides Deque as an interface.
+
+Deque means Double Ended Queue.
+
+Common implementation classes:
+
+1. ArrayDeque
+2. LinkedList
+
+IMPORTANT METHODS:
+
+addFirst(element)
+addLast(element)
+
+offerFirst(element)
+offerLast(element)
+
+removeFirst()
+removeLast()
+
+pollFirst()
+pollLast()
+
+peekFirst()
+peekLast()
+
+push(element)
+pop()
+
+NOTE:
+
+push() inserts at the front.
+pop() removes from the front.
+
+
+============================================================
+26. JAVA COLLECTION FRAMEWORK – PRIORITY QUEUE
+============================================================
+
+Java provides PriorityQueue class.
+
+By default, Java PriorityQueue works as a MIN HEAP.
+
+Example:
+
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+pq.offer(40);
+pq.offer(10);
+pq.offer(30);
+pq.offer(20);
+
+pq.peek() = 10
+
+Repeated poll():
+
+10 -> 20 -> 30 -> 40
+
+
+MAX HEAP:
+
+PriorityQueue<Integer> pq =
+    new PriorityQueue<>(Collections.reverseOrder());
+
+Now the largest element has the highest priority.
+
+IMPORTANT:
+
+PriorityQueue does not guarantee sorted order
+when we simply print or iterate over it.
+
+Elements are returned according to priority
+when we repeatedly use poll().
+
+
+============================================================
+27. APPLICATIONS OF QUEUE
+============================================================
+
+1. CPU Scheduling
+   Processes wait in a queue for CPU execution.
+
+2. Printer Scheduling
+   Print jobs are processed in order.
+
+3. BFS (Breadth First Search)
+   Queue is used to visit nodes level by level.
+
+4. Network Data Packets
+   Packets wait in queues before processing.
+
+5. Call Center Systems
+   Customers wait for their turn.
+
+6. Keyboard Buffer
+   Input characters can be stored in a queue.
+
+7. Task Scheduling
+   Tasks wait until they are ready for execution.
+
+8. Message Queues
+   Used for communication between systems.
+
+9. Priority Scheduling
+   Higher-priority tasks are processed first.
+
+10. Dijkstra's Algorithm
+    A Priority Queue is used to select the vertex
+    with the minimum tentative distance.
+
+11. Sliding Window Problems
+    Deque is used to maintain maximum or minimum
+    elements in a sliding window.
+
+12. Level Order Traversal
+    Queue is used in Binary Tree traversal.
+
+
+============================================================
+28. TIME COMPLEXITY SUMMARY
+============================================================
+
+LINEAR QUEUE USING ARRAY:
+
+Enqueue = O(1)
+Dequeue = O(1)
+Peek = O(1)
+Display = O(n)
+
+
+LINEAR QUEUE USING SINGLY LINKED LIST:
+
+Enqueue = O(1)
+Dequeue = O(1)
+Peek = O(1)
+Display = O(n)
+
+
+LINEAR QUEUE USING DOUBLY LINKED LIST:
+
+Enqueue = O(1)
+Dequeue = O(1)
+Peek = O(1)
+Display = O(n)
+
+
+CIRCULAR QUEUE USING ARRAY:
+
+Enqueue = O(1)
+Dequeue = O(1)
+Peek = O(1)
+Display = O(n)
+
+
+CIRCULAR QUEUE USING SINGLY LINKED LIST:
+
+Enqueue = O(1)
+Dequeue = O(1)
+Peek = O(1)
+Display = O(n)
+
+
+DEQUE USING CIRCULAR ARRAY:
+
+addFront = O(1)
+addRear = O(1)
+deleteFront = O(1)
+deleteRear = O(1)
+Peek = O(1)
+
+
+DEQUE USING DOUBLY LINKED LIST:
+
+addFront = O(1)
+addRear = O(1)
+deleteFront = O(1)
+deleteRear = O(1)
+Peek = O(1)
+
+
+PRIORITY QUEUE USING UNSORTED ARRAY:
+
+Insertion = O(1)
+Deletion = O(n)
+Peek = O(n)
+
+
+PRIORITY QUEUE USING SORTED ARRAY:
+
+Insertion = O(n)
+Deletion = O(n) with shifting
+Peek = O(1)
+
+
+PRIORITY QUEUE USING UNSORTED LINKED LIST:
+
+Insertion = O(1)
+Deletion = O(n)
+Peek = O(n)
+
+
+PRIORITY QUEUE USING SORTED LINKED LIST:
+
+Insertion = O(n)
+Deletion = O(1)
+Peek = O(1)
+
+
+PRIORITY QUEUE USING BINARY HEAP:
+
+Insertion = O(log n)
+Deletion = O(log n)
+Peek = O(1)
+Build Heap = O(n)
+
+
+============================================================
+29. IMPORTANT DIFFERENCES
+============================================================
+
+A. LINEAR QUEUE vs CIRCULAR QUEUE
+
+LINEAR QUEUE:
+
+1. Follows FIFO.
+2. Last position does not connect to first.
+3. Empty spaces at the beginning may be wasted.
+4. Can cause false overflow.
+
+CIRCULAR QUEUE:
+
+1. Follows FIFO.
+2. Last position logically connects to first.
+3. Reuses empty spaces.
+4. Avoids false overflow due to unused earlier indexes.
+
+
+B. QUEUE vs DEQUE
+
+QUEUE:
+
+1. Insertion from rear only.
+2. Deletion from front only.
+3. Follows FIFO.
+
+DEQUE:
+
+1. Insertion from both ends.
+2. Deletion from both ends.
+3. More flexible than normal Queue.
+
+
+C. QUEUE vs PRIORITY QUEUE
+
+QUEUE:
+
+1. Follows FIFO.
+2. First inserted element is removed first.
+3. Priority is not considered.
+
+PRIORITY QUEUE:
+
+1. Elements are removed according to priority.
+2. Highest-priority element is removed first.
+3. FIFO is not guaranteed for different priorities.
+
+
+D. MIN HEAP vs MAX HEAP
+
+MIN HEAP:
+
+1. Parent is smaller than or equal to children.
+2. Smallest element is at root.
+3. Used for Min Priority Queue.
+
+MAX HEAP:
+
+1. Parent is greater than or equal to children.
+2. Largest element is at root.
+3. Used for Max Priority Queue.
+
+
+============================================================
+                    END OF QUEUE NOTES
+============================================================
+*/
