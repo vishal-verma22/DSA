@@ -17,10 +17,8 @@ public class P7_DequeUsgCircularArrayWithoutModulasFormulaMainApp {
 		deque.display();
 System.out.println();
 		//deque.deleteFront();
-		deque.deleteRear();
-		deque.deleteRear();
-		deque.deleteRear();
-		deque.deleteRear();
+	
+deque.getFrontPeek();
 
 
 		deque.display();

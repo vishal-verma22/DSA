@@ -124,5 +124,17 @@ public class P7_DequeImplementnUsgCircularArrayWithoutModulasFormula {
 
 		}
 	}
+	
+	
+	public int getFrontPeek() {
+		
+		return arr[front];
+	}
+	
+
+	public int getRearPeek() {
+		
+		return arr[rear];
+	}
 
 }
