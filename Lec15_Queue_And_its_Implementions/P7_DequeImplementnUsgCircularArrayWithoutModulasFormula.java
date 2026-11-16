@@ -57,6 +57,32 @@ public class P7_DequeImplementnUsgCircularArrayWithoutModulasFormula {
 
 	
 	
+	//============================================
+	// DeleteFront Method: To delete an element from the front
+	//============================================
+
+	public int deleteFront() {
+
+	    if(front == -1) {
+	        System.out.println("Deque is empty");
+	        return -1;
+	    }
+
+	    int removedElement = arr[front];
+
+	    if(front == rear) {
+	        front = rear = -1;
+	    }
+	    else if(front == capacity - 1) {
+	        front = 0;
+	    }
+	    else {
+	        front++;
+	    }
+
+	    return removedElement;
+	}
+	
 	
 	void display() {
 
