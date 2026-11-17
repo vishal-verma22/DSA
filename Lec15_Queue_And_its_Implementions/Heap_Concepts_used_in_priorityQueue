@@ -1,0 +1,589 @@
+ HEAP - COMPLETE NOTES
+
+============================================================
+1. WHAT IS HEAP?
+============================================================
+
+Heap is a Complete Binary Tree that follows a specific ordering property.
+
+Heap has two important properties:
+
+1. Complete Binary Tree (CBT)
+2. Heap Property (Min Heap / Max Heap)
+
+Heap is generally implemented using an Array.
+
+============================================================
+2. COMPLETE BINARY TREE (CBT)
+============================================================
+
+A Complete Binary Tree is a binary tree in which:
+
+1. All levels are completely filled except possibly the last level.
+2. The last level must be filled from left to right.
+3. There should be no empty position between existing nodes in the last level.
+
+Example:
+
+              10
+            /    \
+           20     30
+          /  \   /
+         40  50 60
+
+This is a Complete Binary Tree.
+
+IMPORTANT:
+Heap always follows the Complete Binary Tree structure.
+
+============================================================
+3. TYPES OF HEAP
+============================================================
+
+There are two main types of Heap:
+
+A. MIN HEAP
+B. MAX HEAP
+
+
+------------------------------------------------------------
+A. MIN HEAP
+------------------------------------------------------------
+
+In Min Heap, the parent node is always smaller than or equal to its children.
+
+Parent <= Children
+
+Example:
+
+              10
+            /    \
+           20     30
+          /  \   /  \
+         40  50 60  70
+
+Here:
+10 < 20 and 30
+20 < 40 and 50
+30 < 60 and 70
+
+IMPORTANT:
+The smallest element is always present at the ROOT.
+
+------------------------------------------------------------
+B. MAX HEAP
+------------------------------------------------------------
+
+In Max Heap, the parent node is always greater than or equal to its children.
+
+Parent >= Children
+
+Example:
+
+              90
+            /    \
+           70     80
+          /  \   /  \
+         40  50 60  65
+
+Here:
+90 > 70 and 80
+70 > 40 and 50
+80 > 60 and 65
+
+IMPORTANT:
+The largest element is always present at the ROOT.
+
+============================================================
+4. MIN HEAP VS MAX HEAP
+============================================================
+
+MIN HEAP:
+1. Smallest element is at the root.
+2. Parent <= Children.
+3. Used for Minimum Priority Queue.
+4. During insertion, smaller elements move upward.
+5. During deletion, smaller child is selected.
+
+MAX HEAP:
+1. Largest element is at the root.
+2. Parent >= Children.
+3. Used for Maximum Priority Queue.
+4. During insertion, larger elements move upward.
+5. During deletion, larger child is selected.
+
+============================================================
+5. HEAP REPRESENTATION USING ARRAY
+============================================================
+
+Heap is generally implemented using an Array.
+
+Tree Representation:
+
+              10
+            /    \
+           20     30
+          /  \   /  \
+         40  50 60  70
+
+Array Representation:
+
+Index:  0   1   2   3   4   5   6
+Value: 10  20  30  40  50  60  70
+
+Java:
+
+int heap[] = {10, 20, 30, 40, 50, 60, 70};
+
+IMPORTANT:
+1. Root is always stored at index 0.
+2. Elements are stored level by level.
+3. First fill the parent, then left child, then right child.
+4. Heap does not require shifting elements like a sorted array.
+
+============================================================
+6. PARENT AND CHILD INDEX FORMULAS
+============================================================
+
+For a Zero-Based Array (Index starts from 0):
+
+Parent Index:
+(i - 1) / 2
+
+Left Child Index:
+(2 * i) + 1
+
+Right Child Index:
+(2 * i) + 2
+
+
+Example:
+
+Array:
+
+Index:  0   1   2   3   4   5   6
+Value: 10  20  30  40  50  60  70
+
+Tree:
+
+              10 (0)
+             /      \
+          20 (1)    30 (2)
+          /   \      /   \
+       40(3) 50(4) 60(5) 70(6)
+
+
+For index i = 1:
+
+Parent = (1 - 1) / 2 = 0
+
+Left Child = (2 * 1) + 1 = 3
+
+Right Child = (2 * 1) + 2 = 4
+
+Therefore:
+20 is the parent of 40 and 50.
+10 is the parent of 20.
+
+
+IMPORTANT:
+Java integer division automatically removes the decimal part.
+
+============================================================
+7. HEAPIFY
+============================================================
+
+Heapify means restoring the Heap Property when it gets violated.
+
+There are two main types:
+
+1. Heapify Up
+2. Heapify Down
+
+
+------------------------------------------------------------
+A. HEAPIFY UP (BOTTOM TO TOP)
+------------------------------------------------------------
+
+Heapify Up is used during INSERTION.
+
+Why is it called Heapify Up?
+
+Because the newly inserted element moves upward towards the ROOT to restore the Heap Property.
+
+Steps:
+
+1. Insert the new element at the last position of the Array.
+2. Find its parent using the Parent Index Formula.
+3. Compare the new element with its parent.
+4. If Heap Property is violated, swap them.
+5. Repeat the same process until Heap Property is restored or the element reaches the root.
+
+MIN HEAP CONDITION:
+
+If child < parent:
+Swap child and parent.
+
+MAX HEAP CONDITION:
+
+If child > parent:
+Swap child and parent.
+
+
+Example: Insert 5 into Min Heap.
+
+Initially:
+
+              10
+             /  \
+            20   30
+           /
+          40
+
+Array:
+[10, 20, 30, 40]
+
+STEP 1: Insert 5 at the last position.
+
+              10
+             /  \
+            20   30
+           /  \
+          40   5
+
+Array:
+[10, 20, 30, 40, 5]
+
+STEP 2: Compare 5 with its parent 20.
+
+5 < 20
+
+Swap 5 and 20.
+
+              10
+             /  \
+            5    30
+           / \
+          40  20
+
+Array:
+[10, 5, 30, 40, 20]
+
+STEP 3: Compare 5 with its parent 10.
+
+5 < 10
+
+Swap 5 and 10.
+
+               5
+             /   \
+           10     30
+          /  \
+         40  20
+
+Final Array:
+[5, 10, 30, 40, 20]
+
+Heap Property is restored.
+
+IMPORTANT:
+Heapify Up = Bottom to Top
+Insertion = Add at last + Heapify Up
+
+
+------------------------------------------------------------
+B. HEAPIFY DOWN (TOP TO BOTTOM)
+------------------------------------------------------------
+
+Heapify Down is generally used during DELETION of the root element.
+
+Why is it called Heapify Down?
+
+Because the element placed at the root moves downward towards the LEAF to restore the Heap Property.
+
+Steps:
+
+1. Delete the root element.
+2. Move the last element to the root position.
+3. Remove the last array element.
+4. Compare the root with its children.
+5. Select the appropriate child.
+6. If Heap Property is violated, swap the parent with that child.
+7. Repeat until Heap Property is restored or the element reaches a leaf.
+
+MIN HEAP CONDITION:
+
+1. Compare parent with left and right children.
+2. Select the smallest child.
+3. If parent > smallest child, swap them.
+4. Repeat.
+
+MAX HEAP CONDITION:
+
+1. Compare parent with left and right children.
+2. Select the largest child.
+3. If parent < largest child, swap them.
+4. Repeat.
+
+
+Example: Delete root from Min Heap.
+
+Initially:
+
+              10
+             /  \
+            20   30
+           /  \
+          40   50
+
+Array:
+[10, 20, 30, 40, 50]
+
+STEP 1: Delete root element 10.
+
+STEP 2: Move last element 50 to root.
+
+              50
+             /  \
+            20   30
+           /
+          40
+
+Array:
+[50, 20, 30, 40]
+
+STEP 3: Compare 50 with its children 20 and 30.
+
+Smallest child = 20
+
+50 > 20
+
+Swap 50 and 20.
+
+              20
+             /  \
+            50   30
+           /
+          40
+
+Array:
+[20, 50, 30, 40]
+
+STEP 4: Compare 50 with its child 40.
+
+50 > 40
+
+Swap 50 and 40.
+
+              20
+             /  \
+            40   30
+           /
+          50
+
+Final Array:
+[20, 40, 30, 50]
+
+Heap Property is restored.
+
+IMPORTANT:
+Heapify Down = Top to Bottom
+Deletion = Replace Root with Last Element + Heapify Down
+
+
+============================================================
+8. WHY HEAPIFY UP AND HEAPIFY DOWN?
+============================================================
+
+HEAPIFY UP:
+
+1. Used during insertion.
+2. New element is added at the bottom.
+3. Compare child with parent.
+4. Move towards root.
+5. Direction: Bottom to Top.
+
+HEAPIFY DOWN:
+
+1. Used during root deletion.
+2. Last element is moved to root.
+3. Compare parent with children.
+4. Move towards leaf.
+5. Direction: Top to Bottom.
+
+
+============================================================
+9. INSERTION IN MIN HEAP
+============================================================
+
+Steps:
+
+1. Check whether Array has available capacity.
+2. Insert the new element at the end.
+3. Increase size.
+4. Apply Heapify Up.
+5. Stop when Min Heap Property is satisfied.
+
+Time Complexity: O(log n)
+
+
+============================================================
+10. DELETION IN MIN HEAP
+============================================================
+
+Steps:
+
+1. Check whether Heap is empty.
+2. Store the root element.
+3. Replace root with the last element.
+4. Decrease size.
+5. Apply Heapify Down.
+6. Return the deleted root element.
+
+Time Complexity: O(log n)
+
+
+============================================================
+11. PEEK OPERATION
+============================================================
+
+Peek means accessing the root element without deleting it.
+
+In Min Heap:
+Peek returns the smallest element.
+
+In Max Heap:
+Peek returns the largest element.
+
+Root Index = 0
+
+Example:
+
+int min = heap[0];
+
+Time Complexity: O(1)
+
+
+============================================================
+12. OTHER HEAP OPERATIONS
+============================================================
+
+1. isEmpty():
+   Checks whether Heap contains zero elements.
+
+2. size():
+   Returns the number of elements present in Heap.
+
+3. display():
+   Displays Heap elements.
+
+4. search():
+   Searches for a particular element.
+
+IMPORTANT:
+Heap does not maintain complete sorted order.
+Therefore, searching takes O(n) time.
+
+
+============================================================
+13. TIME COMPLEXITY
+============================================================
+
+Operation             Time Complexity
+
+Insertion             O(log n)
+Deletion              O(log n)
+Peek                  O(1)
+Search                O(n)
+Heapify Up            O(log n)
+Heapify Down          O(log n)
+Build Heap            O(n)
+
+
+============================================================
+14. HEAP VS BINARY SEARCH TREE
+============================================================
+
+HEAP:
+
+1. Complete Binary Tree.
+2. Follows Min Heap or Max Heap Property.
+3. Root contains minimum or maximum element.
+4. Searching takes O(n).
+5. Generally implemented using Array.
+
+BINARY SEARCH TREE:
+
+1. Left subtree contains smaller values.
+2. Right subtree contains greater values (for a standard BST with unique keys).
+3. Searching can take O(log n) in a balanced BST.
+4. Searching can take O(n) in a skewed BST.
+5. Generally implemented using Nodes and References.
+
+
+============================================================
+15. HEAP APPLICATIONS
+============================================================
+
+1. Priority Queue implementation.
+2. Heap Sort.
+3. Finding Kth Largest Element.
+4. Finding Kth Smallest Element.
+5. Finding Top K Elements.
+6. Finding Median using two Heaps.
+7. CPU Scheduling.
+8. Dijkstra's Shortest Path Algorithm.
+9. Merging K Sorted Lists.
+
+
+============================================================
+16. HEAP AND PRIORITY QUEUE
+============================================================
+
+Priority Queue is an Abstract Data Type (ADT).
+
+Heap is a Data Structure used to implement Priority Queue efficiently.
+
+MIN PRIORITY QUEUE:
+
+Uses Min Heap.
+
+The smallest priority element is removed first.
+
+MAX PRIORITY QUEUE:
+
+Uses Max Heap.
+
+The largest priority element is removed first.
+
+Priority Queue Operations:
+
+1. add() / offer()
+2. remove() / poll()
+3. peek()
+4. size()
+5. isEmpty()
+
+
+============================================================
+17. IMPORTANT POINTS TO REMEMBER
+============================================================
+
+1. Heap is a Complete Binary Tree.
+2. Heap can be Min Heap or Max Heap.
+3. Heap is generally stored in an Array.
+4. Root is always at index 0.
+5. Min Heap root contains the smallest element.
+6. Max Heap root contains the largest element.
+7. Insertion takes place at the last position.
+8. Insertion requires Heapify Up.
+9. Root deletion requires Heapify Down.
+10. During Min Heapify Down, select the smaller child.
+11. During Max Heapify Down, select the larger child.
+12. Heap is NOT a completely sorted Array.
+13. Insertion and deletion take O(log n).
+14. Peek takes O(1).
+
+============================================================
+END OF HEAP NOTES
+============================================================
