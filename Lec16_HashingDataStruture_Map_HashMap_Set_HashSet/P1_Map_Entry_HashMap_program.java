@@ -79,9 +79,9 @@ public class P1_Map_Entry_HashMap_program {
                     + "  Name: " + entry.getValue());
         }
 
-        //==============================================
+        //===========================================
         // Way 3: Traversing using keySet()
-        //==============================================
+        //===========================================
 
         System.out.println("Way 3 to display");
 
