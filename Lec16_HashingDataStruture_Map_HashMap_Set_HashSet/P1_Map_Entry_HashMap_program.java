@@ -1,20 +1,22 @@
+
 package Lec16_HashingDataStruture_Map_HashMap_Set_HashSet;
 
 /*
-Problem statement:
-	=>Create a HashMap that stores student roll numbers as keys and student names as values.
-	
-	=>Insert these records:
-		Roll 	Number	Name
-		101		Vishal
-		102		Rahul
-		103		Amit
-		104		Akash
-		102		anil     // check the result 
+Problem Statement:
 
+    => Create a HashMap that stores student roll numbers as keys
+       and student names as values.
 
-* 
- */
+    => Insert these records:
+
+       Roll Number       Name
+          101           Vishal
+          102           Rahul
+          103           Amit
+          104           Akash
+          102           Anil       // Check the result
+
+*/
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,54 +24,71 @@ import java.util.Set;
 
 public class P1_Map_Entry_HashMap_program {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    public static void main(String[] args) {
 
-		Map<Integer, String> map = new HashMap<>();
+        Map<Integer, String> map = new HashMap<>();
 
-		map.put(101, "vishal");
-		map.put(102, "Rahul");
-		map.put(103, "Amit");
-		map.put(104, "Akash");
-		map.put(102, "anil");
+        // Inserting key-value pairs
+        map.put(101, "Vishal");
+        map.put(102, "Rahul");
+        map.put(103, "Amit");
+        map.put(104, "Akash");
 
-		System.out.println(map);
+        // Inserting duplicate key
+        map.put(102, "Anil");
 
-		// primting using entrySet()
-		System.out.println(map.entrySet());
+        // Displaying complete HashMap
+        System.out.println(map);
 
-		System.out.println(map.containsKey(103));
-		System.out.println(map.remove(101));
-		System.out.println("Size of map:" + map.size());
+        // Printing using entrySet()
+        System.out.println(map.entrySet());
 
-		// Traversing the map entery using entrySet()
-		// -> entrySet() is main used to traverse the map entries one by one
+        // Checking whether key 103 exists
+        System.out.println(map.containsKey(103));
 
-		// Recommended way
-		System.out.println(" Way 1 to display ");
+        // Removing entry using key
+        System.out.println(map.remove(101));
 
-		for (Map.Entry<Integer, String> entry : map.entrySet()) {
+        // Displaying size of map
+        System.out.println("Size of map: " + map.size());
 
-			System.out.println("Rollno:" + entry.getKey() + "  " + "Name:" + entry.getValue());
-		}
+        //==============================================
+        // Way 1: Traversing the map using entrySet()
+        // Recommended way to display key-value pairs
+        //==============================================
 
-		// second way to iterate
-		System.out.println(" Way 2 to display");
+        System.out.println("Way 1 to display");
 
-		Set<Map.Entry<Integer, String>> set = map.entrySet();
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
 
-		for (Map.Entry<Integer, String> entry : set) {
+            System.out.println("Rollno: " + entry.getKey()
+                    + "  Name: " + entry.getValue());
+        }
 
-			System.out.println("Rollno:" + entry.getKey() + "  " + "Name:" + entry.getValue());
-		}
+        //==============================================
+        // Way 2: Store entrySet() in Set and traverse
+        //==============================================
 
-		System.out.println(" Way 3 to display");
+        System.out.println("Way 2 to display");
 
-		for (Integer i : map.keySet()) {
+        Set<Map.Entry<Integer, String>> set = map.entrySet();
 
-			System.out.println("Rollno:" + i + "  " + "Name:" + map.get(i));
+        for (Map.Entry<Integer, String> entry : set) {
 
-		}
+            System.out.println("Rollno: " + entry.getKey()
+                    + "  Name: " + entry.getValue());
+        }
 
-	}
+        //==============================================
+        // Way 3: Traversing using keySet()
+        //==============================================
+
+        System.out.println("Way 3 to display");
+
+        for (Integer i : map.keySet()) {
+
+            System.out.println("Rollno: " + i
+                    + "  Name: " + map.get(i));
+        }
+    }
 }
