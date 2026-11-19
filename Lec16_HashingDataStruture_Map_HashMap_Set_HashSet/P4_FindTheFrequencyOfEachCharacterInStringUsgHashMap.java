@@ -5,70 +5,62 @@ import java.util.HashMap;
 import java.util.Map;
 
 //===========================================================
+
 // Problem Statement:
 //
-// Ek given String mein har character ki frequency find karni hai
-// using HashMap.
+// Find the frequency of each word in a given string using HashMap.
+
 //===========================================================
 
 // Time Complexity: O(n)
 // Space Complexity: O(k)
 //
-// n = String ki total length
-// k = String mein total unique characters
-//
-// Explanation:
-//
-// 1. Hum for loop ki help se String ko sirf ek baar traverse karte hai.
-//
-// 2. HashMap ke containsKey(), get() aur put() methods ki
-//    average time complexity O(1) hoti hai.
-//
-// 3. For loop n times execute hota hai, isliye Time Complexity O(n) hai.
-//
-// 4. HashMap mein sirf unique characters store hote hai,
-//    isliye Space Complexity O(k) hai.
-//
+// n = String mein total words ki count
+// k = String mein total unique words ki count
+
 //===========================================================
 
-public class P4_FindTheFrequencyOfEachCharacterInStringUsgHashMap
+public class P5_FindTheFrequencyOfEachWordInStringUsgHashMap
 {
 	public static void main(String[] args)
 	{
-		String s = "deepak is good boy";
+		String s = "deepak is good boy and boy is good";
 
-		Map<Character, Integer> map = new HashMap<>();
+		// String ko individual words mein split karenge
+		String arr[] = s.split(" ");
+
+		Map<String, Integer> map = new HashMap<>();
 
 		//===========================================================
-		// Logic: Har character ki frequency count karna
+		// Logic: Har word ki frequency count karna
 		//===========================================================
 
-		for (int i = 0; i < s.length(); i++)
+		for (int i = 0; i < arr.length; i++)
 		{
-			// Current index ka character retrieve karenge
-			char ch = s.charAt(i);
+			// Current index ka word retrieve karenge
+			String word = arr[i];
 
-			if (map.containsKey(ch))
+			if (map.containsKey(word))
 			{
-				// Agar character already Map mein present hai,
+				// Agar word already Map mein present hai,
 				// toh uski current frequency retrieve karenge
-				int freq = map.get(ch);
+				int freq = map.get(word);
 
 				// Existing frequency ko 1 se increase karenge
 				freq++;
 
 				// Updated frequency ko Map mein wapas store karenge
-				map.put(ch, freq);
+				map.put(word, freq);
 			}
 			else
 			{
-				// Agar character pehli baar mila hai,
+				// Agar word pehli baar mila hai,
 				// toh uski initial frequency 1 set karenge
-				map.put(ch, 1);
+				map.put(word, 1);
 			}
 		}
 
-		// Finally Map mein har character ki frequency print karenge
+		// Finally Map mein har word ki frequency print karenge
 		System.out.println(map);
 	}
 }
