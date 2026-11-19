@@ -5,62 +5,55 @@ import java.util.HashMap;
 import java.util.Map;
 
 //===========================================================
-
 // Problem Statement:
-//
-// Find the frequency of each word in a given string using HashMap.
-
+	// Find the frequency of each character in a given string  using HashMap.
 //===========================================================
 
 // Time Complexity: O(n)
 // Space Complexity: O(k)
 //
-// n = String mein total words ki count
-// k = String mein total unique words ki count
-
+// n = String ki total length
+// k = String mein total unique characters
 //===========================================================
 
-public class P5_FindTheFrequencyOfEachWordInStringUsgHashMap
+public class P4_FindTheFrequencyOfEachCharacterInStringUsgHashMap
 {
 	public static void main(String[] args)
 	{
-		String s = "deepak is good boy and boy is good";
+		String s = "deepak is good boy";
 
-		// String ko individual words mein split karenge
-		String arr[] = s.split(" ");
-
-		Map<String, Integer> map = new HashMap<>();
+		Map<Character, Integer> map = new HashMap<>();
 
 		//===========================================================
-		// Logic: Har word ki frequency count karna
+		// Logic: Har character ki frequency count karna
 		//===========================================================
 
-		for (int i = 0; i < arr.length; i++)
+		for (int i = 0; i < s.length(); i++)
 		{
-			// Current index ka word retrieve karenge
-			String word = arr[i];
+			// Current index ka character retrieve karenge
+			char ch = s.charAt(i);
 
-			if (map.containsKey(word))
+			if (map.containsKey(ch))
 			{
-				// Agar word already Map mein present hai,
+				// Agar character already Map mein present hai,
 				// toh uski current frequency retrieve karenge
-				int freq = map.get(word);
+				int freq = map.get(ch);
 
 				// Existing frequency ko 1 se increase karenge
 				freq++;
 
 				// Updated frequency ko Map mein wapas store karenge
-				map.put(word, freq);
+				map.put(ch, freq);
 			}
 			else
 			{
-				// Agar word pehli baar mila hai,
+				// Agar character pehli baar mila hai,
 				// toh uski initial frequency 1 set karenge
-				map.put(word, 1);
+				map.put(ch, 1);
 			}
 		}
 
-		// Finally Map mein har word ki frequency print karenge
+		// Finally Map mein har character ki frequency print karenge
 		System.out.println(map);
 	}
 }
