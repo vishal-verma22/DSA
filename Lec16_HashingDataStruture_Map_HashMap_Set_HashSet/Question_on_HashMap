@@ -1,0 +1,66 @@
+HashMap Programs
+
+=> Frequency-Based Programs (Same Logic)
+1. WAP to find how many times each character is repeated in a string OR
+   WAP to count frequency of each character in a string
+2. WAP to find how many times each word is repeated in a sentence OR
+   WAP to count frequency of each word in a string
+3. WAP to count frequency of numbers in an array OR
+   WAP to count frequency of each element in an array
+______________________________________________
+
+=> Duplicate Detection Programs (Same Logic)
+4. WAP to find duplicate characters in a string
+5. WAP to find duplicate words in a string
+6. WAP to find duplicate elements in an array
+______________________________________________
+
+=> First Repeating Element Programs (Order Matters)
+7. WAP to find the first duplicate character in a string
+8. WAP to find the first duplicate word in a string
+9. WAP to find the first duplicate element in an array
+______________________________________________
+
+=> First Non-Repeating Element Programs
+10. WAP to find the first non-repeating character in a string
+11. WAP to find the first non-repeating word in a string
+12. WAP to find the first non-repeating element in an array
+______________________________________________
+
+=> Remove Duplicate Programs
+13. WAP to remove duplicate characters from a string
+14. WAP to remove duplicate words from a string
+15. WAP to remove duplicate elements from an array
+______________________________________________
+
+=> Most / Least Repeated Programs
+16. WAP to find the most repeated character in a string
+17. WAP to find the most repeated word in a string
+18. WAP to find the most repeated element in an array
+19. WAP to find the least repeated character in a string
+20. WAP to find the least repeated word in a string
+21. WAP to find the least repeated element in an array
+______________________________________________
+
+=> Pair & Sum Programs (HashMap Core)
+22. WAP to find two elements whose sum equals a given value
+23. WAP to count pairs with given sum in an array
+24. WAP to print the index values of the pair whose sum equals to given value
+______________________________________________
+
+=> String Mapping Programs
+25. WAP to check whether two strings are anagrams
+26. WAP to check whether two strings are isomorphic
+______________________________________________
+
+=> Subarray / Prefix Sum Programs
+27. WAP to check if a subarray with given sum exists
+28. WAP to count subarrays with given sum
+______________________________________________
+
+=> Sliding Window + HashMap
+29. WAP to find the longest substring without repeating characters
+______________________________________________
+
+=> Grouping Programs
+30. WAP to group anagrams together
