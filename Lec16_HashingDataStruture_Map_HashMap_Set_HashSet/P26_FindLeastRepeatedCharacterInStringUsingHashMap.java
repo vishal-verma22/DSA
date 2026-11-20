@@ -1,70 +1,92 @@
+
+/*
+ *===========================================================
+ * P26: Find the Least Repeated Character in a String Using HashMap
+ *===========================================================
+ *
+ * Problem Statement:
+ *
+ * Write a Java program to find the least repeated character
+ * in a String using HashMap.
+ *
+ * If multiple characters have the same minimum frequency,
+ * print the character that occurs first in the original String.
+ *
+ * Example:
+ * Input: "deeeepakisgoodboy"
+ * Output: p ==> 1
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(k)
+ *
+ * n = Total number of characters
+ * k = Number of unique characters
+ *===========================================================
+ */
+
 package Lec16_HashingDataStruture_Map_HashMap_Set_HashSet;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class P26_FindLeastRepeatedCharacterInStringUsingHashMap {
+public class P26_FindLeastRepeatedCharacterInStringUsingHashMap
+{
+    public static void main(String[] args)
+    {
+        String s = "deeeepakisgoodboy";
 
-	public static void main(String[] args) {
+        Map<Character, Integer> map = new HashMap<>();
 
-		String s = "deeeepakisgoodboy";
+        //===========================================================
+        // Step 1: Count the frequency of each character
+        //===========================================================
 
-		Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++)
+        {
+            char ch = s.charAt(i);
 
-		//===========================================================
-		// Step 1: Har character ki frequency count karna
-		//===========================================================
+            if (map.containsKey(ch))
+            {
+                int freq = map.get(ch);
+                freq++;
+                map.put(ch, freq);
+            }
+            else
+            {
+                map.put(ch, 1);
+            }
+        }
 
-		for (int i = 0; i < s.length(); i++)
-		{
-			// Current index ka character retrieve karenge
-			char ch = s.charAt(i);
+        //===========================================================
+        // Step 2: Find the least repeated character
+        //===========================================================
 
-			if (map.containsKey(ch))
-			{
-				// Agar character already Map mein present hai,
-				// toh uski current frequency retrieve karenge
-				int freq = map.get(ch);
+        int min = Integer.MAX_VALUE;
+        char minCh = ' ';
 
-				// Existing frequency ko 1 se increase karenge
-				freq++;
+        for (int i = 0; i < s.length(); i++)
+        {
+            char ch = s.charAt(i);
 
-				// Updated frequency ko Map mein wapas store karenge
-				map.put(ch, freq);
-			}
-			else
-			{
-				// Agar character pehli baar mila hai,
-				// toh uski initial frequency 1 set karenge
-				map.put(ch, 1);
-			}
-		}
+            int currentCount = map.get(ch);
 
-		//===========================================================
-		// Step 2: Maximum occurring character find karna
-		//===========================================================
+            if (currentCount < min)
+            {
+                min = currentCount;
+                minCh = ch;
+            }
+        }
 
-		int min =Integer.MAX_VALUE;
-		char minCh = ' ';
+        //===========================================================
+        // Step 3: Print the least repeated character
+        //===========================================================
 
-		for (Map.Entry<Character, Integer> entry : map.entrySet())
-		{
-			// Current entry ki frequency retrieve karenge
-			int currentCount = entry.getValue();
-
-			if (currentCount < min)
-			{
-				// Agar current frequency max se greater hai,
-				// toh max ko update karenge
-				min = currentCount;
-
-				// Maximum frequency wala character store karenge
-				minCh = entry.getKey();
-			}
-		}
-
-		// Finally maximum occurring character aur uski frequency print karenge
-		System.out.println("minimum repeated character is:"+minCh + " => " + min);
-	}
-
+        System.out.println(minCh + " ==> " + min);
+    }
 }
+
+/*
+ * Output:
+ *
+ * p ==> 1
+ */
