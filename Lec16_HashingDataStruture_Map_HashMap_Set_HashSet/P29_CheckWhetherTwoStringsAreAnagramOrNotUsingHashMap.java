@@ -16,6 +16,7 @@
  * Do Strings Anagram tab hoti hain jab dono Strings mein
  * exactly same characters aur unki frequency same ho,
  * lekin characters ka order different ho sakta hai.
+ * dono strings ka  length bhi same honi chaiye
  *
  * Example:
  *
@@ -40,14 +41,21 @@
  * character ki frequency store karenge.
  *
  * Step 3:
- * Second String ko traverse karke HashMap mein stored
+ * Second String ko traverse karke HashMap mein stored string s1 ki 
  * characters ki frequency decrease karenge.
  *
  * Step 4:
- * Agar frequency 0 ho jaati hai toh us character ko
- * HashMap se remove kar denge.
+ * Agar decrease krne ke bad frequency 0 ho jaati hai toh us character ko
+ * HashMap se remove kar denge q ki ab freq 0 ho gaya means vo character checked ho gaya hai s2 string se.
  *
  * Step 5:
+ * 
+ *  Agar second String mein koi character HashMap mein
+ * present nahi hai, toh iska matlab second String mein
+ * extra character ya extra frequency hai.
+ *  toh wahi se ham retun ho jayenge q ki vo anagram nhi hai
+ * Step 6:
+ * Isliye Strings Anagram nahi hain.
  * Agar HashMap empty ho gaya toh dono Strings Anagram hain.
  * Otherwise, dono Strings Anagram nahi hain.
  *
