@@ -1,108 +1,94 @@
 
 package Lec16_HashingDataStruture_Map_HashMap_Set_HashSet;
 
-//===========================================================
-// Problem Statement:
-//
-// => Write a Java program to find the least repeated element
-//    in an array using HashMap.
-//
-// => Count the frequency of each element.
-//
-// => Find the element having the minimum frequency.
-//
-// => Print the least repeated element and its frequency.
-//
-// Example:
-//
-// Input:
-// 10 20 30 10 40 20 50 30 10 60 20 10
-//
-// Output:
-// 40 ==> 1
-//
-// Time Complexity: O(n)
-// Space Complexity: O(k)
-//
-//===========================================================
-
 import java.util.HashMap;
 import java.util.Map;
 
+//===========================================================
+// P28: Find the Least Repeated Element in an Array Using HashMap
+//===========================================================
+
 public class P28_FindLeastRepeatedElementInArrayUsingHashMap
 {
-	public static void main(String[] args)
-	{
-		int arr[] = {10, 20, 30, 10, 40, 20, 50, 30, 10, 60, 20, 10};
+    public static void main(String[] args)
+    {
+        /*
+         * Problem Statement:
+         * 
+         * Write a Java program to find the least repeated element
+         * in an array using HashMap.
+         *
+         * If multiple elements have the same minimum frequency,
+         * print the element that occurs first in the original array.
+         *
+         * Example:
+         * Input:  {10, 20, 30, 10, 40, 20, 50, 30, 10, 60, 20, 10}
+         * Output: 40 ==> 1
+         */
 
-		Map<Integer, Integer> map = new HashMap<>();
+        int arr[] = {10, 20, 30, 10, 40, 20, 50, 30, 10, 60, 20, 10};
 
-		//===========================================================
-		// Step 1: Frequency of each element count karna
-		//===========================================================
+        Map<Integer, Integer> map = new HashMap<>();
 
-		for (int i = 0; i < arr.length; i++)
-		{
-			// Current index ka element retrieve karenge
-			int element = arr[i];
+        //===========================================================
+        // Step 1: Count the frequency of each element
+        //===========================================================
 
-			if (map.containsKey(element))
-			{
-				// Agar element Map mein already present hai,
-				// toh uski existing frequency retrieve karenge
-				int freq = map.get(element);
+        for (int i = 0; i < arr.length; i++)
+        {
+            if (map.containsKey(arr[i]))
+            {
+                int freq = map.get(arr[i]);
+                freq++;
+                map.put(arr[i], freq);
+            }
+            else
+            {
+                map.put(arr[i], 1);
+            }
+        }
 
-				// Frequency ko increment karenge
-				freq++;
+        //===========================================================
+        // Step 2: Find the least repeated element
+        // If multiple elements have the same frequency,
+        // the first occurring element will be selected.
+        //===========================================================
 
-				// Updated frequency Map mein store karenge
-				map.put(element, freq);
-			}
-			else
-			{
-				// Agar element Map mein present nahi hai,
-				// toh uski initial frequency 1 set karenge
-				map.put(element, 1);
-			}
-		}
+        int min = Integer.MAX_VALUE;
+        int minElement = 0;
 
-		//===========================================================
-		// Step 2: Least repeated element find karna
-		//===========================================================
+        for (int i = 0; i < arr.length; i++)
+        {
+            int currentCount = map.get(arr[i]);
 
-		int minCount = Integer.MAX_VALUE;
-		int minElement = arr[0];
+            if (currentCount < min)
+            {
+                min = currentCount;
+                minElement = arr[i];
+            }
+        }
 
-		for (Map.Entry<Integer, Integer> entry : map.entrySet())
-		{
-			// Current entry ka element aur frequency retrieve karenge
-			int currentElement = entry.getKey();
-			int currentCount = entry.getValue();
+        //===========================================================
+        // Step 3: Print the least repeated element
+        //===========================================================
 
-			// Agar current frequency minimum frequency se smaller hai,
-			// toh minimum frequency aur element update karenge
-			if (currentCount < minCount)
-			{
-				minCount = currentCount;
-				minElement = currentElement;
-			}
-		}
+        System.out.println("Least Repeated Element: " + minElement);
+        System.out.println("Frequency: " + min);
 
-		//===========================================================
-		// Step 3: Least repeated element aur frequency print karna
-		//===========================================================
-
-		System.out.println("Least Repeated Element ==> Frequency");
-		System.out.println(minElement + " ==> " + minCount);
-	}
+        System.out.println(minElement + " ==> " + min);
+    }
 }
 
-//===========================================================
-// Example Output:
-//
-// Least Repeated Element ==> Frequency
-// 40 ==> 1
-//
-// (40, 50, 60 mein se koi bhi ek element aa sakta hai)
-//
-//===========================================================
+/*
+ * Output:
+ *
+ * Least Repeated Element: 40
+ * Frequency: 1
+ * 40 ==> 1
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(k)
+ *
+ * n = Total number of elements in the array
+ * k = Number of unique elements in the array
+ */
