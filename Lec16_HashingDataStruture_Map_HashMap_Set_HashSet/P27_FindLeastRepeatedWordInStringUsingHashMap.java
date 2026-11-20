@@ -1,107 +1,90 @@
 
-package Lec16_HashingDataStruture_Map_HashMap_Set_HashSet;
+/*
+ *===========================================================
+ * P27: Find the Least Repeated Word in a String Using HashMap
+ *===========================================================
+ *
+ * Problem Statement:
+ *
+ * Write a Java program to find the least repeated word
+ * in a String using HashMap.
+ *
+ * If multiple words have the same minimum frequency,
+ * print the word that occurs first in the original String.
+ *
+ * Example:
+ * Input: "deepak is good boy and boy is good boy"
+ * Output: deepak ==> 1
+ *
+ * Time Complexity: O(n)
+ * Space Complexity: O(k)
+ *
+ * n = Total number of words
+ * k = Number of unique words
+ *===========================================================
+ */
 
-//===========================================================
-// Problem Statement:
-//
-// => Write a Java program to find the least repeated word
-//    in a String using HashMap.
-//
-// => Count the frequency of each word.
-//
-// => Find the word having the minimum frequency.
-//
-// => Print the least repeated word and its frequency.
-//
-// Example:
-//
-// Input:
-// deepak is good boy and boy is good boy
-//
-// Output:
-// deepak ==> 1
-//
-// Time Complexity: O(n)
-// Space Complexity: O(k)
-//
-//===========================================================
+package Lec16_HashingDataStruture_Map_HashMap_Set_HashSet;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class P27_FindLeastRepeatedWordInStringUsingHashMap
 {
-	public static void main(String[] args)
-	{
-		String s = "deepak is good boy and boy is good boy";
+    public static void main(String[] args)
+    {
+        String s = "deepak is good boy and boy is good boy";
 
-		String arr[] = s.split(" ");
+        String arr[] = s.split(" ");
 
-		Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
 
-		//===========================================================
-		// Step 1: Frequency of each word count karna
-		//===========================================================
+        //===========================================================
+        // Step 1: Count the frequency of each word
+        //===========================================================
 
-		for (int i = 0; i < arr.length; i++)
-		{
-			// Current index ka word retrieve karenge
-			String word = arr[i];
+        for (int i = 0; i < arr.length; i++)
+        {
+            if (map.containsKey(arr[i]))
+            {
+                int freq = map.get(arr[i]);
+                freq++;
+                map.put(arr[i], freq);
+            }
+            else
+            {
+                map.put(arr[i], 1);
+            }
+        }
 
-			if (map.containsKey(word))
-			{
-				// Agar word Map mein already present hai,
-				// toh uski existing frequency retrieve karenge
-				int freq = map.get(word);
+        //===========================================================
+        // Step 2: Find the least repeated word
+        //===========================================================
 
-				// Frequency ko increment karenge
-				freq++;
+        int min = Integer.MAX_VALUE;
+        String minWord = "";
 
-				// Updated frequency Map mein store karenge
-				map.put(word, freq);
-			}
-			else
-			{
-				// Agar word Map mein present nahi hai,
-				// toh uski initial frequency 1 set karenge
-				map.put(word, 1);
-			}
-		}
+        for (int i = 0; i < arr.length; i++)
+        {
+            int currentCount = map.get(arr[i]);
 
-		//===========================================================
-		// Step 2: Least repeated word find karna
-		//===========================================================
+            if (currentCount < min)
+            {
+                min = currentCount;
+                minWord = arr[i];
+            }
+        }
 
-		int minCount = Integer.MAX_VALUE;
-		String minWord = "";
+        //===========================================================
+        // Step 3: Print the least repeated word
+        //===========================================================
 
-		for (Map.Entry<String, Integer> entry : map.entrySet())
-		{
-			// Current entry ka word aur frequency retrieve karenge
-			String currentWord = entry.getKey();
-			int currentCount = entry.getValue();
-
-			// Agar current frequency minimum frequency se smaller hai,
-			// toh minimum frequency aur word update karenge
-			if (currentCount < minCount)
-			{
-				minCount = currentCount;
-				minWord = currentWord;
-			}
-		}
-
-		//===========================================================
-		// Step 3: Least repeated word aur frequency print karna
-		//===========================================================
-
-		System.out.println(minWord + " ==> " + minCount);
-	}
+        System.out.println(minWord + " ==> " + min);
+    }
 }
 
-//===========================================================
-// Example Output:
-//
-// deepak ==> 1
-// (deepak or and may appear because of HashMap iteration order)
-//
-//===========================================================
+/*
+ * Output:
+ *
+ * deepak ==> 1
+ */
