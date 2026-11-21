@@ -66,8 +66,114 @@ Main Logic:
     => Finally, duplicate Set return karenge.
 
 
+=========================================================
+
+Working (Dry Run):
+
+    Input:
+
+       String s = "vishal is good boy and vishal is better than rohan";
+
+    After split(" "):
+
+       words[] = {"vishal", "is", "good", "boy", "and",
+                  "vishal", "is", "better", "than", "rohan"};
+
+    Initially:
+
+       set       = []
+       duplicate = []
+
+    1. word = "vishal"
+
+       "vishal" set mein present nahi hai.
+       Isliye else execute hoga aur "vishal" set mein add hoga.
+
+       set       = [vishal]
+       duplicate = []
+
+    2. word = "is"
+
+       "is" set mein present nahi hai.
+       Isliye "is" set mein add hoga.
+
+       set       = [vishal, is]
+       duplicate = []
+
+    3. word = "good"
+
+       "good" set mein present nahi hai.
+       Isliye "good" set mein add hoga.
+
+       set       = [vishal, is, good]
+       duplicate = []
+
+    4. word = "boy"
+
+       "boy" set mein present nahi hai.
+       Isliye "boy" set mein add hoga.
+
+       set       = [vishal, is, good, boy]
+       duplicate = []
+
+    5. word = "and"
+
+       "and" set mein present nahi hai.
+       Isliye "and" set mein add hoga.
+
+       set       = [vishal, is, good, boy, and]
+       duplicate = []
+
+    6. word = "vishal"
+
+       "vishal" already set mein present hai.
+       Isliye if execute hoga aur "vishal" duplicate mein add hoga.
+
+       set       = [vishal, is, good, boy, and]
+       duplicate = [vishal]
+
+    7. word = "is"
+
+       "is" already set mein present hai.
+       Isliye "is" duplicate mein add hoga.
+
+       set       = [vishal, is, good, boy, and]
+       duplicate = [vishal, is]
+
+    8. word = "better"
+
+       "better" set mein present nahi hai.
+       Isliye "better" set mein add hoga.
+
+    9. word = "than"
+
+       "than" set mein present nahi hai.
+       Isliye "than" set mein add hoga.
+
+    10. word = "rohan"
+
+        "rohan" set mein present nahi hai.
+        Isliye "rohan" set mein add hoga.
+
+
+    Final Duplicate Words: [vishal, is]
+
+
+=========================================================
+
 Time Complexity: O(n + m) approximately
+
+    => split(" ") ke through String ko words mein divide karte hain.
+    => Loop total m words traverse karta hai.
+    => HashSet contains() and add() average O(1) hain.
+
+    Where:
+       n = Number of characters in the String.
+       m = Number of words in the String.
+
 Space Complexity: O(n)
+
+    => Words array aur dono HashSets additional memory use karte hain.
 
 =========================================================
 
