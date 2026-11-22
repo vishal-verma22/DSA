@@ -1,0 +1,399 @@
+
+============================================================
+                    RECURSION IN JAVA
+============================================================
+
+1. What is Recursion?
+
+Recursion is a process in which a method calls itself again
+and again to solve a problem.
+
+Every recursive method must have:
+1. Base Condition  -> Stops the recursion.
+2. Recursive Call  -> Calls the same method with a smaller
+                      or modified input.
+
+Example:
+
+static void display(int no)
+{
+    if(no == 0)              // Base Condition
+    {
+        return;
+    }
+
+    System.out.println(no);
+
+    display(no - 1);         // Recursive Call
+}
+
+Output: 5 4 3 2 1
+
+
+2. WHEN TO USE RECURSION AND ITERATION?
+
+Recursion:
+- When a problem can be divided into smaller subproblems.
+- When a problem has a naturally recursive structure.
+- For Tree traversal, DFS, Backtracking, Factorial, etc.
+- When code simplicity is more important than memory usage.
+
+Iteration:
+- When a problem requires repeated execution using loops.
+- When the number of repetitions is known or controlled by a condition.
+- For array traversal, searching, sorting, counting, etc.
+- When we want better memory efficiency.
+
+Difference:
+
+Recursion:
+- Uses method calls.
+- Uses Call Stack memory.
+- Each call creates a new stack frame.
+- May cause StackOverflowError if recursion is too deep.
+
+Iteration:
+- Uses for, while or do-while loops.
+- Does not create a new method call for every repetition.
+- Generally uses less memory.
+- Usually more memory efficient.
+
+
+3. WHAT IS TAIL AND NON-TAIL RECURSION?
+
+A) Tail Recursion:
+
+When the recursive call is the LAST operation of a method,
+it is called Tail Recursion.
+
+Example:
+
+static void display(int no)
+{
+    if(no == 0)
+        return;
+
+    System.out.println(no);
+
+    display(no - 1);       // Last operation
+}
+
+Here, no operation is performed after the recursive call.
+
+
+B) Non-Tail Recursion:
+
+When some operation is performed AFTER the recursive call
+returns, it is called Non-Tail Recursion.
+
+Example:
+
+static void display(int no)
+{
+    if(no == 0)
+        return;
+
+    display(no - 1);       // Recursive Call
+
+    System.out.println(no); // Operation after call
+}
+
+Here, println executes after the recursive call returns.
+
+
+4. TYPES OF NON-TAIL RECURSION
+
+A) Head Recursion:
+
+When the recursive call is performed BEFORE processing
+the current value, it is called Head Recursion.
+
+Example:
+
+static void display(int no)
+{
+    if(no == 0)
+        return;
+
+    display(no - 1);
+
+    System.out.println(no);
+}
+
+Output: 1 2 3 4 5
+
+Explanation:
+First, recursion goes towards the base condition.
+After reaching the base condition, printing starts
+while returning from the recursive calls.
+
+
+B) Non-Head (Tail-position processing) Recursion:
+
+When processing is performed BEFORE the recursive call,
+it is called Non-Head Recursion.
+
+Example:
+
+static void display(int no)
+{
+    if(no == 0)
+        return;
+
+    System.out.println(no);
+
+    display(no - 1);
+}
+
+Output: 5 4 3 2 1
+
+Explanation:
+First, the current value is printed.
+Then the recursive call is executed.
+
+Note: This example is also Tail Recursion because
+the recursive call is the last operation.
+
+
+5. HOW RECURSION WORKS IN CALL STACK?
+
+Example:
+
+static void display(int no)
+{
+    if(no == 0)
+        return;
+
+    System.out.println(no);
+
+    display(no - 1);
+}
+
+display(3);
+
+STEP 1: CALLING PHASE (STACK PUSH)
+
+display(3) -> prints 3 -> calls display(2)
+display(2) -> prints 2 -> calls display(1)
+display(1) -> prints 1 -> calls display(0)
+display(0) -> Base Condition reached -> returns
+
+Stack representation:
+
+       | display(0) |  <- Base Condition
+       |------------|
+       | display(1) |
+       |------------|
+       | display(2) |
+       |------------|
+       | display(3) |
+       |------------|
+
+STEP 2: RETURNING PHASE (STACK POP)
+
+display(0) returns
+display(1) completes
+display(2) completes
+display(3) completes
+
+Important:
+- Stack follows LIFO (Last In First Out).
+- The last method called returns first.
+- Each method call has its own local variables and
+  execution state.
+- Once a method completes, its stack frame is removed.
+
+
+6. HEAD RECURSION STACK WORKING
+
+Example:
+
+static void display(int no)
+{
+    if(no == 0)
+        return;
+
+    display(no - 1);
+
+    System.out.println(no);
+}
+
+display(3);
+
+CALLING PHASE:
+
+display(3)
+    display(2)
+        display(1)
+            display(0) -> returns
+
+RETURNING PHASE:
+
+display(1) -> prints 1
+display(2) -> prints 2
+display(3) -> prints 3
+
+Output: 1 2 3
+
+
+7. FACTORIAL USING RECURSION
+
+static int factorial(int no)
+{
+    if(no == 1)
+        return 1;
+
+    return no * factorial(no - 1);
+}
+
+factorial(4);
+
+Working:
+
+4 * factorial(3)
+4 * 3 * factorial(2)
+4 * 3 * 2 * factorial(1)
+4 * 3 * 2 * 1
+
+Output: 24
+
+Stack return working:
+
+factorial(1) = 1
+factorial(2) = 2 * 1 = 2
+factorial(3) = 3 * 2 = 6
+factorial(4) = 4 * 6 = 24
+
+
+============================================================
+IMPORTANT POINTS TO REMEMBER
+============================================================
+
+1. Base Condition stops recursive calls.
+2. Without a proper base condition, recursion may cause
+   StackOverflowError.
+3. Every recursive call gets its own stack frame.
+4. Tail Recursion: Nothing is executed after recursive call.
+5. Non-Tail Recursion: Some operation is executed after
+   recursive call returns.
+6. Head Recursion: Recursive call happens before processing.
+7. Tail-position processing (Non-Head): Processing happens
+   before recursive call.
+8. Java does not guarantee Tail Call Optimization.
+9. Recursion uses Call Stack, whereas iteration generally
+   uses less memory.
+
+============================================================
+
+/*
+============================================================
+              TYPES OF RECURSION IN JAVA
+============================================================
+
+1. Direct Recursion:
+   When a method calls itself directly, it is called
+   Direct Recursion.
+
+   Example:
+
+   static void display(int no)
+   {
+       if(no == 0)
+           return;
+
+       System.out.println(no);
+       display(no - 1);
+   }
+
+
+2. Indirect Recursion (Mutual Recursion):
+   When one method calls another method and that method
+   calls the first method again, it is called Indirect
+   Recursion.
+
+   Example:
+
+   static void methodA(int no)
+   {
+       if(no <= 0)
+           return;
+
+       System.out.println(no);
+       methodB(no - 1);
+   }
+
+   static void methodB(int no)
+   {
+       if(no <= 0)
+           return;
+
+       System.out.println(no);
+       methodA(no - 1);
+   }
+
+
+3. Linear Recursion:
+   When a method makes only ONE recursive call during
+   each execution, it is called Linear Recursion.
+
+   Example:
+
+   static int factorial(int no)
+   {
+       if(no == 1)
+           return 1;
+
+       return no * factorial(no - 1);
+   }
+
+
+4. Tree Recursion:
+   When a method makes MORE THAN ONE recursive call
+   during each execution, it is called Tree Recursion.
+
+   Example:
+
+   static void display(int no)
+   {
+       if(no <= 0)
+           return;
+
+       System.out.println(no);
+
+       display(no - 1);
+       display(no - 2);
+   }
+
+
+5. Tail Recursion:
+   When the recursive call is the last operation
+   performed by a method, it is called Tail Recursion.
+
+   Example:
+
+   static void display(int no)
+   {
+       if(no == 0)
+           return;
+
+       System.out.println(no);
+       display(no - 1);
+   }
+
+
+6. Non-Tail Recursion:
+   When an operation is performed after the recursive
+   call returns, it is called Non-Tail Recursion.
+
+   Example:
+
+   static void display(int no)
+   {
+       if(no == 0)
+           return;
+
+       display(no - 1);
+       System.out.println(no);
+   }
+
+============================================================
