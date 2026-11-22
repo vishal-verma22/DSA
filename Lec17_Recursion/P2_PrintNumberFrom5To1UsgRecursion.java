@@ -360,9 +360,7 @@ Space Complexity: O(n)
 ============================================================
 
 Recursion Type: Head Recursion
-
-Because the recursive call is executed before processing
-(printing) the current number.
+	Because pehle recursive call hota hai, uske baad current number print hota hai.
 
 ============================================================
 */
@@ -375,6 +373,7 @@ public class P2_PrintNumberFrom5To1UsgRecursion
 
     public static void printNumber(int no)
     {
+    	
         if(no <= 5)
         {
             printNumber(no + 1);
