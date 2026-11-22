@@ -152,7 +152,7 @@ package Lec17_Recursion;
  *============================================================
  */
 
-public class P2_PrintNumberFrom1To5And5To1UsgRecursion
+public class P3_PrintNumberFrom1To5And5To1UsgRecursion
 {
     //====================================================
     // Method: Print numbers while calling and returning
