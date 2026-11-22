@@ -167,7 +167,7 @@ package Lec17_Recursion;
  *============================================================
  */
 
-public class P8_InDirectRecursionExample
+public class P7_InDirectRecursionExample
 {
     static int no = 1;
 
