@@ -365,7 +365,7 @@ Recursion Type: Head Recursion
 ============================================================
 */
 
-public class P2_PrintNumberFrom5To1UsgRecursion
+public class P3_PrintNumberFrom5To1UsgRecursion
 {
     //========================================================
     // Print Number Method: Prints numbers from 5 to 1
