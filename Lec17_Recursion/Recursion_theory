@@ -283,9 +283,7 @@ IMPORTANT POINTS TO REMEMBER
 9. Recursion uses Call Stack, whereas iteration generally
    uses less memory.
 
-============================================================
 
-/*
 ============================================================
               TYPES OF RECURSION IN JAVA
 ============================================================
