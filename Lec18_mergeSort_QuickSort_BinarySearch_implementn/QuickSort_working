@@ -1,0 +1,423 @@
+
+/*
+ * ============================================================
+ * QUICK SORT - RECURSION TREE WITH STEP BY STEP EXECUTION
+ * ============================================================
+ *
+ * Problem Statement:
+ * Sort the given array using the Quick Sort algorithm.
+ *
+ * Main Logic:
+ * 1. Last element ko pivot element select karenge.
+ * 2. Pivot se smaller ya equal elements ko left side rakhenge.
+ * 3. Pivot se greater elements ko right side rakhenge.
+ * 4. Pivot ko uski correct position par place karenge.
+ * 5. Recursively left aur right parts ko sort karenge.
+ *
+ * Example:
+ * Input:
+ * [100, 70, 80, 10, 90, 20, 60, 50]
+ *
+ * Output:
+ * [10, 20, 50, 60, 70, 80, 90, 100]
+ *
+ * Time Complexity:
+ * Best Case: O(n log n)
+ * Average Case: O(n log n)
+ * Worst Case: O(n^2)
+ *
+ * ============================================================
+ */
+
+public class MainApp1QuickSort
+{
+    // ============================================================
+    // Quick Sort Method
+    // ============================================================
+
+    static void quickSort(int[] arr, int low, int high)
+    {
+        // Base Condition
+        if(low >= high)
+        {
+            return;
+        }
+
+        // Last element ko pivot banaya
+        int pivotElement = arr[high];
+
+        // Smaller elements ki next position
+        int pivotIndex = low;
+
+        // Pivot ko chhodkar baaki elements check karenge
+        for(int i = low; i < high; i++)
+        {
+            if(arr[i] <= pivotElement)
+            {
+                // Swap arr[i] and arr[pivotIndex]
+                int temp = arr[i];
+                arr[i] = arr[pivotIndex];
+                arr[pivotIndex] = temp;
+
+                pivotIndex++;
+            }
+        }
+
+        // Pivot ko uski correct position par rakhna
+        int temp = arr[pivotIndex];
+        arr[pivotIndex] = arr[high];
+        arr[high] = temp;
+
+        // Pivot ke left part ko sort karna
+        quickSort(arr, low, pivotIndex - 1);
+
+        // Pivot ke right part ko sort karna
+        quickSort(arr, pivotIndex + 1, high);
+    }
+
+    // ============================================================
+    // Main Method
+    // ============================================================
+
+    public static void main(String[] args)
+    {
+        int[] arr = {100, 70, 80, 10, 90, 20, 60, 50};
+
+        quickSort(arr, 0, arr.length - 1);
+
+        System.out.println("Sorted Array:");
+
+        for(int no : arr)
+        {
+            System.out.print(no + " ");
+        }
+    }
+}
+
+/*
+ * ============================================================
+ * COMPLETE DRY RUN
+ * ============================================================
+ *
+ * Initial Array:
+ * [100, 70, 80, 10, 90, 20, 60, 50]
+ *
+ * ------------------------------------------------------------
+ * STEP 1: quickSort(0, 7)
+ * ------------------------------------------------------------
+ *
+ * Pivot = 50
+ * pivotIndex = 0
+ *
+ * i = 0 -> 100 <= 50 : FALSE
+ * i = 1 -> 70  <= 50 : FALSE
+ * i = 2 -> 80  <= 50 : FALSE
+ * i = 3 -> 10  <= 50 : TRUE
+ *
+ * Swap 10 and 100
+ * [10, 70, 80, 100, 90, 20, 60, 50]
+ * pivotIndex = 1
+ *
+ * i = 4 -> 90 <= 50 : FALSE
+ *
+ * i = 5 -> 20 <= 50 : TRUE
+ *
+ * Swap 20 and 70
+ * [10, 20, 80, 100, 90, 70, 60, 50]
+ * pivotIndex = 2
+ *
+ * i = 6 -> 60 <= 50 : FALSE
+ *
+ * Now pivot ko correct position par rakhenge.
+ *
+ * Swap 80 and 50
+ *
+ * Array:
+ * [10, 20, 50, 100, 90, 70, 60, 80]
+ *
+ * Pivot 50 ki correct position = Index 2
+ *
+ * Ab do recursive calls hongi:
+ *
+ * CALL 1:
+ * quickSort(arr, 0, 1)
+ *
+ * CALL 2:
+ * quickSort(arr, 3, 7)
+ *
+ * IMPORTANT:
+ * Pehle CALL 1 complete hoga.
+ * Uske baad hi CALL 2 execute hoga.
+ *
+ * Recursion Tree:
+ *
+ *              quickSort(0, 7)
+ *                  Pivot = 50
+ *
+ * ------------------------------------------------------------
+ * STEP 2: quickSort(0, 1)
+ * ------------------------------------------------------------
+ *
+ * Pivot = 20
+ * pivotIndex = 0
+ *
+ * i = 0 -> 10 <= 20 : TRUE
+ *
+ * Swap 10 and 10
+ *
+ * Array:
+ * [10, 20, 50, 100, 90, 70, 60, 80]
+ *
+ * pivotIndex = 1
+ *
+ * Pivot swap:
+ * Swap 20 and 20
+ *
+ * Array remains same.
+ *
+ * Pivot 20 ki correct position = Index 1
+ *
+ * Ab do recursive calls hongi:
+ *
+ * CALL 1:
+ * quickSort(arr, 0, 0)
+ *
+ * Base Condition:
+ * low >= high
+ * 0 >= 0 : TRUE
+ *
+ * RETURN
+ *
+ * CALL 2:
+ * quickSort(arr, 2, 1)
+ *
+ * Base Condition:
+ * 2 >= 1 : TRUE
+ *
+ * RETURN
+ *
+ * Ab quickSort(0, 1) complete ho gaya.
+ * Control wapas quickSort(0, 7) mein jayega.
+ *
+ * Tree:
+ *
+ *                 quickSort(0, 7)
+ *                    Pivot = 50
+ *                  /             \
+ *                 /               \
+ *       quickSort(0, 1)        quickSort(3, 7)
+ *          Pivot = 20
+ *          /       \
+ *       (0, 0)    (2, 1)
+ *       RETURN    RETURN
+ *
+ * Note:
+ * Abhi quickSort(3, 7) execute nahi hua hai.
+ *
+ * ------------------------------------------------------------
+ * STEP 3: quickSort(3, 7)
+ * ------------------------------------------------------------
+ *
+ * Pivot = 80
+ * pivotIndex = 3
+ *
+ * i = 3 -> 100 <= 80 : FALSE
+ * i = 4 -> 90  <= 80 : FALSE
+ *
+ * i = 5 -> 70 <= 80 : TRUE
+ *
+ * Swap 70 and 100
+ *
+ * Array:
+ * [10, 20, 50, 70, 90, 100, 60, 80]
+ *
+ * pivotIndex = 4
+ *
+ * i = 6 -> 60 <= 80 : TRUE
+ *
+ * Swap 60 and 90
+ *
+ * Array:
+ * [10, 20, 50, 70, 60, 100, 90, 80]
+ *
+ * pivotIndex = 5
+ *
+ * Ab pivot ko correct position par rakhenge.
+ *
+ * Swap 100 and 80
+ *
+ * Array:
+ * [10, 20, 50, 70, 60, 80, 90, 100]
+ *
+ * Pivot 80 ki correct position = Index 5
+ *
+ * Ab do recursive calls hongi:
+ *
+ * CALL 1:
+ * quickSort(arr, 3, 4)
+ *
+ * CALL 2:
+ * quickSort(arr, 6, 7)
+ *
+ * Pehle CALL 1 execute hoga.
+ *
+ * Tree:
+ *
+ *                 quickSort(0, 7)
+ *                    Pivot = 50
+ *                  /             \
+ *                 /               \
+ *       quickSort(0, 1)        quickSort(3, 7)
+ *          Pivot = 20             Pivot = 80
+ *          /       \              /       \
+ *       (0, 0)    (2, 1)         ?         ?
+ *       RETURN    RETURN
+ *
+ * ------------------------------------------------------------
+ * STEP 4: quickSort(3, 4)
+ * ------------------------------------------------------------
+ *
+ * Pivot = 60
+ * pivotIndex = 3
+ *
+ * i = 3 -> 70 <= 60 : FALSE
+ *
+ * Ab pivot ko correct position par rakhenge.
+ *
+ * Swap 70 and 60
+ *
+ * Array:
+ * [10, 20, 50, 60, 70, 80, 90, 100]
+ *
+ * Pivot 60 ki correct position = Index 3
+ *
+ * Ab do recursive calls hongi:
+ *
+ * CALL 1:
+ * quickSort(arr, 3, 2)
+ *
+ * Base Condition:
+ * 3 >= 2 : TRUE
+ *
+ * RETURN
+ *
+ * CALL 2:
+ * quickSort(arr, 4, 4)
+ *
+ * Base Condition:
+ * 4 >= 4 : TRUE
+ *
+ * RETURN
+ *
+ * Ab quickSort(3, 4) complete ho gaya.
+ * Control wapas quickSort(3, 7) mein jayega.
+ *
+ * Tree:
+ *
+ *                 quickSort(0, 7)
+ *                    Pivot = 50
+ *                  /             \
+ *                 /               \
+ *       quickSort(0, 1)        quickSort(3, 7)
+ *          Pivot = 20             Pivot = 80
+ *          /       \              /       \
+ *       (0, 0)    (2, 1)   quickSort(3, 4)   ?
+ *       RETURN    RETURN      Pivot = 60
+ *                              /       \
+ *                           (3, 2)    (4, 4)
+ *                           RETURN    RETURN
+ *
+ * ------------------------------------------------------------
+ * STEP 5: quickSort(6, 7)
+ * ------------------------------------------------------------
+ *
+ * Pivot = 100
+ * pivotIndex = 6
+ *
+ * i = 6 -> 90 <= 100 : TRUE
+ *
+ * Swap 90 and 90
+ *
+ * Array:
+ * [10, 20, 50, 60, 70, 80, 90, 100]
+ *
+ * pivotIndex = 7
+ *
+ * Ab pivot ko correct position par rakhenge.
+ *
+ * Swap 100 and 100
+ *
+ * Array remains same.
+ *
+ * Pivot 100 ki correct position = Index 7
+ *
+ * Ab do recursive calls hongi:
+ *
+ * CALL 1:
+ * quickSort(arr, 6, 6)
+ *
+ * Base Condition:
+ * 6 >= 6 : TRUE
+ *
+ * RETURN
+ *
+ * CALL 2:
+ * quickSort(arr, 8, 7)
+ *
+ * Base Condition:
+ * 8 >= 7 : TRUE
+ *
+ * RETURN
+ *
+ * Ab quickSort(6, 7) complete ho gaya.
+ *
+ * Tree:
+ *
+ *                 quickSort(0, 7)
+ *                    Pivot = 50
+ *                  /             \
+ *                 /               \
+ *       quickSort(0, 1)        quickSort(3, 7)
+ *          Pivot = 20             Pivot = 80
+ *          /       \              /       \
+ *       (0, 0)    (2, 1)   quickSort(3, 4)  quickSort(6, 7)
+ *       RETURN    RETURN      Pivot = 60      Pivot = 100
+ *                              /       \        /       \
+ *                           (3, 2)    (4, 4)  (6, 6)   (8, 7)
+ *                           RETURN    RETURN  RETURN   RETURN
+ *
+ * ------------------------------------------------------------
+ * STEP 6: ALL RECURSIVE CALLS RETURN
+ * ------------------------------------------------------------
+ *
+ * 1. quickSort(6, 6) returns.
+ * 2. quickSort(8, 7) returns.
+ * 3. quickSort(6, 7) completes and returns.
+ * 4. quickSort(3, 4) had already returned.
+ * 5. quickSort(3, 7) completes and returns.
+ * 6. quickSort(0, 1) had already returned.
+ * 7. quickSort(0, 7) completes.
+ *
+ * FINAL RECURSION TREE:
+ *
+ *                       quickSort(0, 7)
+ *                          Pivot = 50
+ *                     /                         \
+ *                    /                           \
+ *             quickSort(0, 1)                quickSort(3, 7)
+ *                Pivot = 20                     Pivot = 80
+ *                /       \                     /          \
+ *               /         \                   /            \
+ *           (0, 0)       (2, 1)         quickSort(3, 4)  quickSort(6, 7)
+ *           RETURN       RETURN            Pivot = 60       Pivot = 100
+ *                                           /       \         /       \
+ *                                          /         \       /         \
+ *                                      (3, 2)       (4, 4) (6, 6)     (8, 7)
+ *                                      RETURN       RETURN RETURN     RETURN
+ *
+ * FINAL SORTED ARRAY:
+ *
+ * [10, 20, 50, 60, 70, 80, 90, 100]
+ *
+ * ============================================================
+ */
