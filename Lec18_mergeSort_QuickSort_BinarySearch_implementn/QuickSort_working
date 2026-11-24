@@ -13,6 +13,14 @@
  * 3. Pivot se greater elements ko right side rakhenge.
  * 4. Pivot ko uski correct position par place karenge.
  * 5. Recursively left aur right parts ko sort karenge.
+ 
+ condition
+ // LEFT SIDE
+quickSort(arr, low, pivotIndex - 1);
+
+// RIGHT SIDE
+quickSort(arr, pivotIndex + 1, high);
+
  *
  * Example:
  * Input:
