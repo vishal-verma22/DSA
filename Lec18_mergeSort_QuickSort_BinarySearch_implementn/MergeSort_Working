@@ -1,3 +1,11 @@
+ condition 
+ 
+  // LEFT SIDE
+mergeSort(arr, low, mid);
+
+// RIGHT SIDE
+mergeSort(arr, mid + 1, high);
+
     =====================================================================
                     MERGE SORT - COMPLETE RECURSION FLOW
     =====================================================================
