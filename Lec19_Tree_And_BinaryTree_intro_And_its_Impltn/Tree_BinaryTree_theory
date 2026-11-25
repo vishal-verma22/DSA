@@ -1,154 +1,816 @@
-
 ================================================================================================================
-                                      TREE DATA STRUCTURE
+                                           TREE DATA STRUCTURE
 ================================================================================================================
 
-1. What is a Tree?
+1. WHAT IS A TREE?
+================================================================================================================
 
-   A Tree is a non-linear and hierarchical data structure that is used to store data
-   in the form of nodes connected through edges.
+   Definition:
 
-   - A Tree starts with a special node called Root.
-   - Each node can have zero or more child nodes.
-   - Nodes are connected using edges.
-   - A Tree does not contain any cycle.
-   - Data is arranged in a parent-child relationship.
+   A Tree is a non-linear and hierarchical data structure in which
+   data is stored in the form of Nodes connected through Edges.
+
+   - A Tree starts with a special Node called the Root Node.
+   - Every Node can have zero or more Child Nodes.
+   - Nodes are connected to each other through Edges.
+   - A Tree does not contain any Cycle.
+   - Data is arranged in a Parent-Child relationship.
 
    Example:
 
-                         10
-                       /    \
-                      20     30
-                     /  \      \
-                    40   50     60
+                              10
+                            /    \
+                           20     30
+                          /  \      \
+                         40   50     60
 
-   Here:
-   - 10 is the Root Node.
-   - 20 and 30 are children of 10.
-   - 10 is the parent of 20 and 30.
-   - 40, 50 and 60 are Leaf Nodes.
+   Explanation:
+
+   - 10 is the Root Node of the Tree.
+   - 20 and 30 are Children of 10.
+   - 40 and 50 are Children of 20.
+   - 60 is the Child of 30.
+
+   Total Nodes = 6
+   Total Edges = 5
+
+   Real-Life Examples:
+
+   1. Computer Folder Structure.
+   2. Family Tree.
+   3. Organization Hierarchy.
+   4. HTML DOM Structure.
+
 
 ================================================================================================================
-2. Important Terminologies of Tree
+2. IMPORTANT TERMINOLOGIES OF TREE
 ================================================================================================================
 
-1. Node:
+   Consider the following Tree to understand all the terminologies:
+
+                              10
+                            /    \
+                           20     30
+                          /  \      \
+                         40   50     60
+                             /
+                            70
+
+   Total Nodes = 7
+   Total Edges = 6
+
+
+----------------------------------------------------------------------------------------------------------------
+1. NODE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
    A Node is an individual element of a Tree that stores data.
+   Every individual element present in a Tree is called a Node.
 
-2. Root Node:
-   The topmost node of a Tree is called the Root Node.
-   Example: 10
+   Example:
 
-3. Parent Node:
-   A node that has one or more child nodes is called a Parent Node.
-   Example: 10 is the parent of 20 and 30.
+                              10
+                            /    \
+                           20     30
+                          /  \
+                         40   50
 
-4. Child Node:
-   A node directly connected below another node is called its Child.
-   Example: 20 and 30 are children of 10.
+   Explanation:
 
-5. Sibling Nodes:
-   Nodes that have the same parent are called Siblings.
-   Example: 20 and 30 are siblings.
+   In the above Tree, 10, 20, 30, 40 and 50 are individual elements.
+   Each individual element is called a Node.
 
-6. Leaf Node:
-   A node that does not have any child is called a Leaf Node.
-   Example: 40, 50 and 60.
+   Total Nodes = 5.
 
-7. Internal Node:
-   A node that has at least one child is called an Internal Node.
-   Example: 10, 20 and 30.
 
-8. Edge:
-   A connection between two nodes is called an Edge.
+----------------------------------------------------------------------------------------------------------------
+2. ROOT NODE
+----------------------------------------------------------------------------------------------------------------
 
-9. Degree of Node:
-   The number of children of a particular node is called its Degree.
-   Example: Degree of node 10 = 2.
+   Definition:
 
-10. Depth of Node:
-    The number of edges from the Root Node to a particular node is called its Depth.
-    Example: Depth of node 40 = 2.
+   The topmost Node of a Tree from which all other Nodes are
+   connected directly or indirectly is called the Root Node.
 
-11. Height of Node:
-    The number of edges in the longest path from that node to a Leaf Node.
-    Example: Height of node 10 = 2.
+   Example:
 
-12. Height of Tree:
-    The height of the Root Node is called the Height of Tree.
-    Example: Height of the above Tree = 2.
+                              10  <--- Root Node
+                            /    \
+                           20     30
+                          /  \
+                         40   50
+
+   Explanation:
+
+   - 10 is the topmost Node of the Tree.
+   - It does not have any Parent Node.
+   - All other Nodes are connected directly or indirectly to it.
+
+   Therefore, Root Node = 10.
+
+
+----------------------------------------------------------------------------------------------------------------
+3. PARENT NODE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Node that has one or more Children directly connected below it
+   is called a Parent Node.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \
+                         40   50
+
+   Explanation:
+
+   - 10 is the Parent of 20 and 30.
+   - 20 is the Parent of 40 and 50.
+
+   A Parent Node is always directly above its Child Nodes.
+
+   Important:
+   Every Node except the Root Node has exactly one Parent.
+
+
+----------------------------------------------------------------------------------------------------------------
+4. CHILD NODE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Node that is directly connected below another Node
+   is called its Child Node.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \
+                         40   50
+
+   Explanation:
+
+   - 20 is the Child of 10.
+   - 30 is the Child of 10.
+   - 40 and 50 are Children of 20.
+
+   Important:
+   A Child must be directly connected to its Parent.
+   An indirectly connected Node is not considered a direct Child.
+
+
+----------------------------------------------------------------------------------------------------------------
+5. SIBLING NODES
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   Two or more Nodes that have the same Parent Node
+   are called Sibling Nodes.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                           ^       ^
+                           |       |
+                         Sibling Sibling
+
+   Explanation:
+
+   - 20 and 30 have the same Parent Node (10).
+   - Therefore, 20 and 30 are Sibling Nodes.
+
+   Another Example:
+
+                              20
+                            /    \
+                           40     50
+
+   Here, 40 and 50 are also Sibling Nodes because
+   both have the same Parent Node (20).
+
+
+----------------------------------------------------------------------------------------------------------------
+6. LEAF NODE (EXTERNAL NODE)
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Node that does not have any Child Node is called a Leaf Node.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \      \
+                         40   50     60
+                         ^    ^       ^
+                         |    |       |
+                        Leaf Leaf    Leaf
+
+   Explanation:
+
+   - 40 does not have any Child.
+   - 50 does not have any Child.
+   - 60 does not have any Child.
+
+   Therefore, 40, 50 and 60 are Leaf Nodes.
+
+   Important:
+   Degree of a Leaf Node = 0.
+
+
+----------------------------------------------------------------------------------------------------------------
+7. INTERNAL NODE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Node that has at least one Child Node is called an Internal Node.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \      \
+                         40   50     60
+
+   Explanation:
+
+   - 10 has two Children (20 and 30).
+   - 20 has two Children (40 and 50).
+   - 30 has one Child (60).
+
+   Therefore:
+
+   Internal Nodes = 10, 20, 30
+
+   Important:
+   An Internal Node must have at least one Child.
+   The Root Node can also be an Internal Node.
+
+
+----------------------------------------------------------------------------------------------------------------
+8. EDGE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   An Edge is a connection or link between two directly
+   connected Nodes in a Tree.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \
+                         40   50
+
+   Explanation:
+
+   Connections:
+
+   10 ---- 20 = Edge 1
+   10 ---- 30 = Edge 2
+   20 ---- 40 = Edge 3
+   20 ---- 50 = Edge 4
+
+   Total Nodes = 5
+   Total Edges = 4
+
+   Formula:
+
+   Total Edges = Total Nodes - 1
+
+   = 5 - 1
+   = 4
+
+
+----------------------------------------------------------------------------------------------------------------
+9. DEGREE OF NODE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   The Degree of a Node is the total number of its direct Child Nodes.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \      \
+                         40   50     60
+
+   Explanation:
+
+   Degree of Node 10 = 2 (20, 30)
+
+   Degree of Node 20 = 2 (40, 50)
+
+   Degree of Node 30 = 1 (60)
+
+   Degree of Node 40 = 0
+
+   Degree of Node 50 = 0
+
+   Degree of Node 60 = 0
+
+   Important:
+
+   - A Leaf Node always has Degree = 0.
+   - Only direct Children are counted.
+   - Indirect Descendants are not counted.
+
+
+----------------------------------------------------------------------------------------------------------------
+10. DEPTH OF NODE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   The Depth of a Node is the total number of Edges from the
+   Root Node to that particular Node.
+
+   Example:
+
+                              10  <--- Depth = 0
+                            /    \
+                           20     30  <--- Depth = 1
+                          /  \      \
+                         40   50     60  <--- Depth = 2
+                             /
+                            70         <--- Depth = 3
+
+   Explanation:
+
+   Depth of Node 10 = 0
+
+   Depth of Node 20 = 1
+   Path: 10 -> 20
+   Total Edges = 1
+
+   Depth of Node 40 = 2
+   Path: 10 -> 20 -> 40
+   Total Edges = 2
+
+   Depth of Node 70 = 3
+   Path: 10 -> 20 -> 50 -> 70
+   Total Edges = 3
+
+   Important:
+   The Depth of the Root Node is always 0.
+
+
+----------------------------------------------------------------------------------------------------------------
+11. HEIGHT OF NODE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   The Height of a Node is the number of Edges in the longest
+   downward path from that Node to any Leaf Node.
+
+   Example:
+
+                              10  <--- Height = 3
+                            /    \
+                           20     30
+                          /  \
+                         40   50
+                              /
+                             70
+
+   Explanation:
+
+   Height of Node 40 = 0
+   Because 40 is a Leaf Node.
+
+   Height of Node 70 = 0
+   Because 70 is also a Leaf Node.
+
+   Height of Node 50 = 1
+
+   Longest Path: 50 -> 70
+   Total Edges = 1
+
+   Height of Node 20 = 2
+
+   Longest Path: 20 -> 50 -> 70
+   Total Edges = 2
+
+   Height of Node 10 = 3
+
+   Longest Path: 10 -> 20 -> 50 -> 70
+   Total Edges = 3
+
+   Important:
+   The Height of a Leaf Node is always 0.
+
+
+----------------------------------------------------------------------------------------------------------------
+12. HEIGHT OF TREE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   The Height of a Tree is the Height of its Root Node.
+   It represents the number of Edges in the longest path
+   from the Root Node to any Leaf Node.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \
+                         40   50
+                              /
+                             70
+
+   Longest Path:
+
+   10 -> 20 -> 50 -> 70
+
+   Total Edges = 3
+
+   Therefore:
+
+   Height of Tree = 3
+
+
+----------------------------------------------------------------------------------------------------------------
+13. LEVEL OF NODE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   The Level of a Node represents its position in a Tree
+   based on its distance from the Root Node.
+
+   We consider the Root Node at Level 0.
+
+   Example:
+
+                              10          Level 0
+                            /    \
+                           20     30       Level 1
+                          /  \      \
+                         40   50     60    Level 2
+                             /
+                            70             Level 3
+
+   Explanation:
+
+   Level of Node 10 = 0
+   Level of Node 20 = 1
+   Level of Node 30 = 1
+   Level of Node 40 = 2
+   Level of Node 50 = 2
+   Level of Node 60 = 2
+   Level of Node 70 = 3
+
+   Important:
+
+   When Root Level = 0:
+
+   Level of Node = Depth of Node.
+
+
+----------------------------------------------------------------------------------------------------------------
+14. SUBTREE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Subtree is a smaller Tree formed by a particular Node
+   and all its Descendants.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \      \
+                         40   50     60
+
+   Subtree of Node 20:
+
+                         20
+                        /  \
+                       40   50
+
+   Explanation:
+
+   If we select Node 20 along with all its Descendants (40 and 50),
+   a smaller Tree is formed.
+
+   This smaller Tree is called the Subtree of Node 20.
+
+
+----------------------------------------------------------------------------------------------------------------
+15. ANCESTOR
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   All the Nodes present on the path from the Root Node to a
+   particular Node, excluding that particular Node,
+   are called its Ancestors.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \
+                         40   50
+
+   Consider Node 40:
+
+   Path: 10 -> 20 -> 40
+
+   Ancestors of 40 = 10, 20
+
+   Explanation:
+
+   To reach Node 40, we first pass through Node 10 and then Node 20.
+
+   Therefore, 10 and 20 are the Ancestors of Node 40.
+
+
+----------------------------------------------------------------------------------------------------------------
+16. DESCENDANT
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   All the Nodes present below a particular Node,
+   either directly or indirectly, are called its Descendants.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \
+                         40   50
+
+   Descendants of Node 20 = 40, 50
+
+   Descendants of Node 10 = 20, 30, 40, 50
+
+   Explanation:
+
+   Node 20 has Nodes 40 and 50 below it.
+   Therefore, 40 and 50 are the Descendants of Node 20.
+
+
+----------------------------------------------------------------------------------------------------------------
+17. PATH
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Path is a sequence of connected Nodes and Edges
+   used to travel from one Node to another Node.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \
+                         40   50
+
+   Path from 10 to 50:
+
+   10 -> 20 -> 50
+
+   Total Nodes in Path = 3
+   Total Edges in Path = 2
+
+   Explanation:
+
+   To reach Node 50 from Node 10, we first visit Node 20
+   and then Node 50.
+
+   This sequence of connected Nodes is called a Path.
+
 
 ================================================================================================================
-3. Types of Tree
+3. TYPES OF TREE
 ================================================================================================================
 
-1. General Tree:
-   A Tree in which a node can have any number of children.
+1. GENERAL TREE
+----------------------------------------------------------------------------------------------------------------
 
-2. Binary Tree:
-   A Tree in which each node can have at most two children.
+   Definition:
 
-3. Binary Search Tree (BST):
-   A Binary Tree in which:
-   - Left subtree contains smaller values.
-   - Right subtree contains greater values.
+   A General Tree is a Tree in which a Node can have any number
+   of Children. There is no fixed maximum limit on the number
+   of Children.
 
-4. AVL Tree:
-   A Self-Balancing Binary Search Tree.
+   Example:
 
-5. Heap Tree:
-   A Complete Binary Tree that follows the Heap Property.
+                              10
+                         /    |    \
+                        20    30    40
+                       / \          |
+                      50  60        70
 
-================================================================================================================
-                                      BINARY TREE
-================================================================================================================
+   Explanation:
 
-4. What is a Binary Tree?
+   - Node 10 has 3 Children.
+   - Node 20 has 2 Children.
+   - Node 40 has 1 Child.
 
-   A Binary Tree is a special type of Tree in which each node can have
-   AT MOST TWO CHILDREN.
+   There is no fixed limit on the number of Children.
 
-   These two children are:
+
+2. BINARY TREE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Binary Tree is a special type of Tree in which every Node
+   can have at most TWO Children.
+
+   These two Children are:
 
    1. Left Child
    2. Right Child
 
-   Important:
-   - A node can have zero children.
-   - A node can have only one child.
-   - A node can have two children.
-   - A node cannot have more than two children.
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \      \
+                         40   50     60
+
+   Explanation:
+
+   - Node 10 has two Children.
+   - Node 20 has two Children.
+   - Node 30 has one Child.
+   - Nodes 40, 50 and 60 have zero Children.
+
+
+3. BINARY SEARCH TREE (BST)
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Binary Search Tree is a special type of Binary Tree in which
+   the Left Subtree contains smaller values and the Right Subtree
+   contains greater values than the current Node.
 
    Example:
 
-                         10
-                       /    \
-                      20     30
-                     /  \   /  \
-                    40  50 60  70
+                              50
+                            /    \
+                           30     70
+                          /  \   /  \
+                         20  40 60  80
 
-   Here:
+   Explanation:
+
+   - Values smaller than 50 are present in its Left Subtree.
+   - Values greater than 50 are present in its Right Subtree.
+   - The same ordering rule is followed at every Node.
+
+   Important:
+
+   Left Subtree < Root Node < Right Subtree
+
+
+4. AVL TREE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   An AVL Tree is a Self-Balancing Binary Search Tree in which
+   the height difference between the Left and Right Subtrees
+   of every Node is at most 1.
+
+   Example:
+
+                              30
+                            /    \
+                           20     40
+                          /  \
+                         10   25
+
+   Explanation:
+
+   AVL Tree automatically maintains its balance.
+   If insertion or deletion makes the Tree unbalanced,
+   rotations are performed to restore balance.
+
+
+5. HEAP TREE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Heap is a Complete Binary Tree that follows a specific
+   Heap Property.
+
+   Two Types:
+
+   1. Max Heap:
+      The Parent Node is greater than or equal to its Children.
+
+   2. Min Heap:
+      The Parent Node is smaller than or equal to its Children.
+
+   Max Heap Example:
+
+                              90
+                            /    \
+                           70     80
+                          /  \
+                         40   50
+
+   Explanation:
+
+   Every Parent Node is greater than or equal to its Children.
+
+   Therefore, this is a Max Heap.
+
+
+================================================================================================================
+4. WHAT IS A BINARY TREE?
+================================================================================================================
+
+   Definition:
+
+   A Binary Tree is a Non-Linear and Hierarchical Data Structure
+   in which every Node can have at most TWO Children.
+
+   These two Children are called:
+
+   1. Left Child
+   2. Right Child
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \   /  \
+                         40  50 60  70
+
+   Explanation:
+
    - 10 is the Root Node.
    - 20 is the Left Child of 10.
    - 30 is the Right Child of 10.
-   - 40 and 50 are children of 20.
-   - 60 and 70 are children of 30.
+   - 40 and 50 are Children of 20.
+   - 60 and 70 are Children of 30.
+
+   Important:
+
+   A Binary Tree Node can have:
+
+   1. Zero Children.
+   2. Only One Child.
+   3. Exactly Two Children.
+
+   A Node cannot have more than two Children.
+
 
 ================================================================================================================
-5. Structure of Binary Tree Node
+5. STRUCTURE OF BINARY TREE NODE
 ================================================================================================================
+
+   Definition:
 
    Every Binary Tree Node generally contains three parts:
 
-   1. Data  : Stores the value.
-   2. Left  : Stores the reference of Left Child.
-   3. Right : Stores the reference of Right Child.
+   1. Data  : Stores the actual value.
+   2. Left  : Stores the reference of the Left Child.
+   3. Right : Stores the reference of the Right Child.
 
    Diagram:
 
-             +-------+-------+-------+
-             |  Left | Data  | Right |
-             +-------+-------+-------+
+                 +------------+------------+-------------+
+                 |    Left    |    Data    |    Right   |
+                 +------------+------------+-------------+
 
    Java Implementation:
 
@@ -166,175 +828,404 @@
        }
    }
 
+   Explanation:
+
+   - data stores the actual value of the Node.
+   - left stores the reference of the Left Child.
+   - right stores the reference of the Right Child.
+   - If a Child does not exist, its reference is null.
+
+
 ================================================================================================================
-6. Types of Binary Tree
+6. TYPES OF BINARY TREE
 ================================================================================================================
 
-1. Full Binary Tree:
+1. FULL BINARY TREE
+----------------------------------------------------------------------------------------------------------------
 
-   A Binary Tree in which every node has either:
-   - Zero children (Leaf Node).
-   - Exactly Two children.
+   Definition:
 
-   No node can have only one child.
+   A Full Binary Tree is a Binary Tree in which every Node
+   has either ZERO or EXACTLY TWO Children.
 
-   Example:
-
-                         10
-                       /    \
-                      20     30
-                     /  \
-                    40   50
-
-2. Complete Binary Tree:
-
-   A Binary Tree in which:
-   - Every level except the last level is completely filled.
-   - The last level is filled from LEFT TO RIGHT.
+   No Node can have only one Child.
 
    Example:
 
-                         10
-                       /    \
-                      20     30
-                     /  \   /
-                    40  50 60
+                              10
+                            /    \
+                           20     30
+                          /  \
+                         40   50
 
-3. Perfect Binary Tree:
+   Explanation:
 
-   A Binary Tree in which:
-   - Every internal node has exactly two children.
-   - All leaf nodes are at the same level.
+   - Node 10 has exactly 2 Children.
+   - Node 20 has exactly 2 Children.
+   - Node 30 has 0 Children.
+   - Nodes 40 and 50 have 0 Children.
+
+   Every Node has either 0 or 2 Children.
+
+   Therefore, it is a Full Binary Tree.
+
+
+2. COMPLETE BINARY TREE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Complete Binary Tree is a Binary Tree in which all levels
+   are completely filled except possibly the last level.
+
+   The last level must be filled from LEFT TO RIGHT without gaps.
 
    Example:
 
-                         10
-                       /    \
-                      20     30
-                     /  \   /  \
-                    40  50 60  70
+                              10
+                            /    \
+                           20     30
+                          /  \   /
+                         40  50 60
 
-4. Balanced Binary Tree:
+   Explanation:
 
-   A Binary Tree in which the height difference between
-   the left and right subtrees of every node is at most 1.
+   - Level 0 is completely filled.
+   - Level 1 is completely filled.
+   - The last level is filled from left to right.
+   - There are no gaps before an existing Node.
+
+   Therefore, it is a Complete Binary Tree.
+
+
+3. PERFECT BINARY TREE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Perfect Binary Tree is a Binary Tree in which every
+   Internal Node has exactly TWO Children and all Leaf Nodes
+   are present at the same Level.
 
    Example:
 
+                              10
+                            /    \
+                           20     30
+                          /  \   /  \
+                         40  50 60  70
+
+   Explanation:
+
+   - Node 10 has exactly 2 Children.
+   - Nodes 20 and 30 have exactly 2 Children.
+   - All Leaf Nodes (40, 50, 60, 70) are at the same Level.
+   - Every Level is completely filled.
+
+   Therefore, it is a Perfect Binary Tree.
+
+
+4. BALANCED BINARY TREE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Height-Balanced Binary Tree is a Binary Tree in which
+   the difference between the heights of the Left and Right
+   Subtrees of every Node is at most 1.
+
+   Example:
+
+                              10
+                            /    \
+                           20     30
+                          /  \
+                         40   50
+
+   Explanation:
+
+   At Node 10:
+
+   Height of Left Subtree = 1
+   Height of Right Subtree = 0
+
+   Difference = 1 - 0 = 1
+
+   At Node 20:
+
+   Height of Left Subtree = 0
+   Height of Right Subtree = 0
+
+   Difference = 0
+
+   Every Node has a height difference of at most 1.
+
+   Therefore, this is a Balanced Binary Tree.
+
+
+5. SKEWED BINARY TREE
+----------------------------------------------------------------------------------------------------------------
+
+   Definition:
+
+   A Skewed Binary Tree is a Binary Tree in which every Node
+   has at most ONE Child.
+
+   Two Types:
+
+   A. LEFT SKEWED BINARY TREE
+
+                              10
+                             /
+                            20
+                           /
+                          30
+                         /
+                        40
+
+   Explanation:
+
+   Every Node has only a Left Child and no Right Child.
+
+   B. RIGHT SKEWED BINARY TREE
+
                          10
-                       /    \
-                      20     30
-                     /  \
-                    40   50
-
-5. Skewed Binary Tree:
-
-   A Binary Tree in which every node has only one child.
-
-   Left Skewed Tree:
-
-                         10
-                        /
-                       20
-                      /
-                     30
-                    /
-                   40
-
-   Right Skewed Tree:
-
-                   10
-                     \
-                      20
-                        \
-                         30
                            \
-                            40
+                            20
+                              \
+                               30
+                                 \
+                                  40
+
+   Explanation:
+
+   Every Node has only a Right Child and no Left Child.
+
+   Important:
+
+   A Skewed Binary Tree looks similar to a Linked List.
+
 
 ================================================================================================================
-7. Important Properties of Binary Tree
+7. IMPORTANT PROPERTIES OF BINARY TREE
 ================================================================================================================
 
-1. Maximum number of nodes at level L:
+1. MAXIMUM NUMBER OF NODES AT LEVEL L
+----------------------------------------------------------------------------------------------------------------
+
+   Formula:
 
    Maximum Nodes = 2^L
 
    Here, Root Level = 0.
 
    Example:
-   Level 0 = 2^0 = 1 node
-   Level 1 = 2^1 = 2 nodes
-   Level 2 = 2^2 = 4 nodes
-   Level 3 = 2^3 = 8 nodes
 
-2. Maximum number of nodes in a Binary Tree of Height H:
+   Level 0 = 2^0 = 1 Node
+
+   Level 1 = 2^1 = 2 Nodes
+
+   Level 2 = 2^2 = 4 Nodes
+
+   Level 3 = 2^3 = 8 Nodes
+
+
+2. MAXIMUM NUMBER OF NODES IN A BINARY TREE
+----------------------------------------------------------------------------------------------------------------
+
+   Formula:
 
    Maximum Nodes = 2^(H+1) - 1
 
+   Here:
+   H = Height of Tree (in Edges).
+
    Example:
+
    Height = 2
 
    Maximum Nodes = 2^(2+1) - 1
+
+                 = 2^3 - 1
+
                  = 8 - 1
+
                  = 7
 
-3. Minimum number of nodes in a Binary Tree of Height H:
+
+3. MINIMUM NUMBER OF NODES IN A BINARY TREE
+----------------------------------------------------------------------------------------------------------------
+
+   Formula:
 
    Minimum Nodes = H + 1
 
-   This happens in a Skewed Binary Tree.
+   Here:
+   H = Height of Tree (in Edges).
 
-4. Maximum number of Leaf Nodes:
+   Example:
+
+   Height = 3
+
+   Minimum Nodes = 3 + 1
+
+                 = 4
+
+   Example of a Skewed Binary Tree:
+
+                              10
+                                \
+                                 20
+                                   \
+                                    30
+                                      \
+                                       40
+
+   Explanation:
+
+   Every Level contains only one Node.
+   Therefore, for Height 3, the minimum number of Nodes is 4.
+
+
+4. MAXIMUM NUMBER OF LEAF NODES
+----------------------------------------------------------------------------------------------------------------
+
+   Formula:
 
    Maximum Leaf Nodes = 2^H
 
-   For a Perfect Binary Tree of Height 2:
-   Maximum Leaf Nodes = 2^2 = 4
+   Here:
+   H = Height of Tree (in Edges).
+
+   Example:
+
+   Perfect Binary Tree of Height = 2
+
+                              10
+                            /    \
+                           20     30
+                          /  \   /  \
+                         40  50 60  70
+
+   Maximum Leaf Nodes = 2^2
+
+                      = 4
+
+
+5. TOTAL NUMBER OF EDGES
+----------------------------------------------------------------------------------------------------------------
+
+   Formula:
+
+   Total Edges = Total Nodes - 1
+
+   Example:
+
+   Total Nodes = 7
+
+   Total Edges = 7 - 1
+
+               = 6
+
 
 ================================================================================================================
-8. Difference Between Tree and Binary Tree
+8. DIFFERENCE BETWEEN TREE AND BINARY TREE
 ================================================================================================================
 
-   Tree:
-   - A node can have any number of children.
-   - No fixed limit on the number of children.
-   - It represents hierarchical data.
+   TREE:
 
-   Binary Tree:
-   - A node can have at most two children.
-   - Children are called Left Child and Right Child.
-   - It is a special type of Tree.
+   1. A Tree is a Non-Linear Data Structure.
+   2. A Node can have any number of Children.
+   3. There is no fixed maximum limit on the number of Children.
+   4. It is used to represent hierarchical data.
 
-================================================================================================================
-9. Applications of Binary Tree
-================================================================================================================
+   BINARY TREE:
 
-   1. Binary Search Tree (BST) for efficient searching.
-   2. Heap for Priority Queue implementation.
-   3. Expression Tree for mathematical expressions.
-   4. Decision Tree in Machine Learning.
-   5. Huffman Tree for data compression.
-   6. Syntax Tree in Compilers.
+   1. A Binary Tree is also a Non-Linear Data Structure.
+   2. A Node can have at most TWO Children.
+   3. Children are called Left Child and Right Child.
+   4. It is used in searching, sorting and hierarchical operations.
 
-================================================================================================================
-10. Important Points to Remember
-================================================================================================================
+   Important:
 
-   - Tree is a Non-Linear Data Structure.
-   - Binary Tree is a special type of Tree.
-   - Every Binary Tree is a Tree, but every Tree is not a Binary Tree.
-   - Root Node does not have a parent.
-   - Leaf Node does not have any child.
-   - A Binary Tree node can have a maximum of two children.
-   - A Tree with N nodes contains exactly N-1 edges.
-   - A Tree does not contain any cycle.
+   Every Binary Tree is a Tree.
+   But every Tree is NOT a Binary Tree.
+
 
 ================================================================================================================
-*/
-public class P01_Tree_And_BinaryTree
-{
-    public static void main(String[] args)
-    {
+9. APPLICATIONS OF BINARY TREE
+================================================================================================================
 
-    }
-}
+   1. Binary Search Tree (BST):
+      Used for efficient Searching, Insertion and Deletion.
+
+   2. Heap:
+      Used to implement Priority Queue.
+
+   3. Expression Tree:
+      Used to represent and evaluate Mathematical Expressions.
+
+   4. Decision Tree:
+      Used in Machine Learning for decision-making and predictions.
+
+   5. Huffman Tree:
+      Used in Data Compression.
+
+   6. Syntax Tree:
+      Used in Compilers to represent program structure.
+
+
+================================================================================================================
+10. IMPORTANT POINTS TO REMEMBER
+================================================================================================================
+
+   1. Tree is a Non-Linear Data Structure.
+
+   2. Binary Tree is a special type of Tree.
+
+   3. Every Binary Tree is a Tree, but every Tree is not a Binary Tree.
+
+   4. Root Node does not have a Parent.
+
+   5. Leaf Node does not have any Children.
+
+   6. Internal Node has at least one Child.
+
+   7. A Binary Tree Node can have a maximum of two Children.
+
+   8. A Tree with N Nodes contains exactly N-1 Edges.
+
+   9. A Tree does not contain any Cycle.
+
+   10. Full Binary Tree: Every Node has either 0 or 2 Children.
+
+   11. Complete Binary Tree: Last Level is filled from Left to Right.
+
+   12. Perfect Binary Tree: All Levels are completely filled.
+
+   13. Balanced Binary Tree: Height difference is at most 1
+       at every Node.
+
+   14. Skewed Binary Tree: Every Node has at most one Child.
+
+
+================================================================================================================
+11. WHAT TO STUDY NEXT IN TREE DSA?
+================================================================================================================
+
+   Follow this learning order:
+
+   1. Binary Tree Node Creation.
+   2. Binary Tree Implementation.
+   3. Preorder Traversal.
+   4. Inorder Traversal.
+   5. Postorder Traversal.
+   6. Level Order Traversal.
+   7. Count Total Nodes.
+   8. Count Leaf Nodes.
+   9. Find Height of Binary Tree.
+   10. Find Maximum and Minimum Value.
+   11. Binary Search Tree (BST).
+   12. BST Insertion, Searching and Deletion.
+
+================================================================================================================
