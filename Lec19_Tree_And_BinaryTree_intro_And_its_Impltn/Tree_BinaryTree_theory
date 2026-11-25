@@ -1,0 +1,340 @@
+
+================================================================================================================
+                                      TREE DATA STRUCTURE
+================================================================================================================
+
+1. What is a Tree?
+
+   A Tree is a non-linear and hierarchical data structure that is used to store data
+   in the form of nodes connected through edges.
+
+   - A Tree starts with a special node called Root.
+   - Each node can have zero or more child nodes.
+   - Nodes are connected using edges.
+   - A Tree does not contain any cycle.
+   - Data is arranged in a parent-child relationship.
+
+   Example:
+
+                         10
+                       /    \
+                      20     30
+                     /  \      \
+                    40   50     60
+
+   Here:
+   - 10 is the Root Node.
+   - 20 and 30 are children of 10.
+   - 10 is the parent of 20 and 30.
+   - 40, 50 and 60 are Leaf Nodes.
+
+================================================================================================================
+2. Important Terminologies of Tree
+================================================================================================================
+
+1. Node:
+   A Node is an individual element of a Tree that stores data.
+
+2. Root Node:
+   The topmost node of a Tree is called the Root Node.
+   Example: 10
+
+3. Parent Node:
+   A node that has one or more child nodes is called a Parent Node.
+   Example: 10 is the parent of 20 and 30.
+
+4. Child Node:
+   A node directly connected below another node is called its Child.
+   Example: 20 and 30 are children of 10.
+
+5. Sibling Nodes:
+   Nodes that have the same parent are called Siblings.
+   Example: 20 and 30 are siblings.
+
+6. Leaf Node:
+   A node that does not have any child is called a Leaf Node.
+   Example: 40, 50 and 60.
+
+7. Internal Node:
+   A node that has at least one child is called an Internal Node.
+   Example: 10, 20 and 30.
+
+8. Edge:
+   A connection between two nodes is called an Edge.
+
+9. Degree of Node:
+   The number of children of a particular node is called its Degree.
+   Example: Degree of node 10 = 2.
+
+10. Depth of Node:
+    The number of edges from the Root Node to a particular node is called its Depth.
+    Example: Depth of node 40 = 2.
+
+11. Height of Node:
+    The number of edges in the longest path from that node to a Leaf Node.
+    Example: Height of node 10 = 2.
+
+12. Height of Tree:
+    The height of the Root Node is called the Height of Tree.
+    Example: Height of the above Tree = 2.
+
+================================================================================================================
+3. Types of Tree
+================================================================================================================
+
+1. General Tree:
+   A Tree in which a node can have any number of children.
+
+2. Binary Tree:
+   A Tree in which each node can have at most two children.
+
+3. Binary Search Tree (BST):
+   A Binary Tree in which:
+   - Left subtree contains smaller values.
+   - Right subtree contains greater values.
+
+4. AVL Tree:
+   A Self-Balancing Binary Search Tree.
+
+5. Heap Tree:
+   A Complete Binary Tree that follows the Heap Property.
+
+================================================================================================================
+                                      BINARY TREE
+================================================================================================================
+
+4. What is a Binary Tree?
+
+   A Binary Tree is a special type of Tree in which each node can have
+   AT MOST TWO CHILDREN.
+
+   These two children are:
+
+   1. Left Child
+   2. Right Child
+
+   Important:
+   - A node can have zero children.
+   - A node can have only one child.
+   - A node can have two children.
+   - A node cannot have more than two children.
+
+   Example:
+
+                         10
+                       /    \
+                      20     30
+                     /  \   /  \
+                    40  50 60  70
+
+   Here:
+   - 10 is the Root Node.
+   - 20 is the Left Child of 10.
+   - 30 is the Right Child of 10.
+   - 40 and 50 are children of 20.
+   - 60 and 70 are children of 30.
+
+================================================================================================================
+5. Structure of Binary Tree Node
+================================================================================================================
+
+   Every Binary Tree Node generally contains three parts:
+
+   1. Data  : Stores the value.
+   2. Left  : Stores the reference of Left Child.
+   3. Right : Stores the reference of Right Child.
+
+   Diagram:
+
+             +-------+-------+-------+
+             |  Left | Data  | Right |
+             +-------+-------+-------+
+
+   Java Implementation:
+
+   class Node
+   {
+       int data;
+       Node left;
+       Node right;
+
+       Node(int data)
+       {
+           this.data = data;
+           this.left = null;
+           this.right = null;
+       }
+   }
+
+================================================================================================================
+6. Types of Binary Tree
+================================================================================================================
+
+1. Full Binary Tree:
+
+   A Binary Tree in which every node has either:
+   - Zero children (Leaf Node).
+   - Exactly Two children.
+
+   No node can have only one child.
+
+   Example:
+
+                         10
+                       /    \
+                      20     30
+                     /  \
+                    40   50
+
+2. Complete Binary Tree:
+
+   A Binary Tree in which:
+   - Every level except the last level is completely filled.
+   - The last level is filled from LEFT TO RIGHT.
+
+   Example:
+
+                         10
+                       /    \
+                      20     30
+                     /  \   /
+                    40  50 60
+
+3. Perfect Binary Tree:
+
+   A Binary Tree in which:
+   - Every internal node has exactly two children.
+   - All leaf nodes are at the same level.
+
+   Example:
+
+                         10
+                       /    \
+                      20     30
+                     /  \   /  \
+                    40  50 60  70
+
+4. Balanced Binary Tree:
+
+   A Binary Tree in which the height difference between
+   the left and right subtrees of every node is at most 1.
+
+   Example:
+
+                         10
+                       /    \
+                      20     30
+                     /  \
+                    40   50
+
+5. Skewed Binary Tree:
+
+   A Binary Tree in which every node has only one child.
+
+   Left Skewed Tree:
+
+                         10
+                        /
+                       20
+                      /
+                     30
+                    /
+                   40
+
+   Right Skewed Tree:
+
+                   10
+                     \
+                      20
+                        \
+                         30
+                           \
+                            40
+
+================================================================================================================
+7. Important Properties of Binary Tree
+================================================================================================================
+
+1. Maximum number of nodes at level L:
+
+   Maximum Nodes = 2^L
+
+   Here, Root Level = 0.
+
+   Example:
+   Level 0 = 2^0 = 1 node
+   Level 1 = 2^1 = 2 nodes
+   Level 2 = 2^2 = 4 nodes
+   Level 3 = 2^3 = 8 nodes
+
+2. Maximum number of nodes in a Binary Tree of Height H:
+
+   Maximum Nodes = 2^(H+1) - 1
+
+   Example:
+   Height = 2
+
+   Maximum Nodes = 2^(2+1) - 1
+                 = 8 - 1
+                 = 7
+
+3. Minimum number of nodes in a Binary Tree of Height H:
+
+   Minimum Nodes = H + 1
+
+   This happens in a Skewed Binary Tree.
+
+4. Maximum number of Leaf Nodes:
+
+   Maximum Leaf Nodes = 2^H
+
+   For a Perfect Binary Tree of Height 2:
+   Maximum Leaf Nodes = 2^2 = 4
+
+================================================================================================================
+8. Difference Between Tree and Binary Tree
+================================================================================================================
+
+   Tree:
+   - A node can have any number of children.
+   - No fixed limit on the number of children.
+   - It represents hierarchical data.
+
+   Binary Tree:
+   - A node can have at most two children.
+   - Children are called Left Child and Right Child.
+   - It is a special type of Tree.
+
+================================================================================================================
+9. Applications of Binary Tree
+================================================================================================================
+
+   1. Binary Search Tree (BST) for efficient searching.
+   2. Heap for Priority Queue implementation.
+   3. Expression Tree for mathematical expressions.
+   4. Decision Tree in Machine Learning.
+   5. Huffman Tree for data compression.
+   6. Syntax Tree in Compilers.
+
+================================================================================================================
+10. Important Points to Remember
+================================================================================================================
+
+   - Tree is a Non-Linear Data Structure.
+   - Binary Tree is a special type of Tree.
+   - Every Binary Tree is a Tree, but every Tree is not a Binary Tree.
+   - Root Node does not have a parent.
+   - Leaf Node does not have any child.
+   - A Binary Tree node can have a maximum of two children.
+   - A Tree with N nodes contains exactly N-1 edges.
+   - A Tree does not contain any cycle.
+
+================================================================================================================
+*/
+public class P01_Tree_And_BinaryTree
+{
+    public static void main(String[] args)
+    {
+
+    }
+}
