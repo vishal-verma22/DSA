@@ -55,5 +55,16 @@ public class P1_BinaryTreeImplementn {
 		}
 
 	}
+	
+	
+	 public void display() {
+		 
+		 Node currentElement=root;
+		 
+		 display();
+		 
+		 
+		 
+	 }
 
 }
