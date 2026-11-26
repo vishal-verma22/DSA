@@ -11,7 +11,7 @@ PROBLEM STATEMENT:
 		1. Recursion	
 		2. Stack
 
-We are using the existing Binary Tree implementation from P1_BinaryTreeImplementn class.
+We are using the existing Binary Tree implementation from P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion class.
 
 The add() method is already implemented in P1 class.
 Therefore, we do not need to write add() method again in P2.
@@ -84,7 +84,7 @@ and finally the complete RIGHT subtree.
 
 In main():
 
-P1_BinaryTreeImplementn binaryTree = new P1_BinaryTreeImplementn();
+P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion binaryTree = new P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion();
 
 binaryTree.add(10);
 binaryTree.add(20);
@@ -384,7 +384,7 @@ MAIN LOGIC IN HINGLISH:
 
 3. Stack create karenge:
 
-   Stack<P1_BinaryTreeImplementn.Node> stack = new Stack<>();
+   Stack<P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion.Node> stack = new Stack<>();
 
 4. Starting root node ko Stack mein push karenge.
 
@@ -719,9 +719,9 @@ public class P2_BinarytreePreOrderTraversalUsgStackAndRecursion {
     // P1 OBJECT: To access the existing Binary Tree
     // ==================================================
 
-    P1_BinaryTreeImplementn binaryTree;
+    P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion binaryTree;
 
-    P2_BinarytreePreOrderTraversalUsgStackAndRecursion(P1_BinaryTreeImplementn binaryTree) {
+    P2_BinarytreePreOrderTraversalUsgStackAndRecursion(P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion binaryTree) {
 
         this.binaryTree = binaryTree;
 
@@ -744,7 +744,7 @@ public class P2_BinarytreePreOrderTraversalUsgStackAndRecursion {
     }
 
 
-    public void displayPreorderUsgRecursion(P1_BinaryTreeImplementn.Node currentNode) {
+    public void displayPreorderUsgRecursion(P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion.Node currentNode) {
 
         // Base Condition
 
@@ -785,11 +785,11 @@ public class P2_BinarytreePreOrderTraversalUsgStackAndRecursion {
     }
 
 
-    public void displayPreorderUsgStack(P1_BinaryTreeImplementn.Node currentNode) {
+    public void displayPreorderUsgStack(P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion.Node currentNode) {
 
         // Creating Stack
 
-        Stack<P1_BinaryTreeImplementn.Node> stack = new Stack<>();
+        Stack<P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion.Node> stack = new Stack<>();
 
         // If root is null, return
 
@@ -809,7 +809,7 @@ public class P2_BinarytreePreOrderTraversalUsgStackAndRecursion {
 
             // Remove top element from Stack
 
-            P1_BinaryTreeImplementn.Node currentRemovedElement = stack.pop();
+            P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion.Node currentRemovedElement = stack.pop();
 
             // Print ROOT
 
@@ -844,7 +844,7 @@ public class P2_BinarytreePreOrderTraversalUsgStackAndRecursion {
 
         // Creating Binary Tree using P1 class
 
-        P1_BinaryTreeImplementn binaryTree = new P1_BinaryTreeImplementn();
+        P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion binaryTree = new P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion();
 
         binaryTree.add(10);
 

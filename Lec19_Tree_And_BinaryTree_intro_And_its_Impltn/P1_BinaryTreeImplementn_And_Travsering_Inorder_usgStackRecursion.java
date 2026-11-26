@@ -1200,7 +1200,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-public class P1_BinaryTreeImplementn
+public class P1_BinaryTreeImplementn_And_Travsering_Inorder_usgStackRecursion
 {
     // ==================================================
     // NODE CLASS
