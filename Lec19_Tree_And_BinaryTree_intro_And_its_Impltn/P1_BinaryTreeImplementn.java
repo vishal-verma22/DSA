@@ -1,24 +1,20 @@
-
 package Lec19_Tree_And_BinaryTree_intro_And_its_Impltn;
 
 /*
 ============================================================
-              BINARY TREE IMPLEMENTATION
-                  USING QUEUE
+BINARY TREE IMPLEMENTATION USING QUEUE
+AND INORDER TRAVERSAL USING RECURSION & STACK
 ============================================================
-
 
 PROBLEM STATEMENT:
 
 Implement a Binary Tree using Linked Nodes.
 
 1. Insert elements into Binary Tree using Queue.
-2. Display elements using Inorder Traversal.
+2. Display elements using Inorder Traversal using Recursion.
+3. Display elements using Inorder Traversal using Stack.
 
-
-============================================================
-INPUT
-============================================================
+INPUT:
 
 bt.add(10);
 bt.add(20);
@@ -30,7 +26,7 @@ bt.add(70);
 
 
 ============================================================
-PART 1: ADD METHOD IMPLEMENTATION
+PART 1: ADD METHOD IMPLEMENTATION USING QUEUE
 ============================================================
 
 ADD METHOD:
@@ -46,7 +42,6 @@ public void add(int element)
     }
 
     Queue<Node> queue = new LinkedList<>();
-
     queue.add(root);
 
     while(!queue.isEmpty())
@@ -73,1194 +68,992 @@ public void add(int element)
 
 
 ============================================================
-ADD METHOD: MAIN LOGIC
+MAIN LOGIC OF ADD METHOD 
 ============================================================
 
-1. Create a new node for the given element.
+1. Sabse pehle given element ka ek new Node create hota hai.
 
-2. Check whether root is null.
+   Node newNode = new Node(element);
 
-3. If root is null:
-   - Assign newNode to root.
-   - Return from the method.
+   Example:
+   bt.add(20) call hua, toh newNode ke andar data = 20 hoga.
 
-4. If root is not null:
-   - Create a Queue.
-   - Add root into the Queue.
+2. Check karte hain ki root null hai ya nahi.
 
-5. Remove the first node from Queue using poll().
+   if(root == null)
 
-6. Check whether its left child is null.
+   Agar tree empty hai, toh newNode ko root bana dete hain.
 
-7. If left child is null:
-   - Insert newNode at the left.
-   - Return.
+   root = newNode;
 
-8. If left child is not null:
-   - Add the left child into Queue.
+   Uske baad return kar dete hain, kyunki insertion complete ho gaya.
 
-9. Check whether its right child is null.
+3. Agar root null nahi hai, iska matlab tree mein pehle se node present hai.
 
-10. If right child is null:
-    - Insert newNode at the right.
-    - Return.
+   Isliye ek Queue create karte hain.
 
-11. If right child is not null:
-    - Add the right child into Queue.
+   Queue<Node> queue = new LinkedList<>();
 
-12. Repeat until an empty position is found.
+4. Root node ko Queue mein add karte hain.
 
+   queue.add(root);
 
-IMPORTANT CONCEPTS:
+5. while loop tab tak chalega jab tak Queue empty nahi hoti.
 
-Queue follows FIFO.
+   while(!queue.isEmpty())
 
-FIFO = First In First Out
+6. Queue se sabse pehla node remove karte hain.
 
-queue.add()  --> Adds an element at the end.
-queue.poll() --> Removes and returns the first element.
+   Node currentElement = queue.poll();
 
-Insertion takes place level by level,
-from left to right.
+   Queue FIFO follow karti hai, isliye jo node pehle add hua tha
+   woh pehle remove hoga.
+
+7. Ab current node ka LEFT child check karte hain.
+
+   Agar left null hai, toh newNode ko left mein insert kar do
+   aur return kar do.
+
+   Agar left null nahi hai, toh left child ko Queue mein add kar do.
+
+8. Ab current node ka RIGHT child check karte hain.
+
+   Agar right null hai, toh newNode ko right mein insert kar do
+   aur return kar do.
+
+   Agar right null nahi hai, toh right child ko Queue mein add kar do.
+
+9. Ye process level by level aur left to right chalta hai.
+   Jahan pehli empty position milti hai, newNode insert ho jata hai.
+
+IMPORTANT:
+
+Queue follows FIFO = First In First Out.
+
+queue.add()  --> Queue ke end mein element add karta hai.
+queue.poll() --> Queue ke front se element remove karke return karta hai.
+
+Insertion level by level hota hai:
+Pehle root, phir uske children, phir next level ke children.
+
+return ka matlab: add() method ka current execution complete.
 
 
 ============================================================
+STEP-BY-STEP ADD METHOD WORKING
+============================================================
+
 STEP 1: bt.add(10)
-============================================================
 
 newNode = 10
+Initially root = null
 
-Initially:
-
-root = null
-
-Condition:
-
-if(root == null)
-
-TRUE
+if(root == null) --> TRUE
 
 Execute:
-
 root = newNode;
-
 return;
 
 TREE:
 
-       10
+        10
 
-EXPLANATION:
+Explanation:
+Tree empty tha, isliye 10 root node ban gaya.
 
-10 becomes the root node because the tree is empty.
 
-
-============================================================
+------------------------------------------------------------
 STEP 2: bt.add(20)
-============================================================
+------------------------------------------------------------
 
 newNode = 20
+root = 10
 
-root is not null.
+Queue = [10]
 
-Create Queue:
-
-Queue<Node> queue = new LinkedList<>();
-
-Add root:
-
-queue.add(root);
-
-QUEUE:
-
-[10]
-
-
-WHILE LOOP:
-
-currentElement = queue.poll();
-
-currentElement = 10
-
-QUEUE = []
-
+poll() --> currentElement = 10
+Queue = []
 
 Check:
-
-currentElement.left == null
-
-TRUE
+10.left == null --> TRUE
 
 Execute:
-
-currentElement.left = newNode;
-
+10.left = 20;
 return;
-
 
 TREE:
 
-       10
-      /
-     20
+        10
+       /
+      20
 
-EXPLANATION:
-
-The left child of 10 was empty.
-Therefore, 20 is inserted at the left side of 10.
+Explanation:
+10 ka left child empty tha, isliye 20 left mein insert hua.
 
 
-============================================================
+------------------------------------------------------------
 STEP 3: bt.add(30)
-============================================================
+------------------------------------------------------------
 
 newNode = 30
+Queue = [10]
 
-QUEUE:
-
-[10]
-
-
-ITERATION 1:
-
-currentElement = queue.poll();
-
-currentElement = 10
-
-QUEUE = []
-
+poll() --> currentElement = 10
+Queue = []
 
 Check:
-
-10.left == null
-
-FALSE
-
+10.left == null --> FALSE
 Because 10.left contains 20.
 
-Execute:
+queue.add(10.left);
 
-queue.add(currentElement.left);
-
-QUEUE:
-
-[20]
-
+Queue = [20]
 
 Now check:
-
-10.right == null
-
-TRUE
+10.right == null --> TRUE
 
 Execute:
-
-10.right = newNode;
-
+10.right = 30;
 return;
-
 
 TREE:
 
-       10
-      /  \
-     20   30
+        10
+       /  \
+      20   30
 
-EXPLANATION:
-
-The left child is already occupied.
-The right child is empty.
-
-Therefore, 30 is inserted at the right side of 10.
+Explanation:
+10 ka left already occupied tha, lekin right empty tha.
+Isliye 30 right mein insert hua.
 
 
-============================================================
+------------------------------------------------------------
 STEP 4: bt.add(40)
-============================================================
+------------------------------------------------------------
 
 newNode = 40
-
-QUEUE:
-
-[10]
-
+Queue = [10]
 
 ITERATION 1:
 
-currentElement = queue.poll();
-
-currentElement = 10
-
-QUEUE = []
-
-
-Check:
-
-10.left == null
-
-FALSE
-
-Add left child:
-
-queue.add(10.left);
-
-QUEUE:
-
-[20]
-
-
-Check:
-
-10.right == null
-
-FALSE
-
-Add right child:
-
-queue.add(10.right);
-
-QUEUE:
-
-[20, 30]
-
-
-ITERATION 2:
-
-currentElement = queue.poll();
-
-currentElement = 20
-
-QUEUE:
-
-[30]
-
-
-Check:
-
-20.left == null
-
-TRUE
-
-Execute:
-
-20.left = newNode;
-
-return;
-
-
-TREE:
-
-       10
-      /  \
-     20   30
-    /
-   40
-
-EXPLANATION:
-
-The left and right children of 10 are occupied.
-
-Therefore, Queue contains 20 and 30.
-
-Now 20 is removed first.
-
-Its left child is empty.
-So, 40 is inserted at the left of 20.
-
-
-============================================================
-STEP 5: bt.add(50)
-============================================================
-
-newNode = 50
-
-QUEUE:
-
-[10]
-
-
-ITERATION 1:
-
-currentElement = queue.poll();
-
-currentElement = 10
-
-QUEUE = []
-
+poll() --> 10
+Queue = []
 
 10.left is occupied.
+Add 10.left (20).
 
-Add left child:
-
-queue.add(10.left);
-
+Queue = [20]
 
 10.right is occupied.
+Add 10.right (30).
 
-Add right child:
-
-queue.add(10.right);
-
-
-QUEUE:
-
-[20, 30]
-
+Queue = [20, 30]
 
 ITERATION 2:
 
-currentElement = queue.poll();
-
-currentElement = 20
-
-QUEUE:
-
-[30]
-
+poll() --> 20
+Queue = [30]
 
 Check:
-
-20.left == null
-
-FALSE
-
-Because 20.left contains 40.
-
-Add left child:
-
-queue.add(20.left);
-
-QUEUE:
-
-[30, 40]
-
-
-Check:
-
-20.right == null
-
-TRUE
+20.left == null --> TRUE
 
 Execute:
-
-20.right = newNode;
-
+20.left = 40;
 return;
-
 
 TREE:
 
-       10
-      /  \
-     20   30
-    /  \
-   40  50
+          10
+         /  \
+        20   30
+       /
+      40
 
-EXPLANATION:
-
-Node 20 has its left child occupied.
-
-Its right child is empty.
-
-Therefore, 50 is inserted at the right of 20.
+Explanation:
+10 ke dono children occupied the.
+Queue se 20 remove hua aur uska left empty mila.
+Isliye 40, 20 ke left mein insert hua.
 
 
-============================================================
+------------------------------------------------------------
+STEP 5: bt.add(50)
+------------------------------------------------------------
+
+newNode = 50
+Queue = [10]
+
+ITERATION 1:
+
+poll() --> 10
+Queue = []
+
+10.left occupied --> add 20
+10.right occupied --> add 30
+
+Queue = [20, 30]
+
+ITERATION 2:
+
+poll() --> 20
+Queue = [30]
+
+20.left occupied --> add 40
+
+Queue = [30, 40]
+
+Check:
+20.right == null --> TRUE
+
+Execute:
+20.right = 50;
+return;
+
+TREE:
+
+          10
+         /  \
+        20   30
+       /  \
+      40  50
+
+Explanation:
+20 ka left occupied tha, right empty tha.
+Isliye 50, 20 ke right mein insert hua.
+
+
+------------------------------------------------------------
 STEP 6: bt.add(60)
-============================================================
+------------------------------------------------------------
 
 newNode = 60
-
-QUEUE:
-
-[10]
-
+Queue = [10]
 
 ITERATION 1:
 
 poll() --> 10
+10 ke left aur right occupied hain.
 
-10.left and 10.right are occupied.
-
-QUEUE:
-
-[20, 30]
-
+Queue = [20, 30]
 
 ITERATION 2:
 
 poll() --> 20
+20 ke left aur right occupied hain.
 
-20.left and 20.right are occupied.
-
-Add both children.
-
-QUEUE:
-
-[30, 40, 50]
-
+Queue = [30, 40, 50]
 
 ITERATION 3:
 
 poll() --> 30
-
-QUEUE:
-
-[40, 50]
-
+Queue = [40, 50]
 
 Check:
-
-30.left == null
-
-TRUE
+30.left == null --> TRUE
 
 Execute:
-
-30.left = newNode;
-
+30.left = 60;
 return;
-
 
 TREE:
 
-       10
-      /  \
-     20   30
-    / \   /
-   40 50 60
+          10
+         /  \
+        20   30
+       /  \  /
+      40  50 60
 
-EXPLANATION:
-
-10 and 20 have both children occupied.
-
-Now 30 is removed from Queue.
-
-Its left child is empty.
-
-Therefore, 60 is inserted at the left of 30.
+Explanation:
+10 aur 20 ke dono children occupied the.
+Ab 30 remove hua aur uska left empty mila.
+Isliye 60, 30 ke left mein insert hua.
 
 
-============================================================
+------------------------------------------------------------
 STEP 7: bt.add(70)
-============================================================
+------------------------------------------------------------
 
 newNode = 70
-
-QUEUE:
-
-[10]
-
+Queue = [10]
 
 ITERATION 1:
 
 poll() --> 10
-
-QUEUE:
-
-[20, 30]
-
+Queue = [20, 30]
 
 ITERATION 2:
 
 poll() --> 20
+20 ke dono children occupied hain.
 
-QUEUE:
-
-[30, 40, 50]
-
+Queue = [30, 40, 50]
 
 ITERATION 3:
 
 poll() --> 30
+Queue = [40, 50]
 
-QUEUE:
+30.left occupied hai, isliye 60 ko Queue mein add karte hain.
 
-[40, 50]
-
-
-Check:
-
-30.left == null
-
-FALSE
-
-Because 30.left contains 60.
-
-Add left child:
-
-queue.add(30.left);
-
-QUEUE:
-
-[40, 50, 60]
-
+Queue = [40, 50, 60]
 
 Check:
-
-30.right == null
-
-TRUE
+30.right == null --> TRUE
 
 Execute:
-
-30.right = newNode;
-
+30.right = 70;
 return;
-
 
 FINAL TREE:
 
-                 10
-               /    \
-             20      30
-            /  \    /  \
-           40  50  60  70
+                  10
+                /    \
+              20      30
+             /  \    /  \
+            40  50  60  70
 
 
 ============================================================
-PART 2: INORDER TRAVERSAL
+PART 2: INORDER TRAVERSAL USING RECURSION
 ============================================================
 
 METHOD:
 
-public void displayInorder(Node currentNode)
+public void displayInorderUsgRecursion(Node currentNode)
 {
     if(currentNode == null)
     {
         return;
     }
 
-    displayInorder(currentNode.left);
+    displayInorderUsgRecursion(currentNode.left);
 
     System.out.println(currentNode.data);
 
-    displayInorder(currentNode.right);
+    displayInorderUsgRecursion(currentNode.right);
 }
 
+
+============================================================
+MAIN LOGIC OF INORDER USING RECURSION 
+============================================================
 
 INORDER RULE:
 
 LEFT --> ROOT --> RIGHT
 
+1. display() method se traversal start hota hai aur root pass hota hai.
 
-MAIN LOGIC:
+   displayInorderUsgRecursion(root);
 
-1. First, call the left child recursively.
+2. Sabse pehle check hota hai ki currentNode null hai ya nahi.
 
-2. Wait until the complete left subtree is processed.
+   if(currentNode == null)
 
-3. Print the current node.
+   Agar currentNode null hai, toh return execute hota hai.
+   Iska matlab current recursive call complete hoti hai aur control
+   uske calling method mein wapas chala jata hai.
 
-4. Call the right child recursively.
+3. Agar node null nahi hai, toh sabse pehle uske LEFT child par
+   recursive call lagti hai.
 
-5. If currentNode is null, return.
+   displayInorderUsgRecursion(currentNode.left);
 
-6. Continue until all nodes are visited.
+4. Java left subtree ko completely process karta hai.
+   Jab tak left subtree complete nahi hota, current node print nahi hota.
 
+5. Left subtree complete hone ke baad current node ka data print hota hai.
 
-============================================================
-FINAL TREE FOR INORDER TRAVERSAL
-============================================================
+   System.out.println(currentNode.data);
 
-                 10
-               /    \
-             20      30
-            /  \    /  \
-           40  50  60  70
+6. Uske baad current node ke RIGHT child par recursive call lagti hai.
 
+   displayInorderUsgRecursion(currentNode.right);
 
-============================================================
-CALLING STARTS FROM DISPLAY METHOD
-============================================================
-
-DISPLAY METHOD:
-
-public void display()
-{
-    displayInorder(root);
-}
-
-
-root = 10
-
-CALL:
-
-displayInorder(root);
-
-Therefore:
-
-displayInorder(10);
-
-
-============================================================
-PART 3: RECURSIVE CALLING TREE
-============================================================
-
-                    displayInorder(10)
-                    /               \
-                   / LEFT            \ RIGHT
-                  v                   v
-          displayInorder(20)     displayInorder(30)
-             /          \           /          \
-          LEFT          RIGHT     LEFT          RIGHT
-           v              v        v              v
-  displayInorder(40) displayInorder(50)
-                                  displayInorder(60)
-                                  displayInorder(70)
-
+7. Ye process har node ke liye repeat hota hai.
 
 IMPORTANT:
 
-The diagram shows which recursive calls belong
-to each node.
+Recursion mein LEFT aur RIGHT calls ek saath execute nahi hoti.
 
-But Java does not execute both sides simultaneously.
+Pehle LEFT call complete hoti hai.
+Phir current ROOT print hota hai.
+Uske baad RIGHT call execute hoti hai.
 
-It completely executes the LEFT call first,
-then prints the ROOT,
-and then executes the RIGHT call.
+Null par return hone ka matlab poora program stop hona nahi hai.
+Sirf woh particular recursive call complete hoti hai.
 
 
 ============================================================
-PART 4: DETAILED CALLING AND RETURNING
+DISPLAY METHOD
 ============================================================
 
-------------------------------------------------------------
-CALL 1: displayInorder(10)
-------------------------------------------------------------
+public void displayUsgRecursion()
+{
+    System.out.println("Traversing Element in InOrder using Recursion");
+    displayInorderUsgRecursion(root);
+}
 
-currentNode = 10
 
-First statement:
+============================================================
+RECURSIVE CALLING TREE
+============================================================
 
-displayInorder(currentNode.left);
+                  displayInorder(10)
+                  /               \
+                 /                 \
+        displayInorder(20)     displayInorder(30)
+          /          \           /          \
+         /            \         /            \
+displayInorder(40) displayInorder(50) displayInorder(60) displayInorder(70)
+
+
+IMPORTANT:
+Ye diagram parent-child recursive calls dikhata hai.
+Actual execution LEFT subtree se start hota hai aur LEFT complete
+hone ke baad hi ROOT print hota hai, phir RIGHT subtree execute hota hai.
+
+
+============================================================
+DETAILED RECURSIVE CALLING AND RETURNING
+============================================================
+
+Tree:
+
+                  10
+                /    \
+              20      30
+             /  \    /  \
+            40  50  60  70
+
+CALL 1:
+displayInorder(10)
 
 10.left = 20
+Call displayInorder(20)
 
-CALL:
-
+CALL 2:
 displayInorder(20)
-
-
-------------------------------------------------------------
-CALL 2: displayInorder(20)
-------------------------------------------------------------
-
-currentNode = 20
-
-First statement:
-
-displayInorder(currentNode.left);
 
 20.left = 40
+Call displayInorder(40)
 
-CALL:
-
+CALL 3:
 displayInorder(40)
-
-
-------------------------------------------------------------
-CALL 3: displayInorder(40)
-------------------------------------------------------------
-
-currentNode = 40
-
-First statement:
-
-displayInorder(currentNode.left);
 
 40.left = null
+Call displayInorder(null)
 
-CALL:
-
+CALL 4:
 displayInorder(null)
 
-
-------------------------------------------------------------
-CALL 4: displayInorder(null)
-------------------------------------------------------------
-
-Condition:
-
-if(currentNode == null)
-
-TRUE
-
-Execute:
-
+currentNode == null --> TRUE
 return;
 
-RETURN TO:
+Control returns to displayInorder(40).
 
-displayInorder(40)
+Now node 40 continues:
 
+Left call complete.
+Print 40.
 
-------------------------------------------------------------
-NOW NODE 40 EXECUTION CONTINUES
-------------------------------------------------------------
-
-Left recursive call is completed.
-
-Now execute:
-
-System.out.println(currentNode.data);
-
-OUTPUT:
-
+Output:
 40
 
-
-Next statement:
-
-displayInorder(currentNode.right);
-
-40.right = null
-
-CALL:
-
+Now call right:
+displayInorder(40.right)
 displayInorder(null)
 
+Null condition true, return.
 
-------------------------------------------------------------
-CALL 5: displayInorder(null)
-------------------------------------------------------------
+Node 40 has no more statements.
+displayInorder(40) completes.
 
-Condition:
+Control returns to displayInorder(20).
 
-currentNode == null
 
-TRUE
-
-Execute:
-
-return;
-
-RETURN TO:
-
-displayInorder(40)
-
-
-No more statements are left.
-
-displayInorder(40) COMPLETED.
-
-
-RETURN TO:
-
-displayInorder(20)
-
-
-============================================================
-NODE 20 EXECUTION CONTINUES
-============================================================
-
-Left subtree of 20 is completed.
-
-Now execute:
-
-System.out.println(currentNode.data);
-
-OUTPUT:
-
-20
-
-
-Next statement:
-
-displayInorder(currentNode.right);
-
-20.right = 50
-
-CALL:
-
-displayInorder(50)
-
-
-------------------------------------------------------------
-CALL 6: displayInorder(50)
-------------------------------------------------------------
-
-currentNode = 50
-
-First statement:
-
-displayInorder(currentNode.left);
-
-50.left = null
-
-CALL:
-
-displayInorder(null)
-
-Condition:
-
-currentNode == null
-
-TRUE
-
-return;
-
-
-RETURN TO:
-
-displayInorder(50)
-
-
-Now execute:
-
-System.out.println(currentNode.data);
-
-OUTPUT:
-
-50
-
-
-Next statement:
-
-displayInorder(currentNode.right);
-
-50.right = null
-
-CALL:
-
-displayInorder(null)
-
-Condition:
-
-currentNode == null
-
-TRUE
-
-return;
-
-
-displayInorder(50) COMPLETED.
-
-
-RETURN TO:
-
-displayInorder(20)
-
-
-No more statements are left.
-
-displayInorder(20) COMPLETED.
-
-
-RETURN TO:
-
-displayInorder(10)
-
-
-============================================================
-NODE 10 EXECUTION CONTINUES
-============================================================
-
-Left subtree of 10 is completely completed.
-
-Now execute:
-
-System.out.println(currentNode.data);
-
-OUTPUT:
-
-10
-
-
-Next statement:
-
-displayInorder(currentNode.right);
-
-10.right = 30
-
-CALL:
-
-displayInorder(30)
-
-
-============================================================
-NODE 30 EXECUTION
-============================================================
-
-currentNode = 30
-
-First statement:
-
-displayInorder(currentNode.left);
-
-30.left = 60
-
-CALL:
-
-displayInorder(60)
-
-
-------------------------------------------------------------
-NODE 60 EXECUTION
-------------------------------------------------------------
-
-currentNode = 60
-
-Left call:
-
-displayInorder(null)
-
-Condition:
-
-currentNode == null
-
-TRUE
-
-return;
-
-
-RETURN TO:
-
-displayInorder(60)
-
-
-Now print:
-
-System.out.println(currentNode.data);
-
-OUTPUT:
-
-60
-
-
-Right call:
-
-displayInorder(null)
-
-Condition:
-
-currentNode == null
-
-TRUE
-
-return;
-
-
-displayInorder(60) COMPLETED.
-
-
-RETURN TO:
-
-displayInorder(30)
-
-
-------------------------------------------------------------
-NODE 30 EXECUTION CONTINUES
-------------------------------------------------------------
+NODE 20 CONTINUES:
 
 Left subtree is completed.
+Print 20.
 
-Now print:
+Output:
+40
+20
 
-System.out.println(currentNode.data);
-
-OUTPUT:
-
-30
-
-
-Next statement:
-
-displayInorder(currentNode.right);
-
-30.right = 70
+Now call right:
+displayInorder(50)
 
 CALL:
+displayInorder(50)
 
+50.left = null --> return
+Print 50.
+
+Output:
+40
+20
+50
+
+50.right = null --> return
+
+Node 50 completes.
+Control returns to displayInorder(20).
+
+Node 20 completes.
+Control returns to displayInorder(10).
+
+
+NODE 10 CONTINUES:
+
+Left subtree is completely completed.
+Print 10.
+
+Output:
+40
+20
+50
+10
+
+Now call right:
+displayInorder(30)
+
+
+NODE 30 EXECUTION:
+
+30.left = 60
+Call displayInorder(60).
+
+NODE 60:
+
+60.left = null --> return
+Print 60.
+
+Output:
+40
+20
+50
+10
+60
+
+60.right = null --> return
+
+Node 60 completes.
+Control returns to displayInorder(30).
+
+Now print 30.
+
+Output:
+40
+20
+50
+10
+60
+30
+
+Now call right:
 displayInorder(70)
 
 
-------------------------------------------------------------
-NODE 70 EXECUTION
-------------------------------------------------------------
+NODE 70:
 
-currentNode = 70
+70.left = null --> return
+Print 70.
 
-Left call:
-
-displayInorder(null)
-
-Condition:
-
-currentNode == null
-
-TRUE
-
-return;
-
-
-RETURN TO:
-
-displayInorder(70)
-
-
-Now print:
-
-System.out.println(currentNode.data);
-
-OUTPUT:
-
+Output:
+40
+20
+50
+10
+60
+30
 70
 
+70.right = null --> return
 
-Right call:
+Node 70 completes.
+Control returns to displayInorder(30).
 
-displayInorder(null)
+Node 30 completes.
+Control returns to displayInorder(10).
 
-Condition:
+Node 10 completes.
 
-currentNode == null
-
-TRUE
-
-return;
-
-
-displayInorder(70) COMPLETED.
-
-
-RETURN TO:
-
-displayInorder(30)
-
-
-No more statements are left.
-
-displayInorder(30) COMPLETED.
-
-
-RETURN TO:
-
-displayInorder(10)
-
-
-No more statements are left.
-
-displayInorder(10) COMPLETED.
+RECURSION COMPLETED.
 
 
 ============================================================
-PART 5: COMPLETE CALLING AND RETURNING FLOW
+PART 3: INORDER TRAVERSAL USING STACK
 ============================================================
 
-CALLING FLOW:
+METHOD:
 
-displayInorder(10)
-        |
-        v
-displayInorder(20)
-        |
-        v
-displayInorder(40)
-        |
-        v
-displayInorder(null)
-        |
-        v
-      RETURN
-        |
-        v
-     PRINT 40
-        |
-        v
-displayInorder(null)
-        |
-        v
-      RETURN
-        |
-        v
-     RETURN TO 20
-        |
-        v
-     PRINT 20
-        |
-        v
-displayInorder(50)
-        |
-        v
-displayInorder(null)
-        |
-        v
-      RETURN
-        |
-        v
-     PRINT 50
-        |
-        v
-displayInorder(null)
-        |
-        v
-      RETURN
-        |
-        v
-     RETURN TO 10
-        |
-        v
-     PRINT 10
-        |
-        v
-displayInorder(30)
-        |
-        v
-displayInorder(60)
-        |
-        v
-displayInorder(null)
-        |
-        v
-      RETURN
-        |
-        v
-     PRINT 60
-        |
-        v
-displayInorder(null)
-        |
-        v
-      RETURN
-        |
-        v
-     RETURN TO 30
-        |
-        v
-     PRINT 30
-        |
-        v
-displayInorder(70)
-        |
-        v
-displayInorder(null)
-        |
-        v
-      RETURN
-        |
-        v
-     PRINT 70
-        |
-        v
-displayInorder(null)
-        |
-        v
-      RETURN
-        |
-        v
-     RETURN TO 30
-        |
-        v
-     RETURN TO 10
+public void displayInorderUsgStack(Node CurrentElement)
+{
+    Stack<Node> stack = new Stack<>();
+
+    while(CurrentElement != null || !stack.isEmpty())
+    {
+        while(CurrentElement != null)
+        {
+            stack.push(CurrentElement);
+            CurrentElement = CurrentElement.left;
+        }
+
+        Node CurrentRemovedElement = stack.pop();
+
+        System.out.println(CurrentRemovedElement.data);
+
+        CurrentElement = CurrentRemovedElement.right;
+    }
+}
 
 
 ============================================================
-PART 6: FINAL OUTPUT
+MAIN LOGIC OF INORDER USING STACK (HINGLISH)
 ============================================================
 
-Inorder Traversal:
+INORDER RULE:
+
+LEFT --> ROOT --> RIGHT
+
+1. Sabse pehle ek empty Stack create karte hain.
+
+   Stack<Node> stack = new Stack<>();
+
+2. Outer while loop check karta hai ki CurrentElement null nahi hai
+   YA Stack empty nahi hai.
+
+   while(CurrentElement != null || !stack.isEmpty())
+
+   Dono mein se koi ek condition true hogi toh loop chalega.
+
+3. Inner while loop current node ko Stack mein push karta hai
+   aur baar-baar LEFT child ki taraf move karta hai.
+
+   while(CurrentElement != null)
+   {
+       stack.push(CurrentElement);
+       CurrentElement = CurrentElement.left;
+   }
+
+4. Jab CurrentElement null ho jata hai, iska matlab hum left side
+   mein aur aage nahi ja sakte.
+
+5. Ab Stack ke top node ko pop karte hain.
+
+   Node CurrentRemovedElement = stack.pop();
+
+6. Pop kiye hue node ka data print karte hain.
+
+   System.out.println(CurrentRemovedElement.data);
+
+7. Ab us popped node ke RIGHT child par move karte hain.
+
+   CurrentElement = CurrentRemovedElement.right;
+
+8. Agar right child present hai, toh inner while loop us right child
+   aur uske left children ko Stack mein push karega.
+
+9. Agar right child null hai, toh next outer iteration mein Stack
+   se next pending node pop hoga.
+
+10. Jab CurrentElement null ho aur Stack bhi empty ho jaye,
+    traversal complete ho jata hai.
+
+IMPORTANT:
+
+Stack LIFO follow karta hai:
+Last In First Out.
+
+push() --> Node ko Stack ke top par add karta hai.
+pop()  --> Stack ke top se node remove karta hai.
+
+Recursion approach mein Java call stack manage karta hai.
+Stack approach mein hum manually Stack<Node> use karke pending nodes
+manage karte hain.
+
+
+============================================================
+STACK TRAVERSAL: DETAILED STEP-BY-STEP WORKING
+============================================================
+
+TREE:
+
+                  10
+                /    \
+              20      30
+             /  \    /  \
+            40  50  60  70
+
+Initial:
+
+CurrentElement = 10
+Stack = []
+
+
+------------------------------------------------------------
+STEP 1: MOVE TOWARDS LEFT
+------------------------------------------------------------
+
+CurrentElement = 10
+
+push(10)
+Stack = [10]
+
+Move left:
+CurrentElement = 20
+
+push(20)
+Stack = [10, 20]
+
+Move left:
+CurrentElement = 40
+
+push(40)
+Stack = [10, 20, 40]
+
+Move left:
+CurrentElement = null
+
+Inner while stops.
+
+Stack top = 40
+
+
+------------------------------------------------------------
+STEP 2: POP AND PRINT 40
+------------------------------------------------------------
+
+CurrentElement = null
+Stack = [10, 20, 40]
+
+pop() --> 40
+
+Stack = [10, 20]
+
+Print 40.
+
+Output:
+40
+
+Move right:
+CurrentElement = 40.right = null
+
+
+------------------------------------------------------------
+STEP 3: POP AND PRINT 20
+------------------------------------------------------------
+
+Outer while condition is true because Stack is not empty.
+
+CurrentElement = null
+Stack = [10, 20]
+
+Inner while is skipped because CurrentElement is null.
+
+pop() --> 20
+
+Stack = [10]
+
+Print 20.
+
+Output:
+40
+20
+
+Move right:
+CurrentElement = 20.right = 50
+
+
+------------------------------------------------------------
+STEP 4: PUSH AND POP 50
+------------------------------------------------------------
+
+CurrentElement = 50
+
+push(50)
+Stack = [10, 50]
+
+Move left:
+CurrentElement = null
+
+Inner while stops.
+
+pop() --> 50
+
+Stack = [10]
+
+Print 50.
+
+Output:
+40
+20
+50
+
+Move right:
+CurrentElement = 50.right = null
+
+
+------------------------------------------------------------
+STEP 5: POP ROOT 10
+------------------------------------------------------------
+
+CurrentElement = null
+Stack = [10]
+
+Inner while is skipped.
+
+pop() --> 10
+
+Stack = []
+
+Print 10.
+
+Output:
+40
+20
+50
+10
+
+Move right:
+CurrentElement = 10.right = 30
+
+
+------------------------------------------------------------
+STEP 6: TRAVERSE LEFT SIDE OF 30
+------------------------------------------------------------
+
+CurrentElement = 30
+
+push(30)
+Stack = [30]
+
+Move left:
+CurrentElement = 60
+
+push(60)
+Stack = [30, 60]
+
+Move left:
+CurrentElement = null
+
+Inner while stops.
+
+pop() --> 60
+
+Stack = [30]
+
+Print 60.
+
+Output:
+40
+20
+50
+10
+60
+
+Move right:
+CurrentElement = 60.right = null
+
+
+------------------------------------------------------------
+STEP 7: POP AND PRINT 30
+------------------------------------------------------------
+
+CurrentElement = null
+Stack = [30]
+
+Inner while is skipped.
+
+pop() --> 30
+
+Stack = []
+
+Print 30.
+
+Output:
+40
+20
+50
+10
+60
+30
+
+Move right:
+CurrentElement = 30.right = 70
+
+
+------------------------------------------------------------
+STEP 8: PUSH AND POP 70
+------------------------------------------------------------
+
+CurrentElement = 70
+
+push(70)
+Stack = [70]
+
+Move left:
+CurrentElement = null
+
+Inner while stops.
+
+pop() --> 70
+
+Stack = []
+
+Print 70.
+
+Output:
+40
+20
+50
+10
+60
+30
+70
+
+Move right:
+CurrentElement = 70.right = null
+
+
+------------------------------------------------------------
+STEP 9: TERMINATION
+------------------------------------------------------------
+
+CurrentElement = null
+Stack = []
+
+Outer while condition:
+
+CurrentElement != null || !stack.isEmpty()
+
+FALSE || FALSE
+
+Therefore, outer while loop stops.
+
+STACK TRAVERSAL COMPLETED.
+
+
+============================================================
+COMPLETE STACK PUSH / POP SUMMARY
+============================================================
+
+1. Push 10       Stack = [10]
+2. Push 20       Stack = [10, 20]
+3. Push 40       Stack = [10, 20, 40]
+4. Pop 40        Stack = [10, 20]       Print 40
+5. Pop 20        Stack = [10]           Print 20
+6. Push 50       Stack = [10, 50]
+7. Pop 50        Stack = [10]           Print 50
+8. Pop 10        Stack = []             Print 10
+9. Push 30       Stack = [30]
+10. Push 60      Stack = [30, 60]
+11. Pop 60       Stack = [30]           Print 60
+12. Pop 30       Stack = []             Print 30
+13. Push 70      Stack = [70]
+14. Pop 70       Stack = []             Print 70
+
+FINAL INORDER OUTPUT:
 
 40
 20
@@ -1272,71 +1065,130 @@ Inorder Traversal:
 
 
 ============================================================
-IMPORTANT CONCEPTS
+PART 4: COMPARISON OF ALL THREE METHODS
 ============================================================
 
-ADD METHOD:
+1. ADD METHOD USING QUEUE
 
-1. Queue is used for insertion.
-2. Queue follows FIFO.
-3. Elements are inserted level by level.
-4. Left position is checked first.
-5. If left is occupied, right position is checked.
-6. return stops the add() method after insertion.
+- Queue ka use insertion ke liye hota hai.
+- Queue FIFO follow karti hai.
+- Nodes level by level insert hote hain.
+- Har node ka LEFT position pehle check hota hai.
+- LEFT occupied ho toh RIGHT position check hota hai.
+- Pehli empty position par new node insert hota hai.
 
-INORDER TRAVERSAL:
+2. INORDER USING RECURSION
 
-1. Recursion is used for traversal.
-2. Order is LEFT -> ROOT -> RIGHT.
-3. Complete left subtree executes first.
-4. Current node is printed after left subtree.
-5. Right subtree executes after printing.
-6. When currentNode is null, return is executed.
+- Recursion ka use traversal ke liye hota hai.
+- Order LEFT -> ROOT -> RIGHT hota hai.
+- Pehle complete left subtree execute hota hai.
+- Uske baad current node print hota hai.
+- Phir right subtree execute hota hai.
+- Recursive calls ko manage karne ke liye Java call stack use karta hai.
 
-IMPORTANT ABOUT RETURN:
+3. INORDER USING STACK
 
-Suppose:
+- Explicit Stack<Node> ka use traversal ke liye hota hai.
+- Order LEFT -> ROOT -> RIGHT hi rehta hai.
+- Current node aur uske left nodes Stack mein push hote hain.
+- Left side complete hone par top node pop aur print hota hai.
+- Uske baad popped node ke right child par move karte hain.
+- Stack empty aur CurrentElement null hone par traversal complete hota hai.
 
-displayInorder(40)
-        |
-        v
-displayInorder(null)
-        |
-        v
-      return
 
-This return does not stop the complete program.
+============================================================
+IMPORTANT DIFFERENCE: RECURSION VS STACK
+============================================================
 
-It completes only the current call:
+RECURSION:
 
-displayInorder(null)
+displayInorderUsgRecursion(currentNode.left);
 
-Control returns to:
+Java recursive method calls ko internally call stack mein manage karta hai.
 
-displayInorder(40)
+STACK:
 
-Then execution continues from the next statement.
+stack.push(CurrentElement);
+CurrentElement = CurrentElement.left;
+
+Hum khud Stack<Node> create karke nodes store karte hain.
+
+Dono methods ka traversal order same hai:
+LEFT -> ROOT -> RIGHT
+
+Dono ka output same aata hai.
+
+
+============================================================
+PART 5: FINAL OUTPUT
+============================================================
+
+Traversing Element in InOrder using Recursion
+
+40
+20
+50
+10
+60
+30
+70
+
+Traversing Element in InOrder using Stack
+
+40
+20
+50
+10
+60
+30
+70
 
 
 ============================================================
 TIME AND SPACE COMPLEXITY
 ============================================================
 
-ADD METHOD:
+ADD METHOD USING QUEUE:
 
 Time Complexity:
 O(n) in the worst case.
 
-Space Complexity:
-O(n) for Queue.
+Reason:
+Worst case mein insertion ke liye multiple existing nodes visit
+karne pad sakte hain.
 
-INORDER TRAVERSAL:
+Space Complexity:
+O(n) worst case for Queue.
+
+INORDER USING RECURSION:
 
 Time Complexity:
 O(n)
 
+Reason:
+Har node exactly once visit hota hai.
+
 Space Complexity:
-O(h) for recursion stack.
+O(h)
+
+Reason:
+Recursive calls call stack mein store hoti hain.
+h = height of the tree.
+
+INORDER USING STACK:
+
+Time Complexity:
+O(n)
+
+Reason:
+Har node exactly once Stack mein push aur exactly once pop hota hai.
+
+Space Complexity:
+O(h)
+
+Reason:
+Stack mein maximum tree ki height ke proportional nodes pending
+ho sakte hain.
 
 n = Total number of nodes.
 h = Height of the tree.
@@ -1344,21 +1196,19 @@ h = Height of the tree.
 ============================================================
 */
 
-
 import java.util.LinkedList;
 import java.util.Queue;
-
+import java.util.Stack;
 
 public class P1_BinaryTreeImplementn
 {
-    //==================================================
+    // ==================================================
     // NODE CLASS
-    //==================================================
+    // ==================================================
 
     class Node
     {
         int data;
-
         Node left;
         Node right;
 
@@ -1370,14 +1220,12 @@ public class P1_BinaryTreeImplementn
         }
     }
 
-
     Node root;
 
-
-    //==================================================
+    // ==================================================
     // ADD METHOD: To insert elements using Queue
     // Time Complexity: O(n) in worst case
-    //==================================================
+    // ==================================================
 
     public void add(int element)
     {
@@ -1415,36 +1263,77 @@ public class P1_BinaryTreeImplementn
         }
     }
 
-
-    //==================================================
+    // ==================================================
+    // Way -1: Traversal Using Recursion Logic
     // INORDER TRAVERSAL: LEFT -> ROOT -> RIGHT
     // Time Complexity: O(n)
-    //==================================================
+    // ==================================================
 
-    public void displayInorder(Node currentNode)
+    public void displayInorderUsgRecursion(Node currentNode)
     {
         if(currentNode == null)
         {
             return;
         }
 
-        displayInorder(currentNode.left);
+        displayInorderUsgRecursion(currentNode.left);
 
         System.out.println(currentNode.data);
 
-        displayInorder(currentNode.right);
+        displayInorderUsgRecursion(currentNode.right);
     }
 
+    // ==================================================
+    // DISPLAY METHOD: Using Recursion
+    // ==================================================
 
-    //==================================================
-    // DISPLAY METHOD
-    //==================================================
-
-    public void display()
+    public void displayUsgRecursion()
     {
-        displayInorder(root);
+        System.out.println("Traversing Element in InOrder using Recursion");
+
+        displayInorderUsgRecursion(root);
+
+        System.out.println();
     }
 
+    // ==================================================
+    // Way -2: Using Stack
+    // INORDER TRAVERSAL: LEFT -> ROOT -> RIGHT
+    // Time Complexity: O(n)
+    // ==================================================
 
+    public void displayUsgStack()
+    {
+        System.out.println("Traversing Element in InOrder using Stack");
+
+        displayInorderUsgStack(root);
+
+        System.out.println();
+    }
+
+    // ==================================================
+    // INORDER TRAVERSAL USING STACK Logic
+    // ==================================================
+
+    public void displayInorderUsgStack(Node CurrentElement)
+    {
+        Stack<Node> stack = new Stack<>();
+
+        while(CurrentElement != null || !stack.isEmpty())
+        {
+            while(CurrentElement != null)
+            {
+                stack.push(CurrentElement);
+
+                CurrentElement = CurrentElement.left;
+            }
+
+            Node CurrentRemovedElement = stack.pop();
+
+            System.out.println(CurrentRemovedElement.data);
+
+            CurrentElement = CurrentRemovedElement.right;
+        }
+    }
 
 }
